@@ -1,6 +1,6 @@
 
 # `Internet Communication`
-> [**Internet:**] shortened form of inter network. Inter from latin inter- meaning between. The internet is a vast network of interconnected computer networks that spans the globe. It allows communication and data exchange between devices (computers, smartphones, tablets, etc.) anywhere in the world.  
+> [**Internet**] shortened form of inter network. Inter from latin inter- meaning between. The internet is a vast network of interconnected computer networks that spans the globe. It allows communication and data exchange between devices (computers, smartphones, tablets, etc.) anywhere in the world.  
 
 > Internet access is provided by an [**Internet Service Provider (ISP)**].   
 
@@ -11,6 +11,8 @@
  
 ## **Client Server Model**
 ![Client Server Diagram](./img/client-server-model.svg "Client Server Diagram")
+
+*Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
 
 > * The Client sends a request to the Server.  
 > * The Server sends a response to the Client.  
@@ -41,7 +43,7 @@
 1. Your browser uses the IP address to connect to the web server hosting the website.
 
 ***Think of it like this:***
-> * Domain names are like the names in your contacts.  
+> * Domain names are like the names in your contacts app.  
 > * IP addresses are like phone numbers.  
 > * DNS servers are like the contacts app that looks up the phone numbers for you.  
 
@@ -50,8 +52,12 @@
 > These addresses can be broken down into their parts. 
 ![URL Diagram](./img/url-diagram.svg "URL Diagram")
 
+*Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
 
-> A [**protocol**] is  a set of rules and standards that govern how devices communicate and exchange data over a network.  
+
+> The [**scheme**] is the intial part of a URL that specifies the protocol used to access a resource.  
+> A [**protocol**] is  a set of rules and standards that govern how devices communicate and exchange data over a network.
+>   * Examples scheme protocols: http, https, ftp, mailto, file, ssh, etc.  
 
 > [**Subdomains**] These are domains within a larger domain, created by adding a prefix to the existing name. For example, mail.google.com is a subdomain of google.com.  
 

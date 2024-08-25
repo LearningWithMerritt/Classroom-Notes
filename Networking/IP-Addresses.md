@@ -220,8 +220,9 @@ IPv6 Example:
 
 `Subnet Masks` are used in conjunction with IP addresses to define the network and host portions of an address. 
 * They help determine which part of an IP address represents the network and which part represents the host within that network.
+* A `subnet mask` consists of four 8-bit numbers, just like an IP address, and it consists of a series of contiguous 1s followed by a series of contiguous 0s.
 
-A `subnet mask` consists of four 8-bit numbers, just like an IP address, and it consists of a series of contiguous 1s followed by a series of contiguous 0s.
+<br>
 
 `Classless Inter-Domain Routing(CIDR) Notation`: is a compact representation of a subnet mask and specifies the number of bits used for the network portion of the IP address.
 * For example /24 indicates that the first 24 bits are 1s 
@@ -235,12 +236,48 @@ Common Subnets:
 |/24|255.255.255.0|11111111.11111111.11111111.00000000|
 |/32|255.255.255.255|11111111.11111111.11111111.11111111|
 
+<br>
+
 `Network Portion`: the  1s define the bits used to identify the network portion of the IP address
 
 `Host Portion`: the 0s define the bits used to identify the host portion of the IP address
 
+`Applying a Subnet Mask`  
+*A subnet mask is applied to an IP address using a Bitwise AND operation*
+Examples
+```
+    11000000.10101000.00000001.00001010   (IP Address)
+AND
+    11111111.11111111.11111111.00000000   (Subnet Mask)
+-----------------------------------------------------
+    11000000.10101000.00000001.00000000   (Network Address)
+```
+```
+    10101100.00010000.00000101.00010100   (IP Address)
+AND
+    11111111.11111111.11111100.00000000   (Subnet Mask)
+-----------------------------------------------------
+    10101100.00010000.00000100.00000000   (Network Address)
+```
+```
+    00001010.00000000.00000011.01001101   (IP Address)
+AND
+    11111111.11111111.11111111.11110000   (Subnet Mask)
+-----------------------------------------------------
+    00001010.00000000.00000011.01000000   (Network Address)
+```
+```
+    11000000.10101000.01100100.00100011   (IP Address)
+AND
+    11111111.11111111.11111111.11000000   (Subnet Mask)
+-----------------------------------------------------
+    11000000.10101000.01100100.00000000   (Network Address)
+```
 
-`Calculating Number of Subnets`:
+<br>
+
+
+`Calculating Number of Subnets`:  
 *Subnet masks are also called prefixes especially in the use of CIDR notation*  
 
 ### 2<sup>(new mask bits - old mask bits)</sup>
@@ -252,7 +289,7 @@ Example:
 
 <br>
 
-`Calculating Number of Hosts`:
+`Calculating Number of Hosts`:  
 
 ### 2<sup>(32 - mask bits)</sup>
 
@@ -276,7 +313,7 @@ Original Network:
 New Subnet Mask:
 |Network Address|CIDR Notation|Subnet Mask|Total Subnets|Total Host IPs per subnet|
 |:-:|:-:|:-:|:-:|:-:|
-|192.168.0.0|/20|255.255.0.0| 256 (2<sup>16-8</sup>)| 65534 (2<sup>32-16</sup>-2)|
+|10.0.0.0|/16|255.255.0.0| 256 (2<sup>16-8</sup>)| 65534 (2<sup>32-16</sup>-2)|
 
 
 Subnets:
@@ -331,13 +368,14 @@ Subnets:
 |15| 192.168.224.0  | /20           | 192.168.239.255  | 192.168.224.1 to 192.168.239.254|
 |16| 192.168.240.0  | /20           | 192.168.255.255  | 192.168.240.1 to 192.168.255.254|
 
-
-
 ---
 
 # `Assigning IP Addresses: DHCP`
 
 `Dynamic Host Configuration Protocol (DHCP)`, is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network. 
+* DHCP uses `Media Access Control (MAC)` addresses to identify devices on a network. 
+* Assigned IP addresses are mapped to these MAC addresses. 
+
 
 How DHCP works at a High Level:
 

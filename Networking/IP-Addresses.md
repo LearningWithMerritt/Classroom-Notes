@@ -53,6 +53,45 @@ Binary Format Example:
     11000000.10101000.00000001.00000001
 
 ---
+# `IPv4 Address Ranges`
+
+| IP Class | Public IP Range| Private IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A**| 1.0.0.0 to 126.0.0.0| 10.0.0.0 to 10.255.255.255 | 255.0.0.0 | 126 (2<sup>7</sup>-2)| 16,777,214 (2<sup>24</sup>-2) |
+| **B**| 128.0.0.0 to 191.255.0.0| 172.16.0.0 to 172.31.255.255 | 255.255.0.0 | 16,382 (2<sup>14</sup>-2)| 65,534 (2<sup>16</sup>-2)|
+| **C**| 192.0.0.0 to 223.255.255.0| 192.168.0.0 to 192.168.255.255 | 255.255.255.0 | 2,097,150 (2<sup>21</sup>-2) | 254 (2<sup>8</sup>-2)|
+| **D**| 224.0.0.0 to 239.255.255.255 | N/A | N/A| N/A| N/A |
+| **E**| 240.0.0.0 to 255.255.255.255 | N/A | N/A| N/A| N/A |
+
+*2 is subtracted from the Total Number of Networks and Total Number of Clients because one address is always reserved for the network itself, and one for the broadcast address*
+
+* Class D: used for multicast groups; not used in traditional networks.
+* Class E: used for experimental purposes; not used in traditional networking. 
+
+`Loopback Range`
+
+| IP Class | IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
+|:-:|:-:|:-:|:-:|:-:|
+|**Loopback**| 127.0.0.0 to 127.255.255.255|255.0.0.0|N/A|N/A|
+
+<br>
+
+`Broadcast Addresses`  
+A `Broadcast Address` is used to send packets to the entire network.
+* Broadcast Addresses are typically the last address in the network and end with .255.
+
+<br>
+
+
+`Commonly Used IPv4 Addresses`  
+* Loopback: `127.0.0.1`  
+* Home Router Private IP:   
+    * `192.168.0.1` OR `192.168.1.1` OR `192.168.0.254` OR `192.168.1.254` 
+* Home Network Broadcast IP: `192.168.0.255` OR `192.168.1.255`
+
+
+
+---
 # `IPv 6 128-bit addresses`
 
 *IPv6 was designed to accommodate the ever-growing number of internet-connected devices and ensure that we don't run out of IP addresses, which occured with IPv4.*
@@ -111,6 +150,49 @@ For Example:
 
     2001:db8::1428:57ab
 
+# `IPv6 Ranges`
+*IPv6 does not have classes like IPv4 addresses do, but there are still specific addresses used for networking*
+
+`Global Unicast Addresses (GUA)`
+Globally unique addresses that can be routed on the public internet. 
+* Equivalent to public IPv4 addresses.
+* Range: 2000::/3 (from 2000:: to 3FFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+
+<br>
+
+`Link-Local Addresses`
+Link-Local Addresses are used for communication within a single network segment (link) and are not routable beyond that link. 
+* Automatically configured on all IPv6-enabled interfaces.
+* Range: FE80::/10 (from FE80:: to FEBF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+
+<br>
+
+`Unique Local Addresses (ULA)`
+These addresses are similar to private IPv4 addresses (e.g., 192.168.0.0/16, 10.0.0.0/8). 
+* Unique Local Addresses are used for local communication within an organization and are not routable on the public internet.
+* Range: FC00::/7 (from FC00:: to FDFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+
+<br>
+
+`Multicast Addresses`
+These addresses are used to send a single packet to multiple destinations (a group of interfaces). 
+* Used in applications like streaming video or routing protocols.
+* Range: FF00::/8 (from FF00:: to FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+
+<br>
+
+`Anycast Addresses`
+Anycast addresses are assigned to multiple interfaces, usually on different devices. 
+* Packets sent to an anycast address are delivered to the nearest interface, as determined by the routing protocol.
+* No specific range; any unicast address can be used as an anycast address.
+
+<br>
+
+`Reserved Addresses`
+These are special-purpose addresses. ::/128 is used when a device does not have an address assigned, and ::1/128 is used for loopback operations, allowing a device to send packets to itself.
+* `Unspecified Address: ::/128` 
+* `Loopback Address: ::1/128`
+
 ---
 # `Public vs. Private IP Addresses`
 
@@ -145,45 +227,7 @@ For Example:
  
 
 ---
-# `IPv4 Address Ranges`
 
-| IP Class | Public IP Range| Private IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
-|:-:|:-:|:-:|:-:|:-:|:-:|
-| **A**| 1.0.0.0 to 126.0.0.0| 10.0.0.0 to 10.255.255.255 | 255.0.0.0 | 126 (2<sup>7</sup>-2)| 16,777,214 (2<sup>24</sup>-2) |
-| **B**| 128.0.0.0 to 191.255.0.0| 172.16.0.0 to 172.31.255.255 | 255.255.0.0 | 16,382 (2<sup>14</sup>-2)| 65,534 (2<sup>16</sup>-2)|
-| **C**| 192.0.0.0 to 223.255.255.0| 192.168.0.0 to 192.168.255.255 | 255.255.255.0 | 2,097,150 (2<sup>21</sup>-2) | 254 (2<sup>8</sup>-2)|
-| **D**| 224.0.0.0 to 239.255.255.255 | N/A | N/A| N/A| N/A |
-| **E**| 240.0.0.0 to 255.255.255.255 | N/A | N/A| N/A| N/A |
-
-*2 is subtracted from the Total Number of Networks and Total Number of Clients because one address is always reserved for the network itself, and one for the broadcast address*
-
-* Class D: used for multicast groups; not used in traditional networks.
-* Class E: used for experimental purposes; not used in traditional networking. 
-
-`Loopback Range`
-
-| IP Class | IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
-|:-:|:-:|:-:|:-:|:-:|
-|**Loopback**| 127.0.0.0 to 127.255.255.255|255.0.0.0|N/A|N/A|
-
-<br>
-
-`Broadcast Addresses`  
-A `Broadcast Address` is used to send packets to the entire network.
-* Broadcast Addresses are typically the last address in the network and end with .255.
-
-<br>
-
-
-`Commonly Used IPv4 Addresses`  
-* Loopback: `127.0.0.1`  
-* Home Router Private IP:   
-    * `192.168.0.1` OR `192.168.1.1` OR `192.168.0.254` OR `192.168.1.254` 
-* Home Network Broadcast IP: `192.168.0.255` OR `192.168.1.255`
-
-
-
----
 # `IP Addresses and Ports`
 
 *Ports are defined by the Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP) at the Transport layer of the OSI and TCP/IP models.*
@@ -192,7 +236,7 @@ A `Port` serves as a communication endpoint for applications and services on a d
 
 A `Port Number` is a 16-bit integer ranging from 0 to 65535, and is used to uniquely identify a service or application on a device.
 
-Ports are specified in IP addresses by using a `colon ( : )` to separate the IP address from the port.
+Ports are specified in IP addresses by using a `colon (:)` to separate the IP address from the port.
 
 <br>
 
@@ -376,6 +420,7 @@ Subnets:
 * DHCP uses `Media Access Control (MAC)` addresses to identify devices on a network. 
 * Assigned IP addresses are mapped to these MAC addresses. 
 
+<br>
 
 How DHCP works at a High Level:
 

@@ -4,25 +4,25 @@
 # `Internet Protocol`
 
 The `Internet Protocol (IP)` is a set of rules and standards that govern how data is sent and received over networks, including the internet. 
-* IP is the primary protocol that enables communication between devices on a network by ensuring that data packets are routed and delivered to the correct destination.  
-* Each device on a network recieves a unique IP address, typically assigned using DHCP,  to identify the source and destination of packets in the network.
-* There are currently 2 versions of the Internet Protocol, `IPv4` and `IPv6`. 
+> * IP is the primary protocol that enables communication between devices on a network by ensuring that data packets are routed and delivered to the correct destination.  
+> * Each device on a network recieves a unique IP address, typically assigned using DHCP,  to identify the source and destination of packets in the network.
+> * There are currently 2 versions of the Internet Protocol, `IPv4` and `IPv6`. 
 
 <br>
 
 `Host` refers to any device that communicates over a network and has an IP address assigned to it.   
-* `Hosts` can be computers, servers, printers, smartphones, routers, or any other devices that use network protocols to send and receive data.
+> * `Hosts` can be computers, servers, printers, smartphones, routers, or any other devices that use network protocols to send and receive data.
 
 <br>
 
 `Client` refers to a computer, device, or program that requests services or resources from another computer or server within a network.   
-* The `client` initiates communication with a `server`, which is a system that provides the requested services or resources.
+> * The `client` initiates communication with a `server`, which is a system that provides the requested services or resources.
 
 <br>
 
 `Server` refers to a computer, device, or program that provides services, resources, or data to clients over a network. 
-* The `server` listens/waits for requests from clients and responds by delivering the requested resources or performing specific tasks. 
-* `Servers` can handle multiple client requests simultaneously and can offer various services such as hosting websites, managing emails, storing files, or running applications.
+> * The `server` listens/waits for requests from clients and responds by delivering the requested resources or performing specific tasks. 
+> * `Servers` can handle multiple client requests simultaneously and can offer various services such as hosting websites, managing emails, storing files, or running applications.
 
 <br>
 
@@ -155,56 +155,56 @@ For Example:
 
 `Global Unicast Addresses (GUA)`
 Globally unique addresses that can be routed on the public internet. 
-* Equivalent to public IPv4 addresses.
-* Range: 2000::/3 (from 2000:: to 3FFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+> * Equivalent to public IPv4 addresses.
+> * Range: 2000::/3 (from 2000:: to 3FFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
 
 <br>
 
 `Link-Local Addresses`
 Link-Local Addresses are used for communication within a single network segment (link) and are not routable beyond that link. 
-* Automatically configured on all IPv6-enabled interfaces.
-* Range: FE80::/10 (from FE80:: to FEBF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+> * Automatically configured on all IPv6-enabled interfaces.
+> * Range: FE80::/10 (from FE80:: to FEBF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
 
 <br>
 
 `Unique Local Addresses (ULA)`
 These addresses are similar to private IPv4 addresses (e.g., 192.168.0.0/16, 10.0.0.0/8). 
-* Unique Local Addresses are used for local communication within an organization and are not routable on the public internet.
-* Range: FC00::/7 (from FC00:: to FDFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+> * Unique Local Addresses are used for local communication within an organization and are not routable on the public internet.
+> * Range: FC00::/7 (from FC00:: to FDFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
 
 <br>
 
 `Multicast Addresses`
 These addresses are used to send a single packet to multiple destinations (a group of interfaces). 
-* Used in applications like streaming video or routing protocols.
-* Range: FF00::/8 (from FF00:: to FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+> * Used in applications like streaming video or routing protocols.
+> * Range: FF00::/8 (from FF00:: to FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
 
 <br>
 
 `Anycast Addresses`
 Anycast addresses are assigned to multiple interfaces, usually on different devices. 
-* Packets sent to an anycast address are delivered to the nearest interface, as determined by the routing protocol.
-* No specific range; any unicast address can be used as an anycast address.
+> * Packets sent to an anycast address are delivered to the nearest interface, as determined by the routing protocol.
+> * No specific range; any unicast address can be used as an anycast address.
 
 <br>
 
 `Reserved Addresses`
 These are special-purpose addresses. ::/128 is used when a device does not have an address assigned, and ::1/128 is used for loopback operations, allowing a device to send packets to itself.
-* `Unspecified Address: ::/128` 
-* `Loopback Address: ::1/128`
+> * `Unspecified Address: ::/128` 
+> * `Loopback Address: ::1/128`
 
 ---
 # `Public vs. Private IP Addresses`
 
 `Public IP Addresses` are assigned to devices that are directly accessible from the internet.
-* Typically a router is assigned a Public IP address by an Internet Service Provider (ISP).
-* Public IPs must be unique across the entire internet. Uniqueness is managed by organizations like the Internet Assigned Numbers Authority (IANA) and regional internet registries. 
+> * Typically a router is assigned a Public IP address by an Internet Service Provider (ISP).
+> * Public IPs must be unique across the entire internet. Uniqueness is managed by organizations like the Internet Assigned Numbers Authority (IANA) and regional internet registries. 
 
 <br>
 
 `Private IP Addresses` are used within local networks for communication and are not directly accessible from the internet.
-* Typically a router will assign a Private IP address to each device on its network. 
-* Private IPs are not unique across the internet, and are typically reused by separate local networks.
+> * Typically a router will assign a Private IP address to each device on its network. 
+> * Private IPs are not unique across the internet, and are typically reused by separate local networks.
 
 <br>
 
@@ -214,16 +214,16 @@ These are special-purpose addresses. ::/128 is used when a device does not have 
 # `Static vs. Dynamic IP Addresses`
 
 `Static IP Address`: a fixed addresses assigned to a device that has to be manually set and manually changed.
-* Does not change unless an administrator changes the address manually.
-* A home router can be configure to assign static IPs. 
-* A router can be assigned a static IP from an ISP. 
+> * Does not change unless an administrator changes the address manually.
+> * A home router can be configure to assign static IPs. 
+> * A router can be assigned a static IP from an ISP. 
 
 <br>
 
 `Dynamic IP addresses`: an address assigned by the Dynamic Host Configuration Protocol (DHCP) server and can change periodically.
-* Devices are assigned an address from an address pool managed by the DHCP server.
-* A home router typically includes a DHCP server. 
-* ISPs typically assign routers public IPs using DHCP. 
+> * Devices are assigned an address from an address pool managed by the DHCP server.
+> * A home router typically includes a DHCP server. 
+> * ISPs typically assign routers public IPs using DHCP. 
  
 
 ---
@@ -258,19 +258,19 @@ IPv6 Example:
 ---
 # `Subnetting`
 `Subnetting` is the process of dividing a larger network into smaller, more manageable sub-networks or subnets. 
-* It helps optimize network performance and improve security by isolating different segments of a network.
+> * It helps optimize network performance and improve security by isolating different segments of a network.
 
 <br>
 
 `Subnet Masks` are used in conjunction with IP addresses to define the network and host portions of an address. 
-* They help determine which part of an IP address represents the network and which part represents the host within that network.
-* A `subnet mask` consists of four 8-bit numbers, just like an IP address, and it consists of a series of contiguous 1s followed by a series of contiguous 0s.
+> * They help determine which part of an IP address represents the network and which part represents the host within that network.
+> * A `subnet mask` consists of four 8-bit numbers, just like an IP address, and it consists of a series of contiguous 1s followed by a series of contiguous 0s.
 
 <br>
 
 `Classless Inter-Domain Routing(CIDR) Notation`: is a compact representation of a subnet mask and specifies the number of bits used for the network portion of the IP address.
-* For example /24 indicates that the first 24 bits are 1s 
-    * /24 --> 255.255.255.0 --> 11111111.11111111.11111111.00000000
+> * For example /24 indicates that the first 24 bits are 1s 
+>    * /24 --> 255.255.255.0 --> 11111111.11111111.11111111.00000000
 
 Common Subnets:
 |CIDR Notation|Decimal Subnet Mask|Binary Subnet Mask|
@@ -417,8 +417,8 @@ Subnets:
 # `Assigning IP Addresses: DHCP`
 
 `Dynamic Host Configuration Protocol (DHCP)`, is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network. 
-* DHCP uses `Media Access Control (MAC)` addresses to identify devices on a network. 
-* Assigned IP addresses are mapped to these MAC addresses. 
+> * DHCP uses `Media Access Control (MAC)` addresses to identify devices on a network. 
+> * Assigned IP addresses are mapped to these MAC addresses. 
 
 <br>
 
@@ -437,3 +437,30 @@ How DHCP works at a High Level:
 6. `Renewal`: The client periodically sends DHCP Request messages to renew its lease. The server responds with an Acknowledgment if it is able to extend the lease.  
 
 ---
+# `How Do I see my Public IP? Private IP?`
+
+The simplest what to see your public IP is to go to got to a website like this one [whatismyip.com](https://www.whatismyip.com/)
+
+For Private IPs:
+
+Windows CMD
+```
+ipconfig
+```
+> This will display the IP configuration for all network adapters. Look for the section corresponding to your active network adapter, where you will see the private IP address listed under "IPv4 Address."
+
+<br>
+
+Windows Powershell
+```
+Get-NetIPAddress | Select-Object IPAddress, InterfaceAlias
+```
+
+<br>
+
+Linux/MacOS
+```
+ip addr show
+```
+
+> Find the network interface you’re interested in (e.g., eth0, wlan0, etc.). The private IP address will be listed under inet.

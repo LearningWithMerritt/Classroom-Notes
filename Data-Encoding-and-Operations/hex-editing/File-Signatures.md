@@ -16,7 +16,7 @@
 | Microsoft Excel (Open XML) | .xlsx| 50 4B 03 04 14 00 06 00 08 00| Microsoft Excel Open XML spreadsheet |
 | Portable Network Graphics| .png | 89 50 4E 47 0D 0A 1A 0A | PNG image file|
 | Joint Photographic Experts Group | .jpg, .jpeg | FF D8 FF E0 00 10 4A 46 49 46 | JPEG image file |
-| Graphics Interchange Format| .gif | 47 49 46 38 37 61 | GIF image file|
+| Graphics Interchange Format| .gif | 47 49 46 38  | GIF image file|
 | Tagged Image File Format| .tiff| 49 49 2A 00 or 4D 4D 00 2A| TIFF image file |
 | Audio Interchange File Format| .wav | 52 49 46 46 xx xx xx xx 57 41 56 41| WAV audio file|
 | MPEG-4 Video| .mp4 | 00 00 00 xx 66 74 79 70 | MP4 video file|

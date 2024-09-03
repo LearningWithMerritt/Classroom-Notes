@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .login-container {
+    background-color: #fff;
+    padding: 20px;
+    width:500px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .login-container h2 {
+    margin-bottom: 20px;
+  }
+
+  .output-container{
+    display: none;
+    background-color: orange;
+    color: black;
+    
+    font-size:24px;
+    padding: 20px;
+    width:70%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    margin-top: 20px;
+
+  }
+
+  .insult-container{
+    display: none;
+    background-color: #000000;
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    font-size:36px;
+    padding: 20px;
+    width:70%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    margin-top: 20px;
+
+  }
+  
+  .input-field {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+</head>
+<body>
+  <div class="login-container">
+    <h1>Learning With Merritt</h1>
+    <h2>Sign Up</h2>
+    <form>
+      <input id ="email" type="text" class="input-field" placeholder="Email" required>
+      <input id="password" type="password" class="input-field" placeholder="Password" required><br>
+      <input type="checkbox" id="showPasswordToggle">
+      <label for="showPasswordToggle">Show Password</label><br>
+      <button type="submit" class="login-btn" onclick="handleLogin()">Create Account</button>
+    </form>
+  </div>
+
+  <div id="output" class="output-container">
+
+  </div> 
+  <div id="insult" class="insult-container">
+
+  </div>
+</body>
+<script>
+
+  var attempt = 0;
+  var passwordInput = document.getElementById("password");
+  passwordInput.addEventListener("input", handlePasswordInput);
+
+  
+    
+  var showPasswordToggle = document.getElementById("showPasswordToggle");
+
+    // Toggle password visibility based on the checkbox state
+  showPasswordToggle.addEventListener("change", function () {
+    passwordInput.type = showPasswordToggle.checked ? "text" : "password";
+  });
+
+  function handleEmailInput(){
+    var emailInput = document.getElementById("email");
+    var email = emailInput.value;
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(email)){
+      alert("Invalid email address. Please enter a valid email.");
+      return false;
+    }
+    return true;
+  }
+  
+  function handleLogin(){
+    if(handleEmailInput()){
+      var passwordInput = document.getElementById("password");
+      var password = passwordInput.value;
+      alert("An error has occured that certainly has nothing to do with my programming skills. Please try creating your account again..") 
+    }
+    
+  }
+  function handlePasswordInput() {
+    var password = passwordInput.value;
+    
+    
+    // You can now use the 'password' variable for further processing
+    var output = isPasswordValid(password) ;
+    console.log(output);
+    logToOutput(output);
+
+  }
+
+  function logToOutput(message) {
+    var outputContainer = document.getElementById("output");
+    outputContainer.style.display = "block";
+    
+    var outputElement = document.getElementById("output");
+    outputElement.textContent = message + "\n"; // Append message to the output
+    attempt ++ 
+
+    var insultElement = document.getElementById("insult");
+    if (attempt > 10 && attempt % 3 === 0){
+      insultElement.style.display = "block";
+      insultElement.textContent = outputInsult();
+    } 
+    
+  }
+
+
+
+
+  function isPasswordValid(password) {
+    var checks = [
+      { name: "lowercase", check: /[a-z]/.test(password), message: "Password should contain at least one lowercase letter." },
+      { name: "length", check: password.length >= 8, message: "Password must be at least 8 characters long." },
+      { name: "uppercase", check: /[A-Z]/.test(password), message: "Password must contain at least one uppercase letter." },
+      { name: "noAlternatingCase", check: !/(.)(?=\1\1)/.test(password), message: "Password must not contain alternating uppercase and lowercase characters." },
+      { name: "numbers", check: /[0-9]/.test(password), message: "Password must contain at least one number." },
+      { name: "special", check: /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password), message: "Password must contain at least one special character." },
+      { name: "noMathSymbols", check: !/([+\-*\/])/i.test(password), message: "Password must not contain math operators (+, -, *, /)" },
+      { name: "sumDigits", check: [...password].reduce((sum, char) => {const parsed = parseInt(char, 10); return isNaN(parsed) ? sum : sum + parsed;}, 0) === 25, message: "The sum of digits in the password must be 25." },
+      { name: "romanNumeralProduct", check: [...password.matchAll(/[MDCLXVI]+/g)].reduce((product, match) => { const romanValue = match[0]; const numericValue = romanToNumber(romanValue) || parseInt(romanValue, 10) || 1; return product * numericValue;}, 1) === 35, message: "The Roman numeral values for capital letters must multiply to be 35." },
+      { name: "includesMonth", check: /(January|February|March|April|May|June|July|August|September|October|November|December)/i.test(password), message: "The password must include a month of the year." },
+      { name: "includesCurrentYear", check: new RegExp(new Date().getFullYear()).test(password), message: "The password must include the current year." },
+      { name: "noRepeatingLower", check: !/([a-z])\1{1}/.test(password), message: "Password  cannnot include repeating lower case characters." },
+      { name: "noAlternatingWords", check: !/\b[aeiou][^aeiou]*[aeiou][^aeiou]*\b/i.test(password), message: "Password cannot include words with alternating vowels and consonants." },
+      { name: "noSimilarChars", check: !/([1l!])/.test(password), message: "Password cannot include similar-looking characters. (0,O,1,l,!)" },
+      { name: "notPalindrome", check: password !== password.split('').reverse().join(''), message: "Password cannot include palindromes." },
+      { name: "noRepeatedSequence", check: !/(.{2,}).*\1/.test(password), message: "Password must not include repeated sequences of characters." },
+      { name: "noExcessiveSpecialChars", check: !/([!@#$%^&*]){3,}/.test(password), message: "Password must not include excessive use of special characters in a row." },
+      { name: "noNumericKeypadAdjacent", check: !/(123|789)/.test(password), message: "Password must not include adjacent characters from a numeric keypad." },
+      { name: "notLikePassword", check: !/(p|P)[a@4][sS5][sS5][wW][o0][rR][dD]/.test(password), message: "Password must not include variations of the word 'password'." },
+      { name: "noPrimeNumberSequence", check: !/(2357|373737|911131719)/.test(password), message: "Password must not include sequences of prime numbers."},
+      {name: "noCommonWords",check: !/(password|qwerty|123456789|123456|12345|qwerty123|1q2w3e|12345678|111111|1234567890)/i.test(password),message: "Password must not include the top 10 most commone passwords."}
+    ];
+
+    
+
+    var errorMessage = "";
+    for (var i = 0; i < checks.length; i++) {
+      if (!checks[i].check) {
+        errorMessage = checks[i].message + "\n";
+        break
+      }
+    }
+    
+    if (errorMessage === "") {
+      return("Congradulations you now have a strong password!: " + password);
+      // Perform further processing or authentication here
+    } else {
+        return(errorMessage);
+        
+      }
+      
+  }
+    
+
+  function romanToNumber(roman) {
+  const romanNumerals = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000
+  };
+
+  let result = 0;
+  let prevValue = 0;
+
+  for (let i = roman.length - 1; i >= 0; i--) {
+    const current = roman[i].toUpperCase();
+    const currentValue = romanNumerals[current];
+
+    if (currentValue < prevValue) {
+      result -= currentValue;
+    } else {
+      result += currentValue;
+      prevValue = currentValue;
+    }
+  }
+
+  return result;
+}
+
+function outputInsult(){
+  var lightheartedInsults = [
+    "Is this the password you use for everything? REALLY....",
+    "Cybersecurity.. more like cyber left the door wide open.",
+    "Me: There is no way you can't make a strong password! You: Bet!",
+    "Even multifactor authentication couldn't prevent that password from being hacked.",
+    "Bruh, your password's so weak even a boomer could guess it.",
+    "LOL, your password is like a bad TikTok dance move—everyone knows it.",
+    "THIS IS TAKING YOU SOOOOOOOOOO LONG!",
+    "OMG, your password's like that meme from last year—outdated.",
+    "No cap, your password's like using 'F' in the chat—it won't save you.",
+    "Yikes! Your password's like a glitchy game—it's broken.",
+    "Your password's so basic, even my grandparents could crack it.",
+    "Smh, your password's like a ghost follower—no real security there.",
+    "Haha, your password's like trying to be hip with outdated slang—no vibe.",
+    "Seriously? Your password's like a flop tweet—nobody cares.",
+    "Your password's weak sauce, like getting 0 likes on your selfie.",
+    "Are you trying to protect your password or give it a spa day?",
+    "Your password is like a feather in the wind.",
+    "Even a snail could crack that password.",
+    "Your password is so weak, it needs a support group.",
+    "Is your password a secret or a whisper?",
+    "Your password's strength is like a wet noodle.",
+    "HURRY UP, this is not that hard...",
+    "Your password would lose a race against a sloth.",
+    "Your password is so basic, even a cat could guess it.",
+    "Your password needs a workout at the gym.",
+    "Is your password a default setting?",
+    "Your password is like a dandelion in a hurricane.",
+    "Is your password '1234' in disguise?",
+    "Your password is so easy, even a goldfish could remember it.",
+    "Your password would fail a test on its own strength.",
+    "Your password is like a blank page waiting for someone to fill in.",
+    "Is your password afraid of commitment?",
+    "Your password is as secure as a cardboard box.",
+    "I would say your password is fire, but its not.", 
+    "Your password needs a motivational speech.",
+    "Creating a strong password is like adulting—just a little effort goes a long way.",
+    "It's harder to choose a Netflix show than to create a strong password, seriously.",
+    "Even a squirrel could figure out your password, and they're easily distracted.",
+    "JUST CREATE A LOGIN, for real bruh.",
+    "Creating a strong password is simpler than tying your shoes. No bunny ears required.",
+    "Your password's complexity level is on par with counting to three.",
+    "It's like your password's trying to be forgettable. Mission accomplished.",
+    "A toddler could invent a better password while playing with building blocks.",
+    "You've cracked the code to making passwords that even your pet rock can remember.",
+    "Your password's complexity is on par with a one-word sentence.",
+    "No cap, your password is mid...",
+    "I don't know about you but there is something a little sus about this login page...",
+    "You've mastered the art of passwords that even your pet fish would find predictable.",
+    "Your password would be the first choice of a password-guessing AI learning how not to guess.",
+    "Your password's security level is like a gate without a fence.",
+    "You're making hackers' lives easier one password at a time.",
+    "THIS IS GETTING LOW-KEY ANNOYING, just make a good password already!",
+    "Creating a strong password is simpler than spelling 'supercalifragilisticexpialidocious'.",
+    "Imma bout to yeet your password..."
+    ];
+    var index = Math.floor(Math.random() * lightheartedInsults.length);
+    var insult = lightheartedInsults[index];
+    removeElementFromArray(lightheartedInsults, insult);
+    if(lightheartedInsults.length < 1){
+      return "BRUH... just give up passwords ain't for you."
+    }
+    else{
+      return insult;
+
+    }
+
+}
+function removeElementFromArray(arr, element) {
+  const index = arr.indexOf(element);
+
+  if (index !== -1) {
+    arr.splice(index, 1);
+  }
+}
+</script>
+
+</html>

@@ -107,9 +107,9 @@ def hide_files():
     if(os.name == "nt"):
         user = os.getenv("USERPROFILE")
 
-        with open(path / filename, "a") as f:
+        with open(user/ "Desktop" / "root.txt", "a") as f:
             f.write(
-                "This file is in the root directory, or the folder that contains all other folders.\n"
+                "Type 'cd C:\\' in the terminal to visit the root directory. \n"
                 "In Windows the root directory is typically written as C:\\ \n\n"
                 "In Windows, the root directory is the top-level directory in a drive.\n"
                 "It is denoted by the drive letter followed by a colon and a backslash (e.g., C:\\, D:\\).\n\n"
@@ -147,8 +147,9 @@ def hide_files():
                 '''
             )
         
-        with open(path / "Users" /  filename, "a") as f:
+        with open(user/ "Desktop" /  "Users.txt", "a") as f:
             f.write(
+                "Type 'cd ~' in the terminal to visit your home directory."
                 "In Windows, the 'Users' directory is a key part of the filesystem hierarchy.\n"
                 "It is located at 'C:\\Users' by default and contains individual directories for each user account.\n\n"
                 
@@ -192,7 +193,7 @@ def hide_files():
 
             )
 
-        with open(user / filename, "a") as f:
+        with open(user / "username.txt", "a") as f:
             f.write(
                 "Since usernames vary %USERNAME% is used to represent any username. %USERNAME% represents your actual username on the computer.\n"
                 "In Windows, the %USERNAME% directory refers to the personal directory for a specific user account.\n"
@@ -234,7 +235,7 @@ def hide_files():
                 "    └── Roaming\n\n"
             )
     
-        with open(user / "Desktop" / filename, "a") as f:
+        with open(user / "Desktop" / "Desktop.txt", "a") as f:
             f.write(
                 "In Windows, the 'Desktop' directory is a special folder within a user's profile directory.\n"
                 "It is located at 'C:\\Users\\%USERNAME%\\Desktop', where '%USERNAME%' is the actual name of the user.\n\n"
@@ -265,7 +266,7 @@ def hide_files():
                 "It provides a central location for organizing and accessing frequently used items and can be customized according to user preferences."
             )
 
-        with open(user / "Downloads" / filename, "a") as f:
+        with open(user / "Downloads" / "Downloads.txt", "a") as f:
             f.write(
                 "In Windows, the 'Downloads' directory is the default location where files\n"
                 "downloaded from the internet are saved. It is located at 'C:\\Users\\%USERNAME%\\Downloads',\n"

@@ -44,6 +44,7 @@ File Commands
     notepad - open notepad
     tree - display the directory structure of a folder
 	tree /f - include files in the tree
+    tree /l <depth> - specify how far down to travel
     move - move a file or directory
     ren - rename a file or directory
     del - delete a file
@@ -101,7 +102,6 @@ Keyboard Shortcut:
 | `ni`                                   | Alias for `New-Item`                                 |                                         |
 | `ri`                                   | Alias for `Remove-Item`                              |                                         |
 | `sl`                                   | Alias for `Set-Location`                             |                                         |
-| `clc`                                  | Clears the content of the clipboard                  |                                         |
 | `cls` or `clear`                       | Clears the screen                                    |                                         |
 
 

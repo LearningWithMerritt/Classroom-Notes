@@ -1,7 +1,7 @@
 
 copy main.py %USERPROFILE%\Desktop
 
-cd ~\Desktop
+cd %USERPROFILE%\Desktop
 
 python main.py
 

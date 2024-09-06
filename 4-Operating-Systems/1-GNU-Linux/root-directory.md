@@ -57,19 +57,19 @@ Linux Distributions will contain, most if not all of these directories in the ro
 /var    : (variable) where files that are likely to change(log files,web files,email,cron files,etc.) are stored. Data is typically written here.
 
 
-/home/<USER>/Desktop   : contains shortcuts, files and folders that you use frequently
+/home/$USER/Desktop   : contains shortcuts, files and folders that you use frequently
 
-/home/<USER>/Documents : stores personal documents
+/home/$USER/Documents : stores personal documents
 
-/home/<USER>/Downloads : stores downloaded files and directories
+/home/$USER/Downloads : stores downloaded files and directories
 
-/home/<USER>/Music     : stores music
+/home/$USER/Music     : stores music
 
-/home/<USER>/Pictures  : stores pictures
+/home/$USER/Pictures  : stores pictures
 
-/home/<USER>/Public    : used to share files with other users
+/home/$USER/Public    : used to share files with other users
 
-/home/<USER>/Templates : contains user made templates for creating new files and folders
+/home/$USER/Templates : contains user made templates for creating new files and folders
 
-/home/<USER>/Videos    : stores videos
+/home/$USER/Videos    : stores videos
 

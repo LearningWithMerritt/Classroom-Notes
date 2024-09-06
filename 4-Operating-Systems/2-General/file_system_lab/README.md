@@ -1,5 +1,5 @@
 
-# Filesystem Lab
+# Filesystem Lab Directions
 
 
 linux in the terminal type

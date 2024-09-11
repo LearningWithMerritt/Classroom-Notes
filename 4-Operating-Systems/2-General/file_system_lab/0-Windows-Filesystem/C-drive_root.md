@@ -8,7 +8,7 @@ It is denoted by the drive letter followed by a colon and a backslash (e.g., C:\
 The root directory is where the directory structure of a drive begins,
 and all other directories and files are nested within this root.
 Below is the basic structure of C:\ and the folders it contains.
-Try typing 'tree /F /A /L 2' on your terminal to see your actual folder structure.
+Try typing 'tree' on your terminal to see your actual folder structure.
 
 C:\
 |-- Program Files

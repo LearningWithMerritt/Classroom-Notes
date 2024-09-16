@@ -16,6 +16,8 @@
 | `findstr [pattern] [file]`    | Searches for a pattern in a file                         |
 | `cls`                         | Clears the screen                                        |
 
+Useful Examples:  
+Search all files and folders in the current directory: `findstr /s /i "search_string" *.*`
 
 
 

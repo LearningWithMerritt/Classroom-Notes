@@ -71,7 +71,6 @@ Keyboard Shortcut:
 | `dir /a`                      | Lists all files and directories, including hidden ones   |
 | `tree`                        | Displays the directory structure of a folder             |
 | `tree /f`                     | Includes files in the directory structure display        |
-| `tree /l <depth>`             | Specifies how far down to travel in the directory tree   |
 | `cls`                         | Clears the screen                                        |
 | `notepad`                     | Opens Notepad                                            |
 | `copy [source] [destination]` | Copies files from one location to another                |

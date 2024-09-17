@@ -50,7 +50,7 @@ CMD Prompt Syntax:
 ```
 Example:
 ```
-> tree /l 2 C:\
+> tree /f Desktop
 ```
 <br> 
 
@@ -60,7 +60,7 @@ Help Flag:
 * `/?` - help with the command
 
 Keyboard Shortcut:  
-* `Ctrl + C` - keyboard interrupt 
+* `Ctrl + C` - keyboard interrupt (use this to stop the currently running command and return the prompt)
 
 | **Command**                   | **Description**                                          |
 |-------------------------------|----------------------------------------------------------|

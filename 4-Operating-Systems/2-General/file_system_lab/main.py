@@ -181,7 +181,7 @@ def handle_arguments():
             path = Path.home() / "Desktop"
             if(os.path.exists(path / "maze-entrance")):
                 shutil.rmtree(path / "maze-entrance")
-                print(f"Directory {path / "maze-entrance"} and all its contents have been removed.")
+                print(f"Directory {path / 'maze-entrance'} and all its contents have been removed.")
                 exit()
             else:
                 print("Directory does not exist.\nExiting...")

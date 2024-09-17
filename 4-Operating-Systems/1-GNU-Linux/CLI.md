@@ -1,4 +1,4 @@
-# Linux Command Line
+# `Linux Command Line`
 
 `Console`: physical device that provides a text-based interface to a computer. 
 It is typically a monitor and keyboard.
@@ -37,24 +37,30 @@ It is often used to access and manage servers, but it can also be used on deskto
 `Prompt`: symbol or sequence of symbols that appears at the command line, indicating that the system is ready to receive a command.
 The prompt typically looks like a dollar sign (`$`) or greater than sign (`>`).
 
+GNU/Linux Bash Prompt 
+```
+username@hostname:/home/USER/Desktop $ _
+```
+
 <br>
 
-# CLI Command Syntax
+# `CLI Command Syntax`
 
-A CLI command is typically made up of the following parts:  
+A CLI command is typically made up of three parts: command, flags, and arguments.   
 syntax:
 ```
 command flags arguments
 ```
+example:
+```
+ls -la /home/$USER/Desktop
+```
 
-`Command name`: 
-    This is the name of the command that you want to execute.
+`Command name`: This is the name of the command that you want to execute.
 
-`Flags`: 
-    optional parameters, but they are typically used to enable or disable certain features of the command.
+`Flags`: optional parameters, but they are typically used to enable or disable certain features of the command.
 
-`Arguments`: 
-    optional parameters that you can use to modify the behavior of the command.
+`Arguments`: optional parameters that you can use to modify the behavior of the command.
 
 
 
@@ -62,7 +68,7 @@ command flags arguments
 
 
 
-# Linux CLI Commands Basic Commands:
+# `Linux CLI Common Commands`:
 
 | Command | Description | Example|
 |:-:|:-|:-|
@@ -107,7 +113,7 @@ command flags arguments
 
 <br>
 
-## CLI Keyboard Shortcuts
+# `CLI Keyboard Shortcuts`
 | Shortcut           | Description                      |
 |--------------------|----------------------------------|
 | `Ctrl + Alt + T`   | Open the Terminal Emulator.      |

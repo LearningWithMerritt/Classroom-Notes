@@ -1,6 +1,8 @@
 # `Windows: The Command Line Interface`
----
-# `Terms`
+
+___
+
+
 `Shell`: program that interprets commands entered by the user at the command line. 
 > * It is responsible for executing the commands and displaying the results to the user.
 
@@ -17,7 +19,18 @@
 <br>
 
 `Prompt`: symbol or sequence of symbols that appears at the command line, indicating that the system is ready to receive a command.
-> * The prompt typically ends with a dollar sign ($) or greater than sign (>).
+> * The prompt typically ends with a dollar sign (`$`) or greater than sign (`>`).
+
+`Windows Command Prompt`
+```
+C:\Users\%USERNAME%\Desktop> _ 
+```
+`Windows Powershell Prompt`
+```
+PS C:\Users\$env:USERNAME\Desktop> _
+```
+> %USERNAME%, and $env:USERNAME, are variables that represent the username of the currently logged in user. 
+
 
 <br>
 
@@ -26,35 +39,55 @@
 
 <br>
 
----
-# `CLI Interface Parts`
-A CLI interface command is typically made up of the following parts:
+___
 
-* `Command name`: This is the name of the command that you want to execute.
+<br>
 
-* `Flags`: optional parameters, but they are typically used to enable or disable certain features of the command.
+# `CLI Command Interface`
+A CLI command is typically made up of three parts: command, flags, and arguments.   
+syntax:
+```
+command flags arguments
+```
+example:
+```
+dir /a C:\home\%USERNAME%\Desktop
+```
 
-* `Arguments`: optional parameters that you can use to modify the behavior of the command.
+`Command Name`: This is the name of the command that you want to execute.
 
----
+`Flags`: optional parameters, but they are typically used to enable or disable certain features of the command.
+
+`Arguments`: optional parameters that you can use to modify the behavior of the command.
+
+<br>
+
+___
+
+<br>
+
 # `Command Prompt (CMD)`
 The `Windows Command Prompt`, often referred to as cmd, is a command-line interpreter application available in most Windows operating systems. 
 > * It provides a text-based interface for users to interact with the operating system by executing various commands and running scripts.
 
 <br> 
 
-CMD Prompt Syntax: 
-> Note: '>' indicates the prompt and should not be typed as part of the command
+`CMD Prompt Syntax:`   
+*Note: '`>`' indicates the prompt and should not be typed as part of the command* 
 ```
-> [command] [/flags] [arguments]
+> [command] [flags] [arguments]
 ```
 Example:
 ```
-> tree /f Desktop
+> tree /f C:\Users\%USERNAME%\Desktop
 ```
 <br> 
 
-### **General CMD Prompt Commands**
+___
+
+<br>
+
+# `General CMD Prompt Commands`
 
 Help Flag:  
 * `/?` - help with the command
@@ -62,50 +95,54 @@ Help Flag:
 Keyboard Shortcut:  
 * `Ctrl + C` - keyboard interrupt (use this to stop the currently running command and return the prompt)
 
-| **Command**                   | **Description**                                          |
-|-------------------------------|----------------------------------------------------------|
-| `help`                        | Displays a list of possible commands                     |
-| `help [command]`              | Lists help for a specific command                        |
-| `cd [path]`                   | Changes the current directory                            |
-| `dir`                         | Lists files and directories in the current directory     |
-| `dir /a`                      | Lists all files and directories, including hidden ones   |
-| `tree`                        | Displays the directory structure of a folder             |
-| `tree /f`                     | Includes files in the directory structure display        |
-| `cls`                         | Clears the screen                                        |
-| `notepad`                     | Opens Notepad                                            |
-| `copy [source] [destination]` | Copies files from one location to another                |
-| `move [source] [destination]` | Moves files from one location to another                 |
-| `del [file]`                  | Deletes a file                                           |
-| `mkdir [name]`                | Creates a new directory                                  |
-| `rmdir [path]`                | Deletes a directory                                      |
-| `rmdir /s /q [path]`          | Deletes a directory and all its contents quietly         |
-| `type [file]`                 | Displays the contents of a file                          |
-| `echo [text] > [file]`        | Writes text to a file                                    |
-| `echo [text] >> [file]`       | Appends text to a file                                   |
-| `findstr [pattern] [file]`    | Searches for a pattern in a file                         |
-| `tasklist`                    | Lists all running processes                              |
-| `taskkill /PID [pid] /F`      | Stops a process by its ID forcefully                     |
-| `start [program]`             | Starts a new program                                     |
-| `systeminfo`                  | Displays detailed system information                     |
-| `hostname`                    | Displays the computer's hostname                         |
-| `date`                        | Displays or sets the system date                         |
-| `time`                        | Displays or sets the system time                         |
-| `ipconfig`                    | Displays IP configuration                                |
-| `ping [hostname]`             | Tests network connectivity to a host                     |
-| `tracert [hostname]`          | Traces the route packets take to a host                  |
-| `netstat`                     | Displays active network connections                      |
-| `nslookup [hostname]`         | Queries DNS for domain name or IP address mapping        |
-| `if`                          | Performs conditional processing in batch scripts         |
-| `for`                         | Runs a specified command for each file in a set          |
-| `goto [label]`                | Directs batch script execution to a labeled line         |
-| `pause`                       | Suspends the execution of the script and shows a message |
-| `find`                        | Locates a file, directory, or text                       |
-| `more`                        | Displays file contents one page at a time                |
-| `shutdown`                    | Shuts down the computer                                  |
+| **Command**                   | **Description**                                          | **Example**                                                |
+|-------------------------------|----------------------------------------------------------|------------------------------------------------------------|
+| `help`                        | Displays a list of possible commands                     | `help`                                                     |
+| `help [command]`              | Lists help for a specific command                        | `help dir`                                                 |
+| `cd [path]`                   | Changes the current directory                            | `cd C:\Users\%USERNAME%\Documents`                         |
+| `dir`                         | Lists files and directories in the current directory     | `dir`                                                      |
+| `dir /a`                      | Lists all files and directories, including hidden ones   | `dir /a`                                                   |
+| `tree`                        | Displays the directory structure of a folder             | `tree`                                                     |
+| `tree /f`                     | Includes files in the directory structure display        | `tree /f`                                                  |
+| `cls`                         | Clears the screen                                        | `cls`                                                      |
+| `notepad`                     | Opens Notepad                                            | `notepad`                                                  |
+| `copy [source] [destination]` | Copies files from one location to another                | `copy file.txt D:\Backup\file.txt`                         |
+| `move [source] [destination]` | Moves files from one location to another                 | `move file.txt D:\Backup\file.txt`                         |
+| `del [file]`                  | Deletes a file                                           | `del file.txt`                                             |
+| `mkdir [name]`                | Creates a new directory                                  | `mkdir new_folder`                                         |
+| `rmdir [path]`                | Deletes a directory                                      | `rmdir old_folder`                                         |
+| `rmdir /s /q [path]`          | Deletes a directory and all its contents quietly         | `rmdir /s /q old_folder`                                   |
+| `type [file]`                 | Displays the contents of a file                          | `type file.txt`                                            |
+| `echo [text] > [file]`        | Writes text to a file                                    | `echo Hello World > file.txt`                              |
+| `echo [text] >> [file]`       | Appends text to a file                                   | `echo Appended Text >> file.txt`                           |
+| `findstr [pattern] [file]`    | Searches for a pattern in a file                         | `findstr "error" logfile.txt`                              |
+| `tasklist`                    | Lists all running processes                              | `tasklist`                                                 |
+| `taskkill /PID [pid] /F`      | Stops a process by its ID forcefully                     | `taskkill /PID 1234 /F`                                    |
+| `start [program]`             | Starts a new program                                     | `start notepad.exe`                                        |
+| `systeminfo`                  | Displays detailed system information                     | `systeminfo`                                               |
+| `hostname`                    | Displays the computer's hostname                         | `hostname`                                                 |
+| `date`                        | Displays or sets the system date                         | `date`                                                     |
+| `time`                        | Displays or sets the system time                         | `time`                                                     |
+| `ipconfig`                    | Displays IP configuration                                | `ipconfig`                                                 |
+| `ping [hostname]`             | Tests network connectivity to a host                     | `ping google.com`                                          |
+| `tracert [hostname]`          | Traces the route packets take to a host                  | `tracert google.com`                                       |
+| `netstat`                     | Displays active network connections                      | `netstat`                                                  |
+| `nslookup [hostname]`         | Queries DNS for domain name or IP address mapping        | `nslookup google.com`                                      |
+| `if`                          | Performs conditional processing in batch scripts         | `if exist file.txt echo File exists!`                      |
+| `for`                         | Runs a specified command for each file in a set          | `for %i in (*.txt) do echo %i`                             |
+| `goto [label]`                | Directs batch script execution to a labeled line         | `goto :start`                                              |
+| `pause`                       | Suspends the execution of the script and shows a message | `pause`                                                    |
+| `find`                        | Locates a file, directory, or text                       | `find "Hello" file.txt`                                    |
+| `more`                        | Displays file contents one page at a time                | `type file.txt \| more`                                    |
+| `shutdown`                    | Shuts down the computer                                  | `shutdown /s /t 0`                                         |
+
 
 <br>
 
----
+___
+
+<br>
+
 # `Powershell`
 `Windows PowerShell` is a command-line shell with a scripting language and is designed to automate the administration of Windows operating systems and applications. 
 > * It is a task automation framework and scripting language developed by Microsoft. 
@@ -113,10 +150,12 @@ Keyboard Shortcut:
 
 <br>
 
-Powershell Prompt Syntax 
-> Note: '>' indicates the prompt and should not be typed as part of the command
+___
+
+# `Powershell Prompt Syntax` 
+*Note: '`>`' indicates the prompt and should not be typed as part of the command*
 ```
-> [command] [-flags] [arguments]
+> [command] [flags] [arguments]
 ```
 Example:
 ```
@@ -125,10 +164,12 @@ Example:
 
 <br>
 
-### **General PowerShell Commands**
+___
+
+# `General PowerShell Commands`
 
 Keyboard Shortcut:  
-    Ctrl + C - keyboard interrupt 
+    `Ctrl + C` - keyboard interrupt 
 
 | **Command**                            | **Description**                                      | **Alias**                               |
 |----------------------------------------|------------------------------------------------------|-----------------------------------------|
@@ -169,4 +210,44 @@ Keyboard Shortcut:
 | `sl`                                   | Alias for `Set-Location`                             |                                         |
 | `cls` or `clear`                       | Clears the screen                                    |                                         |
 
+
+## `Examples`
+| **Command**                            | **Example**                               |
+|----------------------------------------|-------------------------------------------|
+| `pwd`                                  | `pwd` or `Get-Location`                   |
+| `cd [path]`                            | `cd C:\Users\$env:USERNAME\Documents`     |
+| `ls`                                   | `ls` or `Get-ChildItem`                   |
+| `dir`                                  | `dir` or `Get-ChildItem`                  |
+| `cp [source] [destination]`            | `cp file.txt C:\Backup\file.txt`          |
+| `mv [source] [destination]`            | `mv file.txt C:\Backup\file.txt`          |
+| `rm [path]`                            | `rm file.txt` or `Remove-Item file.txt`   |
+| `mkdir [name]`                         | `mkdir new_folder`                        |
+| `rmdir [path]`                         | `rmdir new_folder`                        |
+| `cat [file]`                           | `cat file.txt`                            |
+| `echo [text] > [file]`                 | `echo "Hello, World!" > file.txt`         |
+| `echo [text] >> [file]`                | `echo "Additional text" >> file.txt`      |
+| `more [file]`                          | `more file.txt`                           |
+| `sort [file]`                          | `sort file.txt`                           |
+| `select-string [pattern] [file]`       | `select-string "error" logfile.txt`       |
+| `ps`                                   | `ps` or `Get-Process`                     |
+| `kill [pid]`                           | `kill 1234` or `Stop-Process -Id 1234`    |
+| `start [program]`                      | `start notepad`                           |
+| `stop-process -name [processname]`     | `stop-process -name notepad`              |
+| `systeminfo`                           | `systeminfo`                              |
+| `get-service`                          | `get-service`                             |
+| `get-process`                          | `get-process`                             |
+| `get-date`                             | `get-date`                                |
+| `ipconfig`                             | `ipconfig`                                |
+| `ping [hostname]`                      | `ping google.com`                         |
+| `tracert [hostname]`                   | `tracert google.com`                      |
+| `netstat`                              | `netstat`                                 |
+| `nslookup [hostname]`                  | `nslookup google.com`                     |
+| `?`                                    | `Get-Process \| ? {$_.CPU -gt 100}`       |
+| `%`                                    | `Get-Process \| % { $_.ProcessName }`     |
+| `gci`                                  | `gci`                                     |
+| `gi`                                   | `gi file.txt`                             |
+| `ni`                                   | `ni newfile.txt -ItemType File`           |
+| `ri`                                   | `ri file.txt`                             |
+| `sl`                                   | `sl C:\`                                  |
+| `cls` or `clear`                       | `cls` or `clear`                          |
 

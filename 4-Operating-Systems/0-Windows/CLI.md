@@ -25,10 +25,15 @@ ___
 ```
 C:\Users\%USERNAME%\Desktop> _ 
 ```
+![Command Prompt](../img/cmd-prompt.png)
+
+<br>
+
 `Windows Powershell Prompt`
 ```
 PS C:\Users\$env:USERNAME\Desktop> _
 ```
+![Powershell Prompt](../img/powershell-prompt.png)
 > %USERNAME%, and $env:USERNAME, are variables that represent the username of the currently logged in user. 
 
 

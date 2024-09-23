@@ -1,6 +1,31 @@
 # `Windows Filesystem`
 
 The `file system` is a component of the operating system kernel that manages how data is organized and stored on physical storage devices (SSDs, HDDs).
+
+<br>
+
+___
+
+<br>
+
+Covered in this file:
+1. [`File System Types`](#file-system-types)
+1. [`Files`](#files)
+1. [`File Extensions`](#file-extensions)
+1. [`File Paths`](#file-paths)
+1. [`Absolute File Paths`](#absolute-file-paths)
+1. [`Relative File Paths`](#relative-file-paths)
+1. [`Tips for Working with Windows File Paths`](#tips-for-working-with-windows-file-paths)
+1. [`Windows File System Structure`](#windows-filesystem-structure)
+
+
+<br>
+
+___
+
+<br>
+
+# `File System Types`
 |Filesystem| Abbreviation| OS|
 |:-|:-:|:-|
 |New Technology File System|NTFS|Default for `Windows`|
@@ -12,6 +37,7 @@ The `file system` is a component of the operating system kernel that manages how
 
 <br>
 
+[Back to Top](#windows-filesystem)
 ___
 
 <br>
@@ -28,6 +54,13 @@ A `file` is a collection of data that is stored on a computer storage device.
 
 <br>
 
+[Back to Top](#windows-filesystem)
+___
+
+<br>
+
+# `File Extensions`
+
 A `file extension` is a suffix that is added to the end of a filename to indicate the type of data the file stores. 
 syntax:
 ```
@@ -40,6 +73,7 @@ file.txt
 
 <br>
 
+[Back to Top](#windows-filesystem)
 ___
 
 <br>
@@ -85,6 +119,7 @@ Network filepath example:
 
 <br>
 
+[Back to Top](#windows-filesystem)
 ___
 
 <br>
@@ -114,6 +149,7 @@ Network file path example:
 
 <br>
 
+[Back to Top](#windows-filesystem)
 ___
 
 <br>
@@ -146,6 +182,7 @@ example:
 
 <br>
 
+[Back to Top](#windows-filesystem)
 ___
 
 <br>
@@ -169,6 +206,7 @@ C:\Users\$env:USERNAME\Desktop\My-Folder\myfile.txt
 
 <br>
 
+[Back to Top](#windows-filesystem)
 ___
 
 <br>
@@ -215,3 +253,12 @@ C:\Users                                    - contains subfolders for each user 
 |-- C:\OneDriveTemp  - contains temporary files related to the OneDrive application  
 |-- C:\inetpub       - contains files that are used by the Internet Information Services (IIS) web server.  
 ```
+
+<br>
+
+[Back to Top](#windows-filesystem)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*

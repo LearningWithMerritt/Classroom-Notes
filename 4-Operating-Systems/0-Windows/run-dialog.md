@@ -1,9 +1,20 @@
-Run Dialog Box
-The Windows Run dialog is a small window that allows you to quickly open programs, files, and folders. 
-    It can be accessed by pressing the Windows key + R keyboard shortcut.
-    Simply type in the name of the program, file, or folder that you want to open and press Enter.
+# `Windows Run Dialog`
 
-Common Windows Run Dialog Commands. 
+The `Windows Run dialog` is a small window that allows you to quickly open programs, files, and folders. 
+    
+It can be accessed by pressing the `Windows key + R` keyboard shortcut.
+
+Type in the name of the program, file, or folder that you want to open and press `Enter`.
+
+![Windows Run Dialog](../img/windows-run.png)
+
+<br>
+
+___
+
+<br>
+
+# `Common Windows Run Dialog Commands.`
 | Command    | Description                                  |
 |------------|----------------------------------------------|
 | `Win + R`  | Opens the Run dialog box                     |

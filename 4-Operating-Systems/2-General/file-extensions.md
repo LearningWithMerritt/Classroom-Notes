@@ -3,6 +3,10 @@
 A `file extension` is a suffix that is added to the end of a filename to indicate the type of file. 
         It is typically separated from the rest of the filename by a period (.)
 
+*In Windows file extensions are required, but often hidden by the file explorer.*
+
+*In GNU/Linux systems file extensions are not required, but are often used by convention to help users identify file contents.*
+
 <br>
 
 ---
@@ -103,8 +107,11 @@ A `file extension` is a suffix that is added to the end of a filename to indicat
 | `.cmd`    | Command file format. Contains commands for the Windows command processor, similar to `.bat` files. |
 
 
+<br>
 
-# `Package Installation Types`:
+# `Package Installation Types`
+|Extension|Description|
+|:-|:-|
 | `.deb`    | Debian package file format. Used for programs that can be installed on Debian-based Linux distributions. |
 | `.rpm`    | Red Hat Package Manager file format. Used for programs that can be installed on Red Hat-based Linux distributions. |
 | `.msi`    | Microsoft Installer file format. Used for installing software on Windows.                     |

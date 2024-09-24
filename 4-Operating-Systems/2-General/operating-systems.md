@@ -2,6 +2,8 @@
 
 # `Terms`
 
+![Components of an Operating System](../img/os-components.svg)
+
 `Hardware` refers to the physical components of a computer system or electronic device. 
 > * This includes the central processing unit (CPU), memory (RAM), storage devices (hard drives, SSDs), input devices (keyboard, mouse), output devices (monitor, printer), and other physical parts that are integral to the operation of the device.
 
@@ -53,10 +55,12 @@
 # `Defining Operating System`
 
 
-An **Operating System (OS)** is a software system that manages and controls the hardware and software resources of a computer or electronic device. 
+An `Operating System (OS)` is a software system that manages and controls the hardware and software resources of a computer or electronic device. 
 > It provides a user interface and acts as an intermediary between users, applications, and the hardware.
 
 ## Components of an Operating System
+
+
 
 1. `Kernel`: The central component of the OS that manages system resources and hardware interactions.
 - **Functions**:

@@ -12,7 +12,7 @@ Covered in this file:
 1. [`File System Types`](#file-system-types)
 1. [`Files`](#files)
 1. [`File Extensions`](#file-extensions)
-1. [`File Paths`](#file-paths)
+1. [`File Paths`](#windows-file-paths)
 1. [`Absolute File Paths`](#absolute-file-paths)
 1. [`Relative File Paths`](#relative-file-paths)
 1. [`Tips for Working with Windows File Paths`](#tips-for-working-with-windows-file-paths)
@@ -50,7 +50,7 @@ A `file` is a collection of data that is stored on a computer storage device.
 
 * Files are identified by their `filename`, which is a unique name that is assigned to the file when it is created. 
 
-* Files are organized into folders (directories), which are containers that can contain other files and folders.
+* Files are organized into `folders (directories)`, which are containers that can contain other files and folders.
 
 <br>
 
@@ -78,7 +78,7 @@ ___
 
 <br>
 
-# `File Paths`
+# `Windows File Paths`
 
 A `file path` is a string of characters that identifies the location of a file on a computer storage device. 
 
@@ -215,44 +215,81 @@ ___
 `Below %USERNAME% represents the username of a specific user.`
 
 ```
-C:\Program Files        - contains all of the programs that are installed on your computer.  
-C:\Program Files (x86)  - contains 32-bit programs that are installed on your computer.  
-C:\ProgramData          - contains files that are used by applications that are installed for all users on the computer.  
-C:\PerfLogs             - contains performance logs and reports.   
-
-C:\Windows              - contains all of the Windows operating system files.  
-|-- C:\Windows\System32 - contains important system files that are necessary for Windows to run.  
-|-- C:\Windows\SysWOW64 - contains 64-bit versions of system files that are necessary for Windows to run.  
-
-C:\Users                                    - contains subfolders for each user account on your computer.  
-|--	C:\Users\%USERNAME%                     - The folder contains the files and folders specific to a user account  
-|	|--	C:\Users\%USERNAME%\.cache          - This file contains temporary files that are created by applications.   
-|	|--	C:\Users\%USERNAME%\Desktop         - contains shortcuts to files and folders that you use frequently.  
-|   |-- C:\Users\%USERNAME%\Documents       - contains your personal documents, such as Word documents, Excel spreadsheets, and Powerpoint presentations.  
-|   |-- C:\Users\%USERNAME%\Downloads       - contains files that you have downloaded from the internet.  
-|   |-- C:\Users\%USERNAME%\Music           - contains your music files.  
-|   |-- C:\Users\%USERNAME%\Pictures        - contains your image files.  
-|   |-- C:\Users\%USERNAME%\Videos          - contains your video files.  
-|   |-- C:\Users\%USERNAME%\Favorites       - contains shortcuts to websites that you have bookmarked.  
-|   |-- C:\Users\%USERNAME%\Links           - contains shortcuts to files and folders that you have shared with other users.  
-|   |-- C:\Users\%USERNAME%\AppData         - contains application data, such as settings and preferences.  
-|   |-- C:\Users\%USERNAME%\Local           - contains application data that is specific to your user account.  
-|   |-- C:\Users\%USERNAME%\Roaming         - contains application data that is shared across all user accounts.  
-|   |-- C:\Users\%USERNAME%\Searches        - contains a list of the most recent searches that you have performed in File Explorer.   
-|   |-- C:\Users\%USERNAME%\Saved Games     - contains saved games for games that you have installed on your computer.   
-|   |-- C:\Users\%USERNAME%\OneDrive        - contains files that are stored in your OneDrive cloud storage account.   
-|   |-- C:\Users\%USERNAME%\Contacts        - contains your contacts, such as your email addresses, phone numbers, and addresses.   
-|   |-- C:\Users\%USERNAME%\3D Objects      - contains 3D objects that you have created or downloaded.   
-|  
-|-- C:\tmp           - stores temporary files that are created by Windows and by applications.  
-|-- C:\Recovery      - contains snapshots of files, and a folder used to restore the Operating System if it becomes corrupted or infected with malware.   
-|-- C:\$Recycle.Bin  - contains deleted files that have not yet been permanently deleted.  
-|-- C:\Drivers       - contains device drivers. (software that communicates with the hardware of your computer)  
-|-- C:\$WINDOWS.~BT  - hidden folder that is created on your computer when you upgrade to Windows 10.   
-|-- C:\Intel         - contains files related to the Intel hardware on the computer. (software, drivers, logs)  
-|-- C:\OneDriveTemp  - contains temporary files related to the OneDrive application  
-|-- C:\inetpub       - contains files that are used by the Internet Information Services (IIS) web server.  
+C:\
+├── C:\Program Files
+├── C:\Program Files (x86)
+├── C:\ProgramData
+├── C:\PerfLogs
+├── C:\Windows
+│   ├── C:\Windows\System32
+│   └── C:\Windows\SysWOW64
+├── C:\Users
+│   └── C:\Users\%USERNAME%
+│       ├── C:\Users\%USERNAME%\.cache
+│       ├── C:\Users\%USERNAME%\Desktop
+│       ├── C:\Users\%USERNAME%\Documents
+│       ├── C:\Users\%USERNAME%\Downloads
+│       ├── C:\Users\%USERNAME%\Music
+│       ├── C:\Users\%USERNAME%\Pictures
+│       ├── C:\Users\%USERNAME%\Videos
+│       ├── C:\Users\%USERNAME%\Favorites
+│       ├── C:\Users\%USERNAME%\Links
+│       ├── C:\Users\%USERNAME%\AppData
+│       │   ├── C:\Users\%USERNAME%\AppData\Local
+│       │   └── C:\Users\%USERNAME%\AppData\Roaming
+│       ├── C:\Users\%USERNAME%\Searches
+│       ├── C:\Users\%USERNAME%\Saved Games
+│       ├── C:\Users\%USERNAME%\OneDrive
+│       ├── C:\Users\%USERNAME%\Contacts
+│       └── C:\Users\%USERNAME%\3D Objects
+├── C:\tmp
+├── C:\Recovery
+├── C:\$Recycle.Bin
+├── C:\Drivers
+├── C:\$WINDOWS.~BT
+├── C:\Intel
+├── C:\OneDriveTemp
+└── C:\inetpub
 ```
+
+| Path| Description|
+|:-|:-|
+| C:\ | The root directory. The folder that contains all other folders|
+| C:\Program Files                  | Contains all of the programs that are installed on your computer.                                    |
+| C:\Program Files (x86)           | Contains 32-bit programs that are installed on your computer.                                       |
+| C:\ProgramData                    | Contains files that are used by applications that are installed for all users on the computer.      |
+| C:\PerfLogs                       | Contains performance logs and reports.                                                               |
+| C:\Windows                        | Contains all of the Windows operating system files.                                                 |
+| C:\Windows\System32               | Contains important system files that are necessary for Windows to run.                               |
+| C:\Windows\SysWOW64               | Contains 64-bit versions of system files that are necessary for Windows to run.                     |
+| C:\Users                          | Contains subfolders for each user account on your computer.                                          |
+| C:\Users\\%USERNAME%               | The folder contains the files and folders specific to a user account.                                |
+| C:\Users\\%USERNAME%\\.cache        | Contains temporary files that are created by applications.                                          |
+| C:\Users\\%USERNAME%\Desktop       | Contains shortcuts to files and folders that you use frequently.                                     |
+| C:\Users\\%USERNAME%\Documents     | Contains your personal documents, such as Word documents, Excel spreadsheets, and PowerPoint presentations. |
+| C:\Users\\%USERNAME%\Downloads     | Contains files that you have downloaded from the internet.                                          |
+| C:\Users\\%USERNAME%\Music         | Contains your music files.                                                                            |
+| C:\Users\\%USERNAME%\Pictures      | Contains your image files.                                                                            |
+| C:\Users\\%USERNAME%\Videos        | Contains your video files.                                                                            |
+| C:\Users\\%USERNAME%\Favorites     | Contains shortcuts to websites that you have bookmarked.                                             |
+| C:\Users\\%USERNAME%\Links         | Contains shortcuts to files and folders that you have shared with other users.                      |
+| C:\Users\\%USERNAME%\AppData       | Contains application data, such as settings and preferences.                                       |
+| C:\Users\\%USERNAME%\Local         | Contains application data that is specific to your user account.                                     |
+| C:\Users\\%USERNAME%\Roaming       | Contains application data that is shared across all user accounts.                                  |
+| C:\Users\\%USERNAME%\Searches      | Contains a list of the most recent searches that you have performed in File Explorer.               |
+| C:\Users\\%USERNAME%\Saved Games   | Contains saved games for games that you have installed on your computer.                           |
+| C:\Users\\%USERNAME%\OneDrive      | Contains files that are stored in your OneDrive cloud storage account.                             |
+| C:\Users\\%USERNAME%\Contacts      | Contains your contacts, such as your email addresses, phone numbers, and addresses.                |
+| C:\Users\\%USERNAME%\3D Objects    | Contains 3D objects that you have created or downloaded.                                           |
+| C:\tmp                            | Stores temporary files that are created by Windows and by applications.                              |
+| C:\Recovery                       | Contains snapshots of files and a folder used to restore the Operating System if it becomes corrupted or infected with malware. |
+| C:\$Recycle.Bin                   | Contains deleted files that have not yet been permanently deleted.                                   |
+| C:\Drivers                        | Contains device drivers (software that communicates with the hardware of your computer).             |
+| C:\$WINDOWS.~BT                  | Hidden folder created on your computer when you upgrade to Windows 10.                             |
+| C:\Intel                          | Contains files related to the Intel hardware on the computer (software, drivers, logs).             |
+| C:\OneDriveTemp                   | Contains temporary files related to the OneDrive application.                                       |
+| C:\inetpub                        | Contains files that are used by the Internet Information Services (IIS) web server.                |
+
 
 <br>
 

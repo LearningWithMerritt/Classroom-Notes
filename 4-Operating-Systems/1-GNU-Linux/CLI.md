@@ -1,5 +1,21 @@
-# `Linux Command Line`
+# `Linux Command Line Interface`
 
+Covered in this file:
+1. [`Command Line Vocabulary`](#command-line-vocabulary)
+1. [`CLI Command Syntax`](#cli-command-syntax)
+1. [`CLI Common Commands`](#cli-common-commands)
+1. [`CLI Keyboard Shortcuts`](#cli-keyboard-shortcuts)
+
+<br>
+
+[Back To Top](#linux-command-line-interface)
+___
+
+<br>
+
+
+
+# `Command Line Vocabulary`
 `Console`: physical device that provides a text-based interface to a computer. 
 It is typically a monitor and keyboard.
 
@@ -13,9 +29,7 @@ It is the oldest and most basic type of user interface.
 `Shell`: program that interprets commands entered by the user at the command line. 
 It is responsible for executing the commands and displaying the results to the user.
 
-<br>
-
-Linux has multiple shells that can be used, but the default shell is `bash`. 
+* Linux has multiple shells that can be used, but the default shell is `bash`. 
 The Bash shell (Bourne-Again Shell) is a Unix shell and command language written by Brian Fox for the GNU Project 
     as a free software replacement for the Bourne shell. 
 First released in 1989, it has been used as the default login shell for most Linux distributions. 
@@ -37,38 +51,53 @@ It is often used to access and manage servers, but it can also be used on deskto
 `Prompt`: symbol or sequence of symbols that appears at the command line, indicating that the system is ready to receive a command.
 The prompt typically looks like a dollar sign (`$`) or greater than sign (`>`).
 
-GNU/Linux Bash Prompt 
-```
-username@hostname:/home/USER/Desktop $ _
-```
+* GNU/Linux Bash Prompt
+
+    ```
+    username@hostname:/home/USER/Desktop $ _
+    ```
+
+<br>
+
+[Back To Top](#linux-command-line-interface)
+___
 
 <br>
 
 # `CLI Command Syntax`
 
 A CLI command is typically made up of three parts: command, flags, and arguments.   
+
+* `Command`: This is the name of the command that you want to execute.
+
+* `Flags`: optional parameters, but they are typically used to enable or disable certain features of the command. 
+    * > In bash flags are prefixed with a dash `-` .
+
+* `Arguments`: optional parameters that you can use to modify the behavior of the command.
+
+<br>
+
 syntax:
 ```
-command flags arguments
+<command> <flags> <arguments>
 ```
 example:
 ```
 ls -la /home/$USER/Desktop
 ```
-
-`Command name`: This is the name of the command that you want to execute.
-
-`Flags`: optional parameters, but they are typically used to enable or disable certain features of the command.
-
-`Arguments`: optional parameters that you can use to modify the behavior of the command.
+command: `ls`, flags: `-la`, argument: `/home/$USER/Desktop` 
 
 
+<br>
+
+[Back To Top](#linux-command-line-interface)
+___
 
 <br>
 
 
 
-# `Linux CLI Common Commands`:
+# `CLI Common Commands`:
 
 | Command | Description | Example|
 |:-:|:-|:-|
@@ -97,7 +126,7 @@ ls -la /home/$USER/Desktop
 | `head`| Display the beginning of a file.| `head file.txt`|
 | `tail`| Display the end of a file.| `tail file.txt`|
 | `nano`| Built-in CLI text editor. | `nano file.txt`|
-| `grep`| Search for a specific pattern in files. | `grep "search_term" file.txt`|
+| `grep`| Search for a specific pattern in files or output. | `grep "search_term" file.txt`|
 | `find`| Search for files and directories. | `find /path/to/search -name "file.txt"`|
 | `df -h` | Show disk space usage on the system in human-readable format. | `df -h`|
 | `du -h` | Display the size of directories and files in human-readable format. | `du -h`|
@@ -110,6 +139,11 @@ ls -la /home/$USER/Desktop
 | `tar` | Create or extract tar archives. | `tar -xvf archive.tar` to extract a tar file.|
 | `wget`| Download files from the internet. | `wget http://example.com/file.zip` |
 
+
+<br> 
+
+[Back To Top](#linux-command-line-interface)
+___
 
 <br>
 
@@ -160,3 +194,13 @@ ls -la /home/$USER/Desktop
 | `Ctrl + T`         | Swap the last two characters before the cursor.  |
 | `Ctrl + W`         | Delete the word before the cursor.               |
 | `Alt + .`          | Insert the last argument from the previous command. |
+
+
+<br>
+
+[Back To Top](#linux-command-line-interface)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*

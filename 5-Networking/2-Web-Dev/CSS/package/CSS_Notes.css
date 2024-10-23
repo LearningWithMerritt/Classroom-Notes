@@ -1,0 +1,166 @@
+/* 
+   CSS (Cascading Style Sheets) is a style sheet language used for describing the 
+   presentation of a document written in HTML or XML. It defines how elements are 
+   displayed on a web page, including their layout, colors, fonts, and other visual 
+   aspects. CSS allows developers to separate the structure and content of a webpage 
+   from its presentation, providing flexibility and maintainability.
+*/
+
+/* This is a basic CSS file with comments explaining each part. */
+
+/*
+
+Style Sheet: 
+  A collection of rules that define the appearance of HTML elements. 
+  Can be external (linked file), internal (within HTML file), or inline (directly in an HTML tag).
+
+Selector:
+   a pattern used to select and style HTML elements. 
+   Selectors can target elements, classes, IDs, attributes, or combinations of these.
+
+Class: 
+  A way to apply styles to multiple elements. Defined with a period (.) in CSS and used in HTML with the class attribute.
+  example: .classname
+
+Pseudo-class: 
+  a keyword added to a selector to style a specific state or condition of an element.
+  example: element:pseudo-class
+
+ID: 
+  Similar to a class but should be unique on a page. Defined with a hash (#) in CSS and used in HTML with the id attribute.
+  example: #id
+
+Property:
+   an attribute of an element that you want to style. 
+   Examples include color, font-size, margin, and background-color.
+
+Value:
+   the specific setting assigned to a CSS property. 
+   For example, #333 is a value for the color property.
+
+Declaration:
+   a combination of a CSS property and its corresponding value. 
+   Declarations are enclosed in curly braces {}.
+   example: property:value;
+
+Rule:
+   consists of one or more declarations, associated with a selector. 
+   It defines how the selected elements should be styled.
+
+Declaration Block:
+   A declaration block is a group of one or more declarations within curly braces {}. 
+   It is part of a CSS rule.
+
+Rule------------------------------------|
+selector {                              |      
+   Declaration Block---------------|    |
+   property:value;  Declaration    |    |
+   property:value;  Declaration    |    |
+   property:value;  Declaration    |    |
+   property:value;  Declaration    |    |
+   --------------------------------|    |
+}                                       |  
+----------------------------------------|
+
+
+CSS Box Model: 
+  Describes the layout of elements as a box with content, padding, border, and margin.
+
+  +---------------------------------------------+
+  |                  Margin-top                 |
+  |  +---------------------------------------+  |
+  |  |               Border-top              |  |
+  |  |  +---------------------------------+  |  |
+  |  |  |            Padding-top          |  |  |
+  |  |  |  +-------------------------+    |  |  |
+  |  |  |  |          Content        |    |  |  |
+  |  |  |  |                         |    |  |  |
+  |  |  |  +-------------------------+    |  |  |
+  |  |  |           Padding-bottom        |  |  |
+  |  |  +---------------------------------+  |  |
+  |  |              Border-bottom            |  |
+  |  +-------------------------------------- +  |
+  |                 Margin-bottom               |
+  +---------------------------------------------+
+
+
+
+Color RGB Values:
+  Decimal RGB
+    3 values one for Red, one for Green, one for Blue.
+    Each are 1 byte with values from 0 - 255
+      rgb(0,0,0)--> Black
+      rgb(255,0,0)--> Red 
+      rgb(0,255,0)--> Green
+      rgb(0,0,255)--> Blue
+      rgb(255,255,255) -->White
+
+  Hexadecimal RGB
+    3 values one for Red, one for Green, one for Blue.
+    Each are 1 byte with values from 00 - ff
+      #000000 --> Black
+      #ff0000 --> Red
+      #00ff00 --> Green
+      #0000ff --> Blue
+      #ffffff --> White
+*/
+
+
+/* Resetting default margin and padding for all elements(*) */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+ 
+ /* Applying styles to the body element */
+ body {
+   font-family: Arial, sans-serif; /* Setting the default font family */
+   line-height: 1.6; /* Setting the line height for better readability */
+   background-color: #f2f2f2; /* Setting the background color for the entire page */
+   color: #333; /* Setting the default text color */
+ }
+ 
+ /* Styling the header element */
+ h1 {
+   color: #0066cc; /* Setting the color of level 1 headings */
+ }
+ 
+ /* Styling paragraphs */
+ p {
+   font-size: 16px; /* Setting the font size for paragraphs */
+   color: #666; /* Setting the default text color for paragraphs */
+   margin-bottom: 15px; /* Adding bottom margin for spacing between paragraphs */
+ }
+ 
+ /* Styling links */
+ a {
+   color: #0066cc; /* Setting the default color for links */
+   text-decoration: none; /* Removing underlines from links */
+ }
+ 
+ /* Styling links on hover using a psuedo-class (:hover)*/
+
+ a:hover {
+   text-decoration: underline; /* Adding underline on hover for links */
+ }
+ 
+ /* Applying styles to a class named 'highlight' */
+ .highlight {
+   background-color: yellow; /* Setting background color for elements with the 'highlight' class */
+   padding: 5px; /* Adding padding for better visual appearance */
+ }
+ 
+ /* Styling an element with a specific ID */
+ #special-section {
+   border: 1px solid #333; /* Adding a border to the element with the ID 'special-section' */
+   padding: 10px; /* Adding padding for spacing inside the element */
+ }
+ 
+ /* Media query for responsive design */
+ @media screen and (max-width: 600px) {
+   /* Adjusting styles for smaller screens */
+   body {
+     font-size: 14px; /* Decreasing font size for smaller screens */
+   }
+ }

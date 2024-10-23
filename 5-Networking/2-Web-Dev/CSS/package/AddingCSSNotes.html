@@ -1,0 +1,54 @@
+<!--
+  There are 3 ways to add CSS to an HTML File
+  
+  External CSS:
+    CSS is stored in a separate external file (styles.css) and linked to the HTML document.
+  
+  Internal CSS:
+     The <style> tag is used to embed CSS Cascading Style Sheets within the HTML document.
+      It allows you to define the presentation and layout of elements on the webpage. 
+  
+  Inline CSS:
+      <tagname style="property:value;">
+      CSS is applied directly to individual HTML elements using the "style" attribute.
+      
+-->
+
+<!DOCTYPE html> 
+<html lang="en-us"> 
+  <head>
+    <title>Page Title</title> 
+    
+    <!-- External CSS: Link to a CSS file for styling--> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <!--Internal CSS: use the <style> tag-->
+    <style>
+
+      /* This is an inline CSS comment */
+
+      /*
+        This is a multi-line comment
+        in CSS.
+      */
+     
+    </style>
+
+  </head> 
+  <body> 
+    <!-- Inline CSS: <tagname style="property:value;"> -->
+
+    <h1 style="color:green">This is a heading</h1> <!-- style="color:green" -->
+    
+    <p style="background-color: black;">This is a paragraph.</p> <!--style="background-color:black" -->
+    
+    <a href="https://www.w3schools.com">This is a link</a> 
+
+    <img src="image.png" alt="alt text here"> 
+
+    <div>
+
+    </div>
+
+  </body> <!-- This is the closing tag for the body of the HTML document -->
+</html> <!-- This is the closing tag for the HTML document -->

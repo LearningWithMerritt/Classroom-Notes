@@ -7,22 +7,18 @@ ___
 <br>
 
 Covered in this file:
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
+1. [`Network Defined`](#network-defined)
+1. [`Network Connections`](#network-connections)
+1. [`Bandwidth or Connection Rate`](#bandwidth-or-connection-rate)
+1. [`Network Interface Card NIC`](#network-interface-card-nic)
+1. [`Network Switch`](#network-switch)
+1. [`Router`](#router)
+1. [`Wireless Access Point WAP`](#wireless-access-point-wap)
+1. [`Firewalls`](#firewalls)
+1. [`Modulator-Demodulator Modem`](#modulator-demodulator-modem)
+1. [`Optical Network Terminal ONT`](#optical-network-terminal-ont)
+1. [`Satellite Modem`](#satellite-modem)
+1. [`Basic Network Topology`](#basic-network-topology)
 
 
 <br>

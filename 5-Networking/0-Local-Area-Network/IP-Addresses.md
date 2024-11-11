@@ -208,7 +208,7 @@ These are special-purpose addresses. ::/128 is used when a device does not have 
 
 <br>
 
-`Network Address Translation` translates Private IPs to Public IPs when data is sent out and Public IPs to Private IPs when data is recieved. 
+`Network Address Translation (NAT)` translates Private IPs to Public IPs when data is sent out and Public IPs to Private IPs when data is recieved. 
 
 ---
 # `Static vs. Dynamic IP Addresses`
@@ -220,11 +220,10 @@ These are special-purpose addresses. ::/128 is used when a device does not have 
 
 <br>
 
-`Dynamic IP addresses`: an address assigned by the Dynamic Host Configuration Protocol (DHCP) server and can change periodically.
+`Dynamic IP addresses`: an address assigned by the `Dynamic Host Configuration Protocol (DHCP)` server and can change periodically.
 > * Devices are assigned an address from an address pool managed by the DHCP server.
 > * A home router typically includes a DHCP server. 
 > * ISPs typically assign routers public IPs using DHCP. 
- 
 
 ---
 
@@ -419,6 +418,7 @@ Subnets:
 `Dynamic Host Configuration Protocol (DHCP)`, is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network. 
 > * DHCP uses `Media Access Control (MAC)` addresses to identify devices on a network. 
 > * Assigned IP addresses are mapped to these MAC addresses. 
+> * Typically associated with a router
 
 <br>
 
@@ -464,3 +464,16 @@ ip addr show
 ```
 
 > Find the network interface you’re interested in (e.g., eth0, wlan0, etc.). The private IP address will be listed under inet.
+
+
+<br>
+
+___
+
+[Back To Top](#internet-protocol-addresses)
+
+<br>
+
+
+# `Translating Web Addresses to IP Addresses: DNS`
+

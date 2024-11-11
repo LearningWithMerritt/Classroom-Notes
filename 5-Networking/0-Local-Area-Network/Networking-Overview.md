@@ -65,12 +65,17 @@ ___
 <br>
 
 `Special Note on Wi-Fi`
-* The standard is defined by the IEEE; 802.11x standards of wireless communication.
+* Wi-Fi is the common name given to the standard of wireless communcation defined by the IEEE 802.11x standards.
 * "Wi-Fi" was created by the Wi-Fi Alliance as a marketing phrase to replace the more technical term "IEEE 802.11x".
 * "Wi-Fi" is a play on the words "wireless" and "fidelity".
 * Most wireless networks use 2.4 GHz and 5 GHz frequencies.
 
 **`What Wi-Fi is NOT: Internet or Wireless Fidelity`**
+
+<br>
+
+The `IEEE (Institute of Electrical and Electronics Engineers)` is a professional association dedicated to advancing technology and innovation across various fields, including electrical engineering, electronics, telecommunications, computer science, and information technology. 
+* IEEE sets standards, promotes best practices, and supports research and development that drive technological progress globally.
 
 
 <br>
@@ -162,6 +167,8 @@ ___
 # `Wireless Access Point WAP`
 A `Wireless Access Point (WAP)`, also known as an access point (AP), is a networking hardware device that allows other Wi-Fi devices to connect to a wired network. 
 * WAPs are typically used to create a wireless local area network (WLAN) in a home or office.
+
+A `Service Set Identifier (SSID)` is the name given to a wireless network broadcast by a WAP. 
 
 <br>
 
@@ -283,6 +290,30 @@ Many modern networking setups use a single device that combines the functions of
 ``` 
 
 
+
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+
+# `The Internet and the World Wide Web`
+
+The term `Internet` comes from "inter-network," meaning "between networks." It is a global network of interconnected computers and devices that communicate using standardized protocols.
+
+<br> 
+
+An `Internet Service Provider (ISP)` provides access to the infrastructure needed to connect to the Internet.
+* This is the company you purchase your Internet service from. 
+
+<br>
+
+The `World Wide Web (www)` is one part of the Internet commonly known simply as `the web`. It is a system of interlinked documents, multimedia content, and applications accessed via the Internet. 
+* A `browser` is used to interact with the www to send requests and retrieve information and services from `web servers`. 
+* Uses the `Hypertext Transfer Protocol (HTTP)`, or its secure version `HTTPS`.
 
 <br>
 

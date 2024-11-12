@@ -8,17 +8,27 @@ ___
 
 Covered in this file:
 1. [`Network Defined`](#network-defined)
-1. [`Network Connections`](#network-connections)
-1. [`Bandwidth or Connection Rate`](#bandwidth-or-connection-rate)
-1. [`Network Interface Card NIC`](#network-interface-card-nic)
-1. [`Network Switch`](#network-switch)
-1. [`Router`](#router)
-1. [`Wireless Access Point WAP`](#wireless-access-point-wap)
-1. [`Firewalls`](#firewalls)
-1. [`Modulator-Demodulator Modem`](#modulator-demodulator-modem)
-1. [`Optical Network Terminal ONT`](#optical-network-terminal-ont)
-1. [`Satellite Modem`](#satellite-modem)
-1. [`Basic Network Topology`](#basic-network-topology)
+1. [`Network Data : Layer 1 Physical`](#network-data--layer-1-physical)
+1. [`Network Connections : Layer 1 Physcial`](#network-connections-layer-1-physical)
+    1. [`Wired Connections`](#wired-connections)
+    1. [`Wireless Connections`](#wireless-connections)
+        1. [`Wi-Fi : IEEE 802.11x Standard`](#wi-fi--ieee-80211x-standard)
+        1. [`Bluetooth`](#bluetooth)
+        1. [`Cellular`](#cellular)
+1. [`Bandwidth and Latency`](#bandwidth-and-latency)
+1. [`Network Interface Card : Layer 2 Data Link`](#network-interface-card-nic--layer-2-data-link)
+1. [`Network Switch : Layer 2 Data Link`](#network-switch--layer-2-data-link)
+1. [`Router : Layer 3 Network`](#router--layer-3-network)
+1. [`Wireless Access Point WAP : Layer 1 Physical`](#wireless-access-point-wap--layer-1-physical)
+1. [`Firewalls : Multi Layer`](#firewalls--multi-layer)
+1. [`Modulator-Demodulator MODEM : Layer 1 Physical`](#modulator-demodulator-modem--layer-1-physical)
+1. [`Optical Network Terminal ONT: Layer 1 Physical`](#optical-network-terminal-ont-layer-1-physical)
+1. [`Satellite Modem : Layer 1 Physical`](#satellite-modem--layer-1-physical)
+1. [`Basic LAN Topology`](#basic-lan-topology)
+1. [`The Internet : Layer 3 Network`](#the-internet-layer-3-network)
+1. [`Ports, Protocols, and Services : Layer 4 Transport`](#ports-protocols-and-services--layer-4-transport)
+1. [`The World Wide Web`](#the-world-wide-web)
+
 
 
 <br>
@@ -52,9 +62,9 @@ There are two basic network models:
 
 Both models serve as a framework to understand and design network protocols and communication processes but differs in structure and focus.
 
-For More on these Networking Models see [Networking-Models.md](Networking-Models.md)
+<br>
 
-To focus our understanding of Networking we will follow the layers of these models. 
+For More on these Networking Models see [Networking-Models.md](Networking-Models.md)
 
 
 <br>
@@ -65,7 +75,7 @@ ___
 
 <br>
 
-# `Network Data (Layer 1:Physical)`
+# `Network Data : Layer 1 Physical`
 `Network Data` are the bits and bytes of information that are transferred between devices on a network. 
 * Data is measured in bits or bytes.
 
@@ -124,20 +134,29 @@ There are two types of Network Connections:
 
 <br>
 
+
 `At Layer 1 Physical`
 * Data is transmitted in `bits`
-* Data is transmitted as electrical, optical, or radio signals
+* Data is transmitted as `electrical, optical, or radio signals`
 
 
 <br>
 
-# `Wired Connections:`
+___
+
+<br>
+
+# `Wired Connections`
 | Connector Type | Description| Use Case | Max Range| Max Speed |
 |-|-|-|-|-|
 | `Ethernet` | Standard copper wire connection using twisted-pair cables (e.g., CAT5, CAT6). | LANs and wired networks| ~100 meters| Up to 10 Gbps |
 | `Coaxial`| Cable with a copper core, shielded for signal protection.| Cable internet, TV connections | Up to 500 meters | Up to 1 Gbps|
 | `Fiber Optic`| Uses light to transmit data through thin glass or plastic fibers, resistant to interference. | High-speed internet, long-distance WANs| Up to 40 km+ | Up to 100 Gbps|
 
+
+<br>
+
+___
 
 <br>
 
@@ -151,6 +170,10 @@ There are two types of Network Connections:
 | `Cellular`     | Mobile wireless network using cellular towers, supporting technologies like 4G and 5G for data and voice communication. | Smartphones, mobile data | Up to several kilometers (depending on tower coverage) | Up to 10 Gbps (5G) |
 | `Satellite`    | Wireless communication via satellites orbiting the Earth for internet access in remote or rural areas. | Remote internet access, rural areas | Global coverage | Up to 100 Mbps (Low Earth Orbit satellites like SpaceX Starlink) |
 
+
+<br>
+
+___
 
 <br>
 
@@ -292,19 +315,23 @@ ___
 
 # `Network Interface Card NIC : Layer 2 Data Link`
 
-`Network Interface Card (NIC)`  also known as a network adapter, local area network (LAN) adapter, or physical network interface, is a hardware component within a device that connects it to a computer network.
-
-`Media Access Control (MAC) address`, also known as a `physical address`, is a unique identifier assigned and burned into a `network interface controller (NIC)`. 
-
-For more on MAC Address: [MAC-Addresses.md](MAC-Addresses.md)
+`Network Interface Card (NIC)` also known as a network adapter, local area network (LAN) adapter, or physical network interface, is a hardware component within a device that connects it to a computer network.
 
 <br>
 
-`At Layer 2 Data Link`
-* Data is packaged into `Frames`
-* Frames are routed using `MAC addresses`
+`Media Access Control (MAC) address`, also known as a `physical address`, is a unique identifier assigned and burned into a `network interface controller (NIC)`. 
 
-Frames include:
+<br>
+
+ See [MAC-Addresses.md](MAC-Addresses.md) for more on MAC Address.
+
+<br>
+
+### `At Layer 2 Data Link`
+* Data is packaged into `Frames`
+* `Frames` are routed using `MAC addresses`
+
+`Frames` include:
 * Destination MAC address
 * Source MAC address
 * Frame Type/Length
@@ -313,12 +340,13 @@ Frames include:
 
 <br>
 
+Frame Diagram
 ```
 +----------------+-------------------+-------------------+--------------------+
 | Destination MAC| Source MAC        | Type/Length       | Payload/Data       |
 +----------------+-------------------+-------------------+--------------------+
-| FCS (Frame Check Sequence)                                           |
-+---------------------------------------------------------------------+
+| FCS (Frame Check Sequence)                                                  |
++-----------------------------------------------------------------------------+
 ```
 
 <br>
@@ -331,22 +359,22 @@ ___
 
 # `Network Switch : Layer 2 Data Link`
 
-A `Network Switch` is a hardware device that connects devices within a LAN. It is a multiport bridge that uses `media access control (MAC)` addresses to forward data at the `data link layer (layer 2)` of the `open systems interconnect (OSI) model`.
+A `Network Switch` is a hardware device that connects devices within a LAN. It is a multiport bridge that uses `media access control (MAC)` addresses to route data at the `data link layer (layer 2)` of the `open systems interconnect (OSI) model`.
 
 <br>
 
-`Network Switches`:
+### `Network Switches`
 * Connect devices within a LAN
-* Data is packaged into Frames
-* Use MAC addresses to route Frames
+* Data is packaged into `Frames`
+* Use MAC addresses to route `Frames`
 
 <br>
 
-`At Layer 2 Data Link`
+### `At Layer 2 Data Link`
 * Data is packaged into `Frames`
-* Frames routed using `MAC addresses`
+* `Frames` are routed using `MAC addresses`
 
-Frames include:
+`Frames` include:
 * Destination MAC address
 * Source MAC address
 * Frame Type/Length
@@ -355,13 +383,13 @@ Frames include:
 
 <br>
 
+Frame Diagram
 ```
 +----------------+-------------------+-------------------+--------------------+
 | Destination MAC| Source MAC        | Type/Length       | Payload/Data       |
 +----------------+-------------------+-------------------+--------------------+
-| FCS (Frame Check Sequence)                                           |
-+---------------------------------------------------------------------+
-
+| FCS (Frame Check Sequence)                                                  |
++-----------------------------------------------------------------------------+
 ```
 
 <br>
@@ -376,9 +404,11 @@ ___
 
 A `Router` is a hardware device that connects two or more networks together. It is a layer 3 device in the open systems interconnect (OSI) model and forwards data packets between networks based on their destination internet protocol (IP) addresses.
 
-`Routers`:
+<br>
+
+### `Routers`:
 * aka `Default Gateway`
-* Connect Networks together
+* Connect Networks together spanning the `LAN` and `WAN`
 * Package data in `Packets`
 * Route packets using `IP addresses`
 * Have both a `Public` and `Private` IP address
@@ -387,15 +417,17 @@ A `Router` is a hardware device that connects two or more networks together. It 
 
 An `IP address` (Internet Protocol address) is a unique numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.
 
-For more on IP addresses: [IP-Addresses](IP-Addresses.md)
+<br>
+
+See [IP-Addresses](IP-Addresses.md) for more on IP Addresses.
 
 <br>
 
-`At Layer 3 Network`
+### `At Layer 3 Network`
 * Data is packaged into `Packets`
-* Packets are routed using `IP addresses`
+* `Packets` are routed using `IP addresses`
 
-Packets include:
+`Packets` include:
 * Destination IP
 * Source IP
 * Protocol
@@ -404,6 +436,7 @@ Packets include:
 
 <br>
 
+Packet Diagram
 ```
 +--------------------+--------------------+---------------------+-----------------------+-----------------+
 | Destination IP     | Source IP          | Protocol            | Packet Data (Payload) | Header Checksum |
@@ -421,6 +454,8 @@ ___
 A `Wireless Access Point (WAP)`, also known as an access point (AP), is a networking hardware device that allows other Wi-Fi devices to connect to a wired network. 
 * WAPs are typically used to create a wireless local area network (WLAN) in a home or office.
 
+<br>
+
 A `Service Set Identifier (SSID)` is the name given to a wireless network broadcast by a WAP. 
 
 <br>
@@ -434,7 +469,9 @@ ___
 # `Firewalls : Multi Layer`
 A `Firewall` is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. It is designed to block unauthorized access to a protected network. Firewalls can be implemented as hardware, software, or a combination of both.
 
-`Firewalls`:
+<br>
+
+### `Firewalls`
 * act as a filter for network traffic
 * can be hardware or software
 * Device Level Firewalls exist on each device
@@ -464,9 +501,11 @@ ___
 # `Modulator-Demodulator MODEM : Layer 1 Physical`
 A `Modulator-Demodulator (Modem)` is a hardware device that converts digital data into analog signals and vice versa. It is used to connect a computer or router to a broadband network (the internet), such as cable or digital subscriber line(DSL).
 
-`Modems`:
-* convert digitial data to analog
-* use coaxial cables to send data across the internet
+<br>
+
+### `Modems`
+* convert `digitial` data to `analog`
+* use `coaxial cables` to send data across the internet
 
 <br>
 
@@ -493,11 +532,14 @@ ___
 
 
 # `Optical Network Terminal ONT: Layer 1 Physical`
-An `Optical Network Terminal (ONT)` is a device that converts optical(light) signals from a fiber optic cable into electrical signals that can be used by a router or other network device. ONTs are typically used in fiber optic networks to provide high-speed internet access.
+An `Optical Network Terminal (ONT)` is a device that converts `optical (light) signals` from a fiber optic cable into `electrical signals` that can be used by a router or other network device. 
+* ONTs are typically used in fiber optic networks to provide high-speed internet access.
 
-`ONTs`
-* convert light into electricity
-* use fiber optic cables to send data across the internet
+<br>
+
+### `ONTs`
+* convert `light` into `electricity`
+* use `fiber optic cables` to send data across the internet
 
 <br>
 
@@ -511,8 +553,10 @@ ___
 
 A `Satellite Modem` is a specialized device that enables the transmission and reception of data over satellite communication networks by modulating digital signals from user devices into `radio frequency (RF)` signals suitable for satellite transmission and demodulating incoming RF signals back into digital data.
 
-`Satellite Modems`
-* covert digitial signals to RF signals
+<br>
+
+### `Satellite Modems`
+* covert `digital` signals to `RF` signals
 * use RF signals to send data across the internet
 
 <br>
@@ -523,9 +567,12 @@ ___
 
 <br>
 
-# `Basic LAN Network Topology`
+# `Basic LAN Topology`
 
 Many modern networking setups use a single device that combines the functions of a modem, router, and switch, streamlining internet connectivity and local network management. These all-in-one devices provide convenience and efficiency for both home and small business users.
+
+<br>
+
 
 ```                                                         
                                                               Digital                Radio Frequency --> 
@@ -578,19 +625,19 @@ ___
 A `protocol` is a set of rules and conventions that define how data is transmitted and processed over a network or communication system. 
 * `Protocols` establish the procedures for data exchange, ensuring that devices and systems can communicate effectively and understand each other. 
 
-<br>
+<br><br>
 
 A `Port` serves as a logical communication endpoint for applications and services on a device. 
 * It helps in directing data to the correct application or service by providing a unique number associated with that service.
 
-<br>
+<br><br>
 
 `Networking services` refer to a range of functionalities and operations provided over a network that facilitate communication, resource sharing, and data management between devices and systems. 
 * `These services opperate at Layers 5-7`. 
 
-<br>
+<br><br>
 
-`At Layer 4 Transport`  
+### `At Layer 4 Transport`  
 There are 2 protocols:  
 * Transmission Control Protocol (TCP)(Connection-Oriented)  
       * User Datagram Protocol (UDP)(Connectionless)  

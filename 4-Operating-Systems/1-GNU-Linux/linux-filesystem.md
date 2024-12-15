@@ -147,6 +147,14 @@ File paths can be `absolute` or `relative`.
 
 An `absolute file path` specifies the complete location(address) of a file, starting from the root directory. 
 
+<br>
+
+The `root directory` is the topmost directory in a file system hierarchy. It serves as the starting point or base from which all other directories and files branch out. `It is the folder that contains all other folders.` 
+
+<br>
+
+`Unix/Linux/MacOS`: The root directory is represented by a single forward slash `/`.
+
 example:
 ```
 /sys/kernel

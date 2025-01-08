@@ -1,11 +1,32 @@
 # `Ports-Protocols-Services`
+
 ---
+
+Covered in this file:
+1. [`Protocols`](#protocols)
+1. [`Ports`](#ports)
+1. [`Services`](#services)
+1. [`Common Ports Protocols and Services`](#common-ports-protocols-and-services)
+
+
+<br>
+
+___
+
+<br>
+
 # `Protocols`
 
 A `protocol` is a set of rules and conventions that define how data is transmitted and processed over a network or communication system. 
 > * `Protocols` establish the procedures for data exchange, ensuring that devices and systems can communicate effectively and understand each other. 
 
----
+<br>
+
+[Back To Top](#ports-protocols-services)
+___
+
+<br>
+
 # `Ports`
 *Ports are defined by the Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP) at the 4th layer of the OSI model and the TCP/IP model.* 
 
@@ -45,7 +66,14 @@ A `Port Number` is a 16-bit integer ranging from 0 to 65535, and is used to uniq
 `UDP Ports:`
 > UDP ports are used for connectionless communications such as streaming video. 
 
----
+
+<br>
+
+[Back To Top](#ports-protocols-services)
+___
+
+<br>
+
 # `Services`
 
 `Networking services` refer to a range of functionalities and operations provided over a network that facilitate communication, resource sharing, and data management between devices and systems. 
@@ -66,7 +94,14 @@ A `Port Number` is a 16-bit integer ranging from 0 to 65535, and is used to uniq
 
 
 
----
+
+<br>
+
+[Back To Top](#ports-protocols-services)
+___
+
+<br>
+
 # `Common Ports Protocols and Services`
 
 *This is not a comprehensive list; it is intend to show the most commonly encountered ports and protocols.*
@@ -101,3 +136,14 @@ A `Port Number` is a 16-bit integer ranging from 0 to 65535, and is used to uniq
 | 3            | none                | Internet Protocol (IPv6)                | none    | Responsible for routing data across networks                          |
 | 3            | none                | Internet Control Message Protocol (ICMP) | none    | Used for exchanging control information across network devices        |
 | 2            | none                | Address Resolution Protocol (ARP)       | none    | Used to map IP addresses to MAC addresses                             |
+
+
+
+<br>
+
+[Back To Top](#ports-protocols-services)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*

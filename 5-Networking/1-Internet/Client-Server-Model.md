@@ -1,13 +1,46 @@
+# `The Client-Server Model`
+
+<br>
+
+___
+
+<br>
+
+Covered in this file:
+1. [`Internet Communication`](#internet-communication)
+1. [`Internet Communication Models`](#internet-communication-models)
+1. [`Client Server Model`](#client-server-model)
+1. [`Locating the Server`](#locating-the-server)
+1. [`How DNS works at a High Level`](#how-dns-works-at-a-high-level)
+1. [`Perform Your Own DNS Lookup`](#perform-your-own-dns-lookup)
+1. [`Uniform Resource Locators (URLs)`](#uniform-resource-locators-url)
+1. [`Sending the Request and Recieving a Response`](#sending-the-request-and-receiving-the-response)
+
+<br>
+
+___
+
+<br>
 
 # `Internet Communication`
-> `Internet` shortened form of inter network. Inter from latin inter- meaning between. The internet is a vast network of interconnected computer networks that spans the globe. It allows communication and data exchange between devices (computers, smartphones, tablets, etc.) anywhere in the world.  
+`Internet` shortened form of inter network. Inter from latin inter- meaning between. The internet is a vast network of interconnected computer networks that spans the globe. It allows communication and data exchange between devices (computers, smartphones, tablets, etc.) anywhere in the world.  
 
 > Internet access is provided by an `Internet Service Provider (ISP)`.   
 
 > An `ISP` is a company that provides access to the internet for individuals and organizations. They maintain the necessary infrastructure, including cables, towers, and data centers, to connect networks. Think of it like a bridge connecting your device to the vast network of interconnected computers that is the internet.  
----
+
+<br>
+
+[Back To Top](#the-client-server-model)
+___
+
+<br>
+
+
 # `Internet Communication Models`
 > There are several different models used to communicate over the Internet. The most prominent model is the client server model.
+
+<br>
  
 ## **Client Server Model**
 ![Client Server Diagram](./img/client-server-model.svg "Client Server Diagram")
@@ -24,7 +57,14 @@
 > * In most cases the server is what sends the web page to your browser.   
 
 > The word `query` is often used in computer science, and can be thought of as a request.  
----
+
+
+<br>
+
+[Back To Top](#the-client-server-model)
+___
+
+<br>
 
 # `Locating the Server`
 *Every device in a network, even a massive network like the internet, has an IP address. However IP addresses are not easy to remember so a system for managing these addresses is necessary.*
@@ -80,6 +120,13 @@ A `Domain Name System (DNS) server` is a crucial component of the Internet infra
 >  - Primary: `64.6.64.6`
 >  - Secondary: `64.6.65.6`  
 
+<br>
+
+[Back To Top](#the-client-server-model)
+___
+
+<br>
+
 ## How DNS works at a High Level:
 1. You type a domain name into your web browser.
 1. Your browser contacts a DNS server (usually provided by your internet service provider).
@@ -87,6 +134,12 @@ A `Domain Name System (DNS) server` is a crucial component of the Internet infra
 1. If found, the IP address is sent back to your browser.
 1. Your browser uses the IP address to connect to the web server hosting the website.
 
+<br>
+
+[Back To Top](#the-client-server-model)
+___
+
+<br>
 
 ## Perform Your Own DNS Lookup
 
@@ -122,8 +175,13 @@ host www.google.com 8.8.8.8
 
 <br>
 
-## Uniform Resource Locators (URL) --> Web Addresses.   
-> `URLs or web addresses` are used to access resources on servers in a network.   
+[Back To Top](#the-client-server-model)
+___
+
+<br>
+
+## Uniform Resource Locators (URL).   
+`URLs or web addresses` are used to access resources on servers in a network.   
 > These addresses can be broken down into their parts. 
 ![URL Diagram](./img/url-diagram.svg "URL Diagram")
 
@@ -152,7 +210,13 @@ host www.google.com 8.8.8.8
 > https://www.google.com/search?q=cats  
 >'*q=cats*' is the query string 
 
----
+<br>
+
+[Back To Top](#the-client-server-model)
+___
+
+<br>
+
 # `Sending the Request and Receiving the Response`
 
 ## HTTP(HyperText Transfer Protocol)
@@ -207,4 +271,11 @@ curl --verbose https://httpstat.us/<code here>
 > * press F12, Ctrl + Shift + I, or by using the browser menu to select More Tools --> Developer Tools.  
 > * While using Developer Tools look for the '*Network*' tab.
 
----
+<br>
+
+[Back To Top](#the-client-server-model)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*ss

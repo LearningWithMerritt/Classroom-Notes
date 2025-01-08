@@ -4,7 +4,24 @@
 
 Two primary networking models are widely used: the `OSI model` and the `TCP/IP model`.
 
----
+
+<br>
+
+___
+
+<br>
+
+Covered in this file:
+1. [`Open Systems Interconnect (OSI) Model`](#open-systems-interconnect-model)
+1. [`Transmission Control Protocol/Internet Protocol (TCP/IP) Model`](#tranmission-control-protocolinternet-protocol-tcpipmodel)
+1. [`Mapping OSI and TCP/IP Together`](#mapping-osi-and-tcpip-together)
+
+<br>
+
+___
+
+<br>
+
 # `Open Systems Interconnect Model`
 The `OSI model` is a theoretical framework developed by the International Organization for Standardization (ISO) that divides network communication into seven distinct layers. Each layer has specific functions and interacts with the layers above and below it.
 
@@ -19,7 +36,14 @@ The `OSI model` is a theoretical framework developed by the International Organi
 | 2 | Data Link| Provides node-to-node data transfer and error detection. Manages `MAC` addresses and frames data for transmission over the physical layer. |
 | 1 | Physical | Deals with the physical connection between devices, including cables, switches, and electrical signals. Defines `hardware elements of a network`. |
 
----
+<br>
+
+[Back To Top](#networking-models)
+
+___
+
+<br>
+
 # `Tranmission Control Protocol/Internet Protocol (TCP/IP)Model`
 
 The `Transmission Control Protocol/Internet Protocol model (TCP/IP) model` is a framework used to describe and implement the protocols and standards that enable communication over the Internet and other similar networks. It was developed by the Department of Defense (DoD) in the 1970s as part of the ARPANET project and has since become the foundation for modern networking.
@@ -44,7 +68,14 @@ Old 4 Layer TCP/IP Model
 | Network Interface | Corresponds to the OSI model's Data Link and Physical layers. Manages data framing, MAC addressing, and physical transmission. |
 
 
----
+<br>
+
+[Back To Top](#networking-models)
+
+___
+
+<br>
+
 # Mapping OSI and TCP/IP Together
 
 | TCP/IP| OSI| Example Protocols/Services|
@@ -54,3 +85,15 @@ Old 4 Layer TCP/IP Model
 | Network | Network | IP (IPv4, IPv6), ICMP, IGMP |
 | Data Link | Data Link | Ethernet, Wi-Fi (IEEE 802.11), ARP, PPP|
 | Physical| Physical| Ethernet cables (Cat5, Cat6), fiber optics, network interface cards (NICs) |
+
+
+<br>
+
+[Back To Top](#networking-models)
+
+___
+
+<br>
+
+
+*Created and maintained by Mr. Merritt*

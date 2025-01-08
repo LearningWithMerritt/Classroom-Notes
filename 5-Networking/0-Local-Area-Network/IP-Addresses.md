@@ -1,6 +1,27 @@
 # `Internet Protocol Addresses`
 ---
 
+Covered in this file:
+1. [`Internet Protocol`](#internet-protocol)
+1. [`IPv4 32-bit Addresses`](#ipv4-32-bit-addresses)
+1. [`IPv4 Address Ranges`](#ipv4-address-ranges)
+1. [`IPv6 128-bit Addresses`](#ipv6-128-bit-addresses)
+1. [`IPv6 Ranges`](#ipv6-ranges)
+1. [`Public vs. Private IP Addresses`](#public-vs-private-ip-addresses)
+1. [`Static vs. Dynamic IP Addresses`](#static-vs-dynamic-ip-addresses)
+1. [`IP Addresses and Ports`](#ip-addresses-and-ports)
+1. [`Subnetting`](#subnetting)
+1. [`Assigning IP Addresses: DHCP`](#assigning-ip-addresses-dhcp)
+1. [`How Do I See my Public IP? Private IP?`](#how-do-i-see-my-public-ip-private-ip)
+1. [`Translating Web Addresses to IP Addresses: DNS`](#translating-web-addresses-to-ip-addresses-dns)
+
+
+<br>
+
+___
+
+<br>
+
 # `Internet Protocol`
 
 The `Internet Protocol (IP)` is a set of rules and standards that govern how data is sent and received over networks, including the internet. 
@@ -26,7 +47,11 @@ The `Internet Protocol (IP)` is a set of rules and standards that govern how dat
 
 <br>
 
----
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
 # `IPv4 32-bit addresses` 
 
 `IPv4 addresses` use four 8-bit decimal numbers separated by a period ( . ).  
@@ -52,7 +77,13 @@ Binary Format Example:
 
     11000000.10101000.00000001.00000001
 
----
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
 # `IPv4 Address Ranges`
 
 | IP Class | Public IP Range| Private IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
@@ -91,8 +122,14 @@ A `Broadcast Address` is used to send packets to the entire network.
 
 
 
----
-# `IPv 6 128-bit addresses`
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
+# `IPv6 128-bit addresses`
 
 *IPv6 was designed to accommodate the ever-growing number of internet-connected devices and ensure that we don't run out of IP addresses, which occured with IPv4.*
 
@@ -193,7 +230,14 @@ These are special-purpose addresses. ::/128 is used when a device does not have 
 > * `Unspecified Address: ::/128` 
 > * `Loopback Address: ::1/128`
 
----
+
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
 # `Public vs. Private IP Addresses`
 
 `Public IP Addresses` are assigned to devices that are directly accessible from the internet.
@@ -210,7 +254,13 @@ These are special-purpose addresses. ::/128 is used when a device does not have 
 
 `Network Address Translation (NAT)` translates Private IPs to Public IPs when data is sent out and Public IPs to Private IPs when data is recieved. 
 
----
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
 # `Static vs. Dynamic IP Addresses`
 
 `Static IP Address`: a fixed addresses assigned to a device that has to be manually set and manually changed.
@@ -225,7 +275,12 @@ These are special-purpose addresses. ::/128 is used when a device does not have 
 > * A home router typically includes a DHCP server. 
 > * ISPs typically assign routers public IPs using DHCP. 
 
----
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
 
 # `IP Addresses and Ports`
 
@@ -254,7 +309,13 @@ IPv6 Example:
 `:80` is the port
 
 
----
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
 # `Subnetting`
 `Subnetting` is the process of dividing a larger network into smaller, more manageable sub-networks or subnets. 
 > * It helps optimize network performance and improve security by isolating different segments of a network.
@@ -411,7 +472,14 @@ Subnets:
 |15| 192.168.224.0  | /20           | 192.168.239.255  | 192.168.224.1 to 192.168.239.254|
 |16| 192.168.240.0  | /20           | 192.168.255.255  | 192.168.240.1 to 192.168.255.254|
 
----
+
+
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
 
 # `Assigning IP Addresses: DHCP`
 
@@ -436,7 +504,13 @@ How DHCP works at a High Level:
 
 6. `Renewal`: The client periodically sends DHCP Request messages to renew its lease. The server responds with an Acknowledgment if it is able to extend the lease.  
 
----
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
 # `How Do I see my Public IP? Private IP?`
 
 The simplest what to see your public IP is to go to got to a website like this one [whatismyip.com](https://www.whatismyip.com/)
@@ -477,3 +551,50 @@ ___
 
 # `Translating Web Addresses to IP Addresses: DNS`
 
+`Domain Name System (DNS)` is a hierarchical and decentralized naming system used to translate `human-readable domain names (like www.example.com)` into `machine-readable IP addresses (like 192.0.2.1)` and vice versa. 
+*  `DNS` enables users to access resources on the internet without needing to memorize numerical IP addresses.
+*  `DNS` Translates Uniform Resource Locators (URLs or Web Addresses) into IP addresses. 
+
+<br>
+
+How DNS Works at a High Level:
+
+1. `Query Initiation (Client Request)`: When a user enters a domain name into a browser or application, the client device generates a DNS Query to resolve the domain name into an IP address. This query is sent to the configured DNS resolver (usually provided by the user's ISP or a public DNS service).
+
+1. `Resolver Request` :The DNS Resolver (Recursive Resolver) receives the query and determines how to fulfill it. If the resolver doesn’t already have the IP address cached, it forwards the request to the appropriate DNS servers in the hierarchy.
+
+1. `Root Server Lookup`: The resolver queries a Root DNS Server, which responds with the address of a Top-Level Domain (TLD) DNS Server based on the domain extension (e.g., .com, .org, .net).
+
+1. `Top Level Domain (TLD) Server Lookup` : The resolver queries the TLD Server, which provides the address of the Authoritative Name Server for the specific domain.
+
+1. `Authoritative Server Response`: The resolver queries the Authoritative Name Server, which holds the DNS records for the requested domain. This server provides the IP address (or other requested information, like MX records for email).
+
+1. `Response to Client`: The DNS Resolver sends the IP address back to the client. The client can then use this IP address to establish a connection with the target server.
+
+1. `Caching`: To optimize performance, the resolver and client device cache the DNS response for a specified duration (TTL—Time to Live). This reduces the need for repeated queries for the same domain.
+
+<br>
+
+Key DNS Record Types:
+
+| Record Type | Description                                    |
+|-------------|------------------------------------------------|
+| `A`           | Maps a domain name to an IPv4 address.        |
+| `AAAA`        | Maps a domain name to an IPv6 address.        |
+| `CNAME`       | Points one domain to another (aliasing).      |
+| `MX`          | Identifies mail servers for a domain.         |
+| `NS`          | Specifies the authoritative name servers for a domain. |
+| `TXT`         | Holds text information, often used for verification purposes. |
+
+
+
+
+
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*

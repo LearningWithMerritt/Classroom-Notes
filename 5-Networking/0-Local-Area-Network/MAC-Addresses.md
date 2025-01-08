@@ -1,5 +1,23 @@
 # `Media Access Control Addresses`
 
+
+Covered in this file:
+
+1. [`Network Interface Cards`](#network-interface-cards)
+1. [`MAC Addresses`](#mac-addresses)
+1. [`Address Resolution Protocol ARP`](#address-resolution-protocol)
+1. [`How do I see my MAC Address?`](#how-do-i-see-my-mac-address)
+
+
+<br>
+
+[Back To Top](#media-access-control-addresses)
+
+___
+
+<br>
+
+
 # `Network Interface Cards`
 
 A `Network Interface Card (NIC)` is a hardware component that allows a computer or other device to connect to a network. 
@@ -48,7 +66,14 @@ Combo NICs:
 
 > Combo NICs: These are cards that support multiple types of network interfaces on a single card. For example, a card might offer both Ethernet and Wi-Fi capabilities.
 
----
+<br>
+
+[Back To Top](#media-access-control-addresses)
+
+___
+
+<br>
+
 # `MAC Addresses`
 
 `Media Access Control (MAC) Addresses` is a unique 12 digit hexadecimal identifier assigned to a network interface card (NIC) for communications on the physical network segment. 
@@ -71,7 +96,15 @@ Example:
 |:-:|:-:|
 |FF-FF-FF|00-00-00|
 
----
+
+<br>
+
+[Back To Top](#media-access-control-addresses)
+
+___
+
+<br>
+
 # `Address Resolution Protocol`
 
 `Address Resolution Protocol (ARP)`, is a network protocol used to map an IP address to a MAC (Media Access Control) address within a local network. 
@@ -99,11 +132,21 @@ Example:
 4. Communication:
 > With the MAC address now known, the requesting device can frame Ethernet packets addressed to the correct MAC address, enabling successful communication over the local network.
 
+<br>
 
----
+[Back To Top](#media-access-control-addresses)
+
+___
+
+<br>
+
 # `How do I see my MAC Address?`
 
-Windows CMD 
+On Windows, open CMD Prompt or Powershell. To open either, hit WIN + R and type cmd, or powershell then hit ENTER.   
+
+<br>
+
+Windows CMD Prompt
 ```
 ipconfig /all
 ```
@@ -121,10 +164,23 @@ Get-NetAdapter | Select-Object Name, MacAddress
 
 <br>
 
+On GNU/Linux open the ternimal with CTRL + ALT + T. 
+On MacOS use COMMAND + SPACEBAR, and search for "terminal"
+
 Linux/MacOS
 ```
 ip link
 ```
 
 > Find the network interface you’re interested in (e.g., eth0, wlan0, etc.), and look for the MAC address next to link/ether.
----
+
+<br>
+
+[Back To Top](#media-access-control-addresses)
+
+___
+
+<br>
+
+
+*Created and maintained by Mr. Merritt*

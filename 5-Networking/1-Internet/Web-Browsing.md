@@ -30,7 +30,7 @@
 
 *This is not an exhaustive list, there are many more web browsers, these are just the most popular and available.*  
 
-![Common Web Browsers](img/browsers.png "Common Web Browsers")
+![Common Web Browsers](img/browsers.png?raw=true "Common Web Browsers")
 
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
 ---

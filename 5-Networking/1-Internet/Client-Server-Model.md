@@ -43,7 +43,7 @@ ___
 <br>
  
 ## **Client Server Model**
-![Client Server Diagram](./img/client-server-model.svg "Client Server Diagram")
+![Client Server Diagram](img/client-server-model.svg "Client Server Diagram")
 
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
 

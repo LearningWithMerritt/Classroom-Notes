@@ -44,8 +44,15 @@ ___
  
 ## **Client Server Model**
 ![Client Server Diagram](img/client-server-model.svg "Client Server Diagram")
-
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
+
+```
+Client Side                                      Server Side
+             ------------------------Request>>>  
+Web Browser  [           Internet             ]  Web Server
+             <<<Response----------------------- 
+```
+
 
 > * The Client sends a request to the Server.  
 > * The Server sends a response to the Client.  
@@ -184,6 +191,9 @@ ___
 `URLs or web addresses` are used to access resources on servers in a network.   
 > These addresses can be broken down into their parts. 
 ![URL Diagram](./img/url-diagram.svg "URL Diagram")
+
+```
+https://www.example.com:443/blog/article?text=a_string
 
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
 

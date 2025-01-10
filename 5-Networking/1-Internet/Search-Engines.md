@@ -1,14 +1,45 @@
 # `Search Engines`
----
+
+<br>
+
+___
+
+<br>
+
+Covered in this file:
+1. [`What is a search engine?`](#what-is-a-search-engine)
+1. [`Internet Search Engines`](#internet-search-engines)
+1. [`How does a search engine work?`](#how-does-a-search-engine-work)
+1. [`Crafting Basic Queries`](#crafting-basic-queries)
+1. [`Advanced Search Operators`](#advanced-search-operators)
+
+<br>
+
+___
+
+<br>
+
+
 # `What is a search engine?`
 
-> A [**search engine**] is a software program that helps people find information online by indexing websites and then matching those websites to the search query. When a search term is entered, the search engine looks at its index and returns a list of websites that it thinks are relevant to the query. 
+A `search engine` is a software program that helps people find information online by indexing websites and then matching those websites to the search query. 
+* When a search term is entered, the search engine looks at its index and returns a list of websites that it thinks are relevant to the query. 
 
-> A [**web crawler**], also known as a spider or spiderbot, is an automated program that systematically browses the World Wide Web, gathering information and performing various tasks like indexing websites for search engines. 
+<br>
 
-> A [**search query**] is a set of keywords or a phrase that you enter into a search engine to find information on the internet. 
+A `web crawler`, also known as a spider or spiderbot, is an automated program that systematically browses the World Wide Web, gathering information and performing various tasks like indexing websites for search engines. 
 
----
+<br>
+
+A `search query` is a set of keywords or a phrase that you enter into a search engine to find information on the internet. 
+
+<br>
+
+[Back To Top](#search-engines)
+
+___
+
+<br>
 
 # `Internet Search Engines`
 
@@ -32,44 +63,79 @@ Some Others:
 [OneSearch](https://www.onesearch.com/)
 [SwissCows](https://swisscows.com/en?culture=en)
 
----
+<br>
+
+[Back To Top](#search-engines)
+
+___
+
+<br>
 
 # `How does a search engine work?`
 
-> A [**search engine**] works by using automated programs called crawlers or spiders to systematically browse and index web pages across the internet. The search engine then stores this indexed information in a massive database. When a user submits a query, the search engine's algorithm analyzes the query, retrieves the most relevant indexed pages, and ranks them based on factors like keyword relevance, page authority, and user experience, before displaying the results to the user.
+A `search engine` works by using automated programs called crawlers or spiders to systematically browse and index web pages across the internet. 
+* The search engine then stores this indexed information in a massive database. 
+* When a user submits a query, the search engine's algorithm analyzes the query, retrieves the most relevant indexed pages, and ranks them based on factors like keyword relevance, page authority, and user experience, before displaying the results to the user.
 
-## 1. Web Crawling:
+<br>
 
-> Search engines use automated programs called crawlers or spiders to explore the web. These crawlers start from a set of known web pages and follow links to discover new pages. They continuously move from one page to another, collecting information along the way.
+### 1. `Web Crawling:`
+* Search engines use automated programs called crawlers or spiders to explore the web. 
+* These crawlers start from a set of known web pages and follow links to discover new pages. 
+* They continuously move from one page to another, collecting information along the way.
 
-## 2. Indexing:
+<br>
 
-> As the crawlers visit web pages, they analyze and index the content. Indexing involves organizing the information in a structured way that makes it easier to retrieve later. This process typically involves creating an inverted index, which maps keywords to the web pages that contain them.
+### 2. `Indexing:`
+* As the crawlers visit web pages, they analyze and index the content. 
+* Indexing involves organizing the information in a structured way that makes it easier to retrieve later. 
+* This process typically involves creating an inverted index, which maps keywords to the web pages that contain them.
 
-## 3. Ranking:
+<br>
 
-> After indexing, the search engine needs to determine the relevance of each indexed page to specific search queries. Algorithms are employed to assign a rank or score to each page based on various factors, including keyword relevance, page quality, user engagement metrics, and other considerations. Pages that are deemed more relevant are displayed higher in search results.
+### 3. `Ranking:`
+* After indexing, the search engine needs to determine the relevance of each indexed page to specific search queries. 
+* Algorithms are employed to assign a rank or score to each page based on various factors, including keyword relevance, page quality, user engagement metrics, and other considerations. 
+* Pages that are deemed more relevant are displayed higher in search results.
 
-## 4. Query Processing:
+<br>
 
-> When a user enters a search query, the search engine processes the query to understand its intent. This involves parsing the query, identifying keywords, and applying any special rules or filters.
+### 4. `Query Processing:`
+* When a user enters a search query, the search engine processes the query to understand its intent. 
+* This involves `parsing` the query, identifying keywords, and applying any special rules or filters.
 
-> [**Parsing**], also known as syntax analysis, refers to the process of analyzing a string of symbols, be it in natural language, computer languages, or data structures, according to the rules of a defined grammar. The word "parse" itself originates from the Latin term "pars orationis," meaning "part of speech."
 
-## 5. Retrieval:
+`Parsing`, also known as syntax analysis, refers to the process of analyzing a string of symbols, be it in natural language, computer languages, or data structures, according to the rules of a defined grammar. 
 
-> The search engine then retrieves relevant documents from its indexed database based on the user's query. The documents are ranked according to their relevance scores.
+*The word `parse` itself originates from the Latin term "pars orationis," meaning "part of speech."*
 
-## 6. Presentation of Results:
+<br>
 
-> Finally, the search engine displays the results to the user. Typically, the results are presented on a search engine results page (SERP), showing a list of links with brief descriptions (snippets) and other relevant information. Users can click on the links to access the full content of the pages.
+### 5. `Retrieval:`
+* The search engine then retrieves relevant documents from its indexed database based on the user's query. 
+* The documents are ranked according to their relevance scores.
+
+<br>
+
+### 6. `Presentation of Results:`
+* Finally, the search engine displays the results to the user. 
+* Typically, the results are presented on a search engine results page (SERP), showing a list of links with brief descriptions (snippets) and other relevant information. 
+* Users can click on the links to access the full content of the pages.
+
+<br>
 
 ## Diagram
 ![How Search Engines Work](./img/search-engines.svg)
 
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
 
----
+<br>
+
+[Back To Top](#search-engines)
+
+___
+
+<br>
 
 # `Crafting Basic Queries`
 
@@ -78,14 +144,22 @@ Some Others:
 1. Refine your search with new keywords, synonyms, etc.
 1. Iterate (repeat)
 
----
+<br>
+
+[Back To Top](#search-engines)
+
+___
+
+<br>
 
 # `Advanced Search Operators`
-* Google Dorking or Google Hacking is the practice of using advanced search operators and techniques within Google search to find information that might not be readily available through standard searches  
+* `Google Dorking` or `Google Hacking` is the practice of using advanced search operators and techniques within Google search to find information that might not be readily available through standard searches  
 
-* A "dork" is simply a specific search query that uses these advanced operators in a unique way.  
+* A `dork` is simply a specific search query that uses these advanced operators in a unique way.  
 
-## Search Filters:
+<br>
+
+## `Search Filters:`
 |Filter| Description| Example|
 |:-:|:-|:-:|
 |allintext:|Searches for occurrences of all the keywords given.|allintext:"keyword"
@@ -103,9 +177,9 @@ Some Others:
 |related:|List web pages that are “similar” to a specific web page.|related:www.google.com
 |cache:|Shows the version of the web page that Google has in its cache.|cache:www.google.com
 
+<br>
 
-
-## Search Operators:
+## `Search Operators:`
 |Operator| Description| Example|
 |:-:|:-|:-:|
 |Exact Term (“”)|This operator searches for the exact phrase within speech marks only. This is ideal when the phrase you are using to search is ambiguous and could be easily confused with something else, or when you’re not quite getting relevant enough results back.|"Tinned Sandwiches"|
@@ -117,7 +191,9 @@ Some Others:
 |Synonyms ( ~ )|Adding a tilde to a search word tells Google that you want it to bring back synonyms for the term as well. For example, entering “~set” will bring back results that include words like “configure”, “collection” and “change” which are all synonyms of “set”. Fun fact: “set” has the most definitions of any word in the dictionary.|~set|
 |Glob pattern<br>Wildcard Operator ( * )|Putting an asterisk in a search tells Google ‘I don’t know what goes here’. Basically, it’s really good for finding half remembered song lyrics or names of things.|site:*.com
 
-## Example Google Dorks
+<br>
+
+## `Example Google Dorks`
 ```
 intext:"index of /"
 ```
@@ -146,5 +222,13 @@ filetype:config inurl:web.config inurl:ftp
 ext:(doc | pdf | xls | txt | ps | rtf | odt | sxw | psw | ppt | pps | xml) (intext:confidential salary | intext:”budget approved”) inurl:confidential
 ```
 
+<br>
 
+[Back To Top](#search-engines)
+
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt*
 

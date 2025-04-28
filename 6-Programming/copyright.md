@@ -13,25 +13,13 @@ https://choosealicense.com/
 
 Covered in this file:
 1. [`Defining Copyright`]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
+1. [`Licenses`](#licenses)
+    1. [`Creative Commons`](#creative-commons)
+1. [`Open Source`](#open-source)
+1. [`Open Access`](#open-access)
 
 
 <br>
-
-___
-
-<br>
-
-
-# ``
-
-
-<br>
-
-[Back To Top](#copyright)
 
 ___
 

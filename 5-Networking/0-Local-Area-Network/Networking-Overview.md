@@ -1,5 +1,83 @@
 # `Networking Overview`
 
+
+TODO:
+scalability
+client
+server (program/device)
+Network Operating Systems NOS
+    Active Directory
+    Active Directory Domain Services
+    Windows Domain (a group of users, servers, other resources that share account and security policies)
+Network services are resources that the network makes available to users. Includes applications and teh data provided by these applications. 
+
+Client-Server Applications are data or services requested by one computer from another
+
+Backbone is a central conduit of a network that connects network segments and significant shared devices (routers, switches, servers,etc.)
+
+
+
+Network Interface is a network connection made by a node or host on a network
+
+
+Fully Qualified Domain Name (FQDN) (Layer 7 Application) a host name plus a domain name that uniquely identifies a computer or location on a network.
+* `hostname.domain.top-level-domain`
+
+`Domain Name` the last 2 parts of a FQDN. 
+
+`Host Name` is the first part of a FQDN which identifies the individual computer on the network. 
+
+The `Top Level Domain TLD` or `domain suffix` is the last part of the FQDN and is the highest level category used to distinquish domain names
+
+Well Known TLDs
+| TLD       | Description                          |
+|-----------|--------------------------------------|
+| `.arpa`   | Originally for ARPANET; now used for technical infrastructure purposes (e.g., reverse DNS lookups) |
+| `.com`    | Commercial businesses and general use |
+| `.org`    | Nonprofit organizations               |
+| `.net`    | Originally for network infrastructure |
+| `.edu`    | Educational institutions (mainly U.S.)|
+| `.gov`    | U.S. government entities              |
+| `.mil`    | U.S. military                         |
+| `.int`    | International organizations           |
+| `.info`   | Informational websites (Unrestricted Use)|
+| `.biz`    | Business or commercial use            |
+| `.io`     | Originally for British Indian Ocean Territory, now popular with tech startups |
+| `.co`     | Originally for Colombia, widely used as "company" or "corporate" |
+| `.us`     | United States                         |
+| `.uk`     | United Kingdom                        |
+| `.ca`     | Canada                                |
+| `.de`     | Germany                               |
+| `.jp`     | Japan                                 |
+| `.cn`     | China                                 |
+| `.au`     | Australia                             |
+| `.fr`     | France                                |
+| `.in`     | India                                 |
+
+
+IANA (Internet Assigned Numbers Authority) manages the IP address allocation and Domain Name System.
+
+ICANN (Internet Corporation for Assigned Name and Numbers) non-profit currently designated by US Gov to maintain and Assign IP addresses. 
+* Domain Names must be registerd with ICANN
+
+IEEE(Institute of Electrical and Electronics Engineers)
+
+
+
+gateway is a computer router or other device that a host uses to access another network. The Default gateway is the gateway device that nodes on a network turn to first for access. 
+
+
+
+multicast transmissions in which one host sends messages to multiple hosts
+broadcast messages are read by every node on the network.
+
+A broadcast domain is logically grouped network nodes that can communicate directly via broadcast transmissions. By default, switches and repeating devices, such as hubs, extend broadcast domains. Routers and other Layer 3 devices separate broadcast domains.
+* Routersd do not forward broadcast messages. 
+
+
+the area between two firewalls is called a demilitarized zone or DMZ
+
+
 <br>
 
 ___
@@ -43,18 +121,26 @@ A `computer network` is a system of interconnected devices that communicate and 
 
 <br>
 
-Networks are categorized by thier size, and scope. 
-
-| Network Type| Description|
-|:-|:-|
-| `Local Area Network (LAN)`| Covers a limited area, such as a home, school, or office building.|
-| `Wide Area Network (WAN)` | Spans larger geographic areas, often connecting multiple LANs over cities, countries, or continents.|
-| `Metropolitan Area Network (MAN)` | Connects networks within a city or metropolitan area.|
-| `Internet` | Global system of interconnected networks that allows devices worldwide to communicate and exchange information. |
+* A Network `Node` is computer or device on a network that has a unique local address, allowing other devices on the same network to find and communicate with it.
+* A Network `Host` is an computer on a network that hosts a resource on the network (applications, services, data, etc.)
 
 <br>
 
-There are two basic network models: 
+Networks are categorized by thier size, and scope. 
+
+| Network Type                   | Description |
+|:------------------------------|:------------|
+| `Personal Area Network (PAN)` | Covers a very short range, typically a few meters, and connects personal devices such as smartphones, tablets, and `Bluetooth` peripherals. |
+| `Local Area Network (LAN)`    | Covers a limited area, such as a home, school, or office building. <br> Each node can communicate directly with other nodes. |
+| `Campus Area Network (CAN)`   | Connects multiple LANs within a campus, such as a university or business complex. |
+| `Metropolitan Area Network (MAN)` | Connects networks within a city or metropolitan area. |
+| `Wide Area Network (WAN)`     | Spans larger geographic areas, often connecting multiple LANs over cities, countries, or continents. |
+| `Internet`                    | Global system of interconnected networks that allows devices worldwide to communicate and exchange information. |
+
+
+<br>
+
+There are two basic network reference models: 
 * `OSI (Open Systems Interconnection)` model 
 * `TCP/IP (Transmission Control Protocol/Internet Protocol)` model. 
 
@@ -64,7 +150,7 @@ Both models serve as a framework to understand and design network protocols and 
 
 <br>
 
-For More on these Networking Models see [Networking-Models.md](Networking-Models.md)
+For More on these Networking Reference Models see [Networking-Reference-Models.md](Networking-Reference-Models.md)
 
 
 <br>
@@ -106,7 +192,7 @@ Data traveling throughout networks is `encapsulated` into different `Protocol Da
 
 | Layer | PDU (Protocol Data Unit) | Data Representation  | Function  |
 |:-:|-|-|-|
-| Application Layer | `Data` | Data| User interface and application services|
+| Application Layer | `Data` or `Payload` | Data| User interface and application services|
 | Transport Layer | `Segment (TCP)`/ `Datagram (UDP)` | Segments / Datagrams | Manages end-to-end communication and error-checking |
 | Network Layer | `Packet` | Packets | Routes data across different networks|
 | Data Link Layer | `Frame`| Frames| Manages node-to-node data transfer on a network segment |
@@ -360,6 +446,15 @@ ___
 # `Network Switch : Layer 2 Data Link`
 
 A `Network Switch` is a hardware device that connects devices within a LAN. It is a multiport bridge that uses `media access control (MAC)` addresses to route data at the `data link layer (layer 2)` of the `open systems interconnect (OSI) model`.
+<br>
+
+Media Access Control (MAC) Addresses
+* aka physical address, hardware address, or Data Link Layer Address
+
+TODO:
+MAC addresses are short range and only used to find nodes on the local network.
+
+More on MAC addresses : [`MAC-Addresses.md`](./MAC-Addresses.md)
 
 <br>
 
@@ -391,6 +486,12 @@ Frame Diagram
 | FCS (Frame Check Sequence)                                                  |
 +-----------------------------------------------------------------------------+
 ```
+
+TODO:
+Layer 2
+firmware
+trailer
+Frame includes header payload and trailer
 
 <br>
 
@@ -442,6 +543,51 @@ Packet Diagram
 | Destination IP     | Source IP          | Protocol            | Packet Data (Payload) | Header Checksum |
 +--------------------+--------------------+---------------------+-----------------------+-----------------+
 ```
+
+<br>
+
+TODO:
+`Internet Protocol (IP)` a core protocol of TCP/IP and the priciple protocol of the Network Layer (Layer 3) that provides information about how and where data should be delivered. 
+* `IP addresses` are unique addresses assigned to each node in a TCP/IP network. 
+    * Two versions `IPv4` and `IPv6`
+
+
+
+<br>
+
+A `Packet` is the entire Network Layer message.<br>
+Including:
+1. Network Layer Header 
+2. Segement (TCP) or Datagram (UDP) from Layer 4
+
+<br>
+
+
+
+Maximum Transmission Unit
+Fragmentation is a Network Layer service that subdivides packets into smaller packets when those packets exceed the maximum size for the network.
+
+
+Layer 3 Protocols
+ICMP
+
+
+`Time to Live TTL` is the maximum duration that an IPv4 packet can remain on thet network before it is discarded. It represents the number of router hops remaining before the packet is dropped. 
+
+----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br>
 
 [Back To Top](#networking-overview)
@@ -590,6 +736,19 @@ Many modern networking setups use a single device that combines the functions of
 ``` 
 
 
+`TODO:`
+Topology
+Physical Topology vs. Logical Topology
+Physical Topology is the physical layout of the media, nodes, and devices on a network.
+Logical topology is the way in which data is transmitted between nodes, including network and resource access controls. 
+star topology
+mesh topology
+star-bus toplogy
+bus topology
+hybrid topology
+ring topology
+
+
 
 <br>
 
@@ -609,6 +768,7 @@ The term `Internet` comes from "inter-network," meaning "between networks." It i
 An `Internet Service Provider (ISP)` provides access to the infrastructure needed to connect to the Internet.
 * This is the company you purchase your Internet service from. 
 
+<br>
 
 
 
@@ -639,8 +799,10 @@ A `Port` serves as a logical communication endpoint for applications and service
 
 ### `At Layer 4 Transport`  
 There are 2 protocols:  
-* Transmission Control Protocol (TCP)(Connection-Oriented)  
-      * User Datagram Protocol (UDP)(Connectionless)  
+* `Transmission Control Protocol (TCP)(Connection-Oriented)  `
+* `User Datagram Protocol (UDP)(Connectionless)`  
+
+<br>
 
 UDP  
 * Data is packaged as `Datagrams`  
@@ -697,6 +859,28 @@ TCP
 <br>
 
 For more on Ports, Protocols, and Services: [Ports-Protocols-Services.md](Ports-Protocols-Services.md)
+
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+
+`TODO:`
+
+Session
+Presentation
+Application
+
+`Payload Data` is data passed between applications or utility programs and the operating system, and includes control information.
+
+`Header` data added to the beginning of a payload where protocols add control information.
+
+
+`Encapsulation` the processs of adding a header to data inherited from the layer above. 
 
 <br>
 

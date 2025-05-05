@@ -1,6 +1,6 @@
-# `Networking Models`
+# `Networking Reference Models`
 
-`Networking models` are conceptual frameworks that describe how various networking protocols and technologies interact and operate to enable communication between devices on a network. These models help standardize and organize network functionalities, making it easier to design, implement, and troubleshoot network systems. 
+`Networking Reference models` are conceptual frameworks that describe how various networking protocols and technologies interact and operate to enable communication between devices on a network. These models help standardize and organize network functionalities, making it easier to design, implement, and troubleshoot network systems. 
 
 Two primary networking models are widely used: the `OSI model` and the `TCP/IP model`.
 
@@ -35,6 +35,13 @@ The `OSI model` is a theoretical framework developed by the International Organi
 | 3 | Network| Handles routing of data `packets` between devices across different networks. Uses `IP` addresses for addressing and routing. |
 | 2 | Data Link| Provides node-to-node data transfer and error detection. Manages `MAC` addresses and frames data for transmission over the physical layer. |
 | 1 | Physical | Deals with the physical connection between devices, including cables, switches, and electrical signals. Defines `hardware elements of a network`. |
+
+
+<br>
+
+A mneumonic device can be help in memorizing the layers of the OSI:
+
+* `A`ll `P`eople `S`eem `T`o `N`eed `D`ata `P`rocessing
 
 <br>
 

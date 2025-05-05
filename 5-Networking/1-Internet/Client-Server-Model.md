@@ -4,6 +4,7 @@ Namespace Databases:
 DNS follows a distributed database model, storing the DNS namespace data over thousands of servers. 
 
 Namespace databases are stored in DNS zone files which store information in resource records. 
+* Each resource begins with a TTL field that identifies how long the record should be saved in a cache or server.
 
 [ICANN Registration Data Lookup Tool](https://lookup.icann.org/en)
 Name Servers:

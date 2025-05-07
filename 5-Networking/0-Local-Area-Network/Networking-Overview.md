@@ -692,17 +692,103 @@ IPv6 uses ICMPv6 to perform the functions of ICMPv4 and ARP in IPv4 netowrks.
 
 `Time to Live TTL` is the maximum duration that an IPv4 packet can remain on thet network before it is discarded. It represents the number of router hops remaining before the packet is dropped. 
 
-----------------------------------
 
 
+Routers
+* Connect networks including networks that use different routing protocols
+* Interpret Layer 3 and Layer 4 addressing and other information
+* Determine the best path for data to follow from point A to point B.
+* Reroute traffic if the path of first choice is not available, but another path is available.
+* Have two or more network ports, each that connects to a different network.
+    * Each connection is assigned an interface ID, and logically belongs to every network it connects to.
+
+The `best path` is the most efficient route to a message's destination calculated by the router.
+
+An `autonomous system (AS)` is a group of networks, often in the same domain, that are operated by the same organization.
+* Sometimes refered to as a `trusted network`.
+
+Routers are categorized by their location in a network or the Internet and the routing protocols they use.
+* `Core routers` or `interior routers` are located inside of networks with the same `autonomous system (AS)` and only communicate with routers in the same AS. 
+* `Edge routers` or `border routers` connect an AS with an outside network (aka untrusted network).
+* `Exterior routers` refer to any routers outside of an organization's AS.
+
+Multilayer Switches are switches that are capable of operating at layers above Layer 2.
+* Layer 3 switches can interpret Layer 3 data and work like a router
+* Layer 4 switches can interpret Layer 4 data and operate between Layers 4-7. Also called content switchs or application switches.
 
 
+Routing:
+A routing table is a database of where hosts are located on a network and the most efficient paths to reach them.
+* Routers rely on routing tables to identify which network a host belongs, and the path to that network. 
+* If more than route is possible routing metrics are used to determine the most efficient route
+
+Routing metrics are properties of route used by routing protocols to determine the best path to a destination.
+* Metrics may be calculated using: hop count, bandwidth, delay, MTU, cost, and reliability.
+
+A `default route` is the backup route used when a router cannot determine a path to a messages destination.
+* This is usually another router.
+* If a default route is not defined then the packet is dropped.
+
+The `gateway of last resort` is the router on a network that accepts all unroutable messages from other routers.
+
+Routing Path Types
+`Static routing` is a method of routing where a  network admin programs the router to use specific paths between networks.
+`Dynaimic routing` is a method of routing where the router automatically calculates the best path between two networks and stores the information in a routing table. 
+
+TO view the routing table on a host
+Linux or UNIX
+
+    route
+
+Windows
+
+    route print
+
+Cisco's IOS
+
+    show ip route
 
 
+Routing Metrics:
+Hop Count is the number of network segments crossed
+Bandwidth, theoretical bandwidth and actual throughput
+`Latency` is the delay between the transmission of a signal and its reciept.
+Load is the amount of traffic or processing burden sustained by a router in the path.
+MTU, largest IP packet size without fragmentation
+Routing cost value assigned to a route as judged by a network admin. Better path equals lower cost.
+Reliability based on history
+Network topology.
 
 
+`Routing protocols` are the ways in which routers communicate with one another about network status. They are used to determine the best path between networks. 
+
+Routers rate the reliability and prioty of a routing protocol's data by:
+* Administrative distance (AD), a number indicating a protocol's reliability, with lower values given higher priority.
+* Convergence Time, the time it takes for a router to recognize a best path in the event of a change or network outage
+* Overhead, the burden placed on the network to support the protocol.
 
 
+| Protocol | Full Name| Type | Interior/Exterior | Algorithm    | Description |
+|--|---|------|---|--|--|
+| RIP | Routing Information Protocol    | IGP  | Interior| Distance Vector (Bellman-Ford)  | Uses hop count; simple, suitable for small networks. |
+| OSPF| Open Shortest Path First   | IGP  | Interior| Link State (Dijkstra's SPF)| Fast convergence; supports large, hierarchical networks.  |
+| EIGRP    | Enhanced Interior Gateway Routing Protocol| IGP  | Interior| Advanced Distance Vector (DUAL) | Cisco protocol combining DV and LS features.  |
+| IS-IS    | Intermediate System to Intermediate System| IGP  | Interior| Link State (Dijkstra's SPF)| Scalable, used in large enterprise and ISP networks. |
+| BGP | Border Gateway Protocol    | EGP  | Exterior| Hybrid | Core Internet protocol for routing between autonomous systems.|
+
+
+`Interior Gateway Protocols` are routing protocols used by core routers and edge routers within and autonomous system.
+* Distance Vector routing protocols are the simplest type of routing protocols and determine best rout for data based on the distance to the destination.
+* Link-state routing protocols is a type of routing protocol that enables routers to share information beyond neighboring routers, after which each router can independently map the network and determine the best path between itself and a message's destination node.
+
+
+`Exterior Gateway Protocols` are routing protocols used by edge routers and exterior routers to distribute data outside of autonomous systems. 
+* `Border Gateway protocol` is the only routing protocol that communicates across the internet. Dubbed the "protocol of the Internet" and consi
+
+
+Neighbor Discovery is the process in which routers learn about all the devices on their networks. 
+* ARP and ICMP on IPv4 networks
+* Neighbor Discovery Protocol (NDP) on IPv6 Networks
 
 
 

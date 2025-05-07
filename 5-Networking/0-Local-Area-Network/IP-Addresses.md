@@ -94,6 +94,20 @@ The `Internet Protocol (IP)` is a set of rules and standards that govern how dat
 
 <br>
 
+The `Internet Protocol IP` operates at Layer 3 : Network of both the OSI and TCP/IP models and allows for internetworking. 
+* Internetwork means to traverse more than one LAN segment and more than one type of network through a router.
+* IP is a connectionless protocol (does NOT establish a session) 
+
+<br>
+
+At Layer 3 Data is organized into packets for traversal on the internet.
+* Each packet travels separately from all other packets in its series
+* Packets may take different routes to reach the same destination
+* TCP ensure packet messages are put back in the correct order
+* TCP/UDP ensure that each message reaches teh correct application on the recieving host. 
+
+<br>
+
 [Back To Top](#internet-protocol-addresses)
 ___
 

@@ -75,7 +75,15 @@ A broadcast domain is logically grouped network nodes that can communicate direc
 * Routersd do not forward broadcast messages. 
 
 
-the area between two firewalls is called a demilitarized zone or DMZ
+The area between two firewalls is called a demilitarized zone or DMZ
+
+
+
+
+
+
+
+
 
 
 <br>
@@ -480,11 +488,25 @@ More on MAC addresses : [`MAC-Addresses.md`](./MAC-Addresses.md)
 
 Frame Diagram
 ```
-+----------------+-------------------+-------------------+--------------------+
-| Destination MAC| Source MAC        | Type/Length       | Payload/Data       |
-+----------------+-------------------+-------------------+--------------------+
-| FCS (Frame Check Sequence)                                                  |
-+-----------------------------------------------------------------------------+
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                    Preamble (7 bytes)                         |  
+|           10101010 pattern for synchronization                |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+| Start Frame Delimiter (1 byte): 10101011                      |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|               Destination MAC Address (6 bytes)               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                 Source MAC Address (6 bytes)                  |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|     Ethertype (2 bytes)      |                                |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|               Payload / Data (46 to 1500 bytes)               |  
+|     (e.g., IP packet with headers and application data)       |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|           Frame Check Sequence (CRC32, 4 bytes)               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
 TODO:
@@ -492,6 +514,49 @@ Layer 2
 firmware
 trailer
 Frame includes header payload and trailer
+
+
+`Address Resolution Protocol ARP` is a Layer 2 : Data Link protocol that works with IPv4 to discover MAC addresses on nodes in a local network and to maintain a database that maps local IP addresses to MAC addresses. 
+* ARP works at Layer 2 but uses IP at Layer 3, therefore it is sometimes said to work a Layer 2.5
+* ARP only works within its local network bounded by routers. 
+* ARP relies on broadcasting to all nodes on the network segment.
+
+<br>
+
+`ARP Table` or `ARP Cache` is a database of records that maps MAC addresses to IP addresses. An ARP table is stored on storage device on a computing device and is used by the ARP utility to supply MAC addresses of network nodes, given their IP addresses. 
+
+<br>
+
+Dynamic ARP table entries are records that are created when a client makes and ARP request that cannot be satisfied by data already in the ARP table. 
+
+Static ARP table entries are records that have been manually entered using an ARP utility. 
+
+On Windows and Linux a command line ARP utility exists called `arp` and can be used to retrieve and manipulate ARP table information.
+
+    arp -a
+
+This command returns the ARP table on the device.
+
+On Linux
+
+    ip neigh
+
+Is a newer command that performs the same task.
+
+<br>
+
+Ethernet II is the current Ethernet standard and is distinguished from other Ethernet frame types in that it contains a 2 byte field to identify the upper-layer protocol contained in the frame. 
+* Ethernet adds both a header and a trailer to the payload data.
+* Mininmum Frame Size 64 bytes
+* Maximum Frame Size 1518 bytes
+* VLANs have an extra 4-byte field between source and Type used to manage VLAN traffic
+
+<br>
+
+Maximum Transmission Unit MTU is the largest size in bytes that routers in a message's path will allow at the Network Layer and therefore defines the maximum payload size that a Layer 2 frame can encapsulate. 
+* For Ethernet the default MTU is 1500 bytes
+* Some special purpose networks use a special version of Ethernet that allows for a `jumbo frame` which can have an MTU as high as 9198 bytes.
+
 
 <br>
 
@@ -537,11 +602,51 @@ See [IP-Addresses](IP-Addresses.md) for more on IP Addresses.
 
 <br>
 
-Packet Diagram
+Packet Diagrams
+
+### IPv4 Packet
+* The numbers represent bit positions 0-31 (32 bits/ 4 bytes)
 ```
-+--------------------+--------------------+---------------------+-----------------------+-----------------+
-| Destination IP     | Source IP          | Protocol            | Packet Data (Payload) | Header Checksum |
-+--------------------+--------------------+---------------------+-----------------------+-----------------+
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|Version|  IHL  |Type of Service|        Total Length           |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|       Identification          |Flags|     Fragment Offset     |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|  Time to Live |    Protocol   |        Header Checksum        |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                     Source Address                            |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                  Destination Address                          |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                    Options (if any)           |    Padding    |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                     Payload Data                              |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+
+### IPv6 Packet
+* The numbers represent bit positions 0-31 (32 bits/ 4 bytes)
+```
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|Version| Traffic Class |           Flow Label                  |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|         Payload Length        |  Next Header  |  Hop Limit    |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                                                               |  
+|                     Source Address (128 bits)                 |  
+|                                                               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                                                               |  
+|                 Destination Address (128 bits)                |  
+|                                                               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                     Payload Data                              |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
 <br>
@@ -569,8 +674,21 @@ Fragmentation is a Network Layer service that subdivides packets into smaller pa
 
 
 Layer 3 Protocols
-ICMP
+`Internet Control Message Protocol ICMP` is a Layer 3 Network protocol that reports on the success or failure of data delivery. 
 
+```
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|     Type      |     Code      |          Checksum             |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|           Identifier          |        Sequence Number        |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                          Payload Data                         |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+IPv6 uses ICMPv6 to perform the functions of ICMPv4 and ARP in IPv4 netowrks. 
 
 `Time to Live TTL` is the maximum duration that an IPv4 packet can remain on thet network before it is discarded. It represents the number of router hops remaining before the packet is dropped. 
 
@@ -804,9 +922,11 @@ There are 2 protocols:
 
 <br>
 
-UDP  
+User Datagram Protocol UDP is a connectionless protocol.
+* Does not guarantee delivery of data.
 * Data is packaged as `Datagrams`  
-* Datagrams are routed to `UDP Ports`  
+* Datagrams are routed to `UDP Ports`
+* Faster and more efficient than TCP  
 
 ```
 +---------------------------------------------------------+
@@ -826,35 +946,59 @@ UDP
 
 <br>
 
-TCP  
+Transmission Control Protocol TCP is a connection oriented protocol.
+* Uses a `three-way handshake` to establish a TCP connection. 
 * Data is packaged as `Segments`  
 * Segments are routed to `TCP Ports`  
+* A `checksum` is used to verify data integrity and reciept.
 
 ```
-+---------------------------------------------------------+
-|                      TCP Segment                        |
-+---------------------------------------------------------+
-| Destination Port (2 bytes)                              |
-+---------------------------------------------------------+
-| Source Port (2 bytes)                                   |
-+---------------------------------------------------------+
-| Sequence Number (4 bytes)                               |
-+---------------------------------------------------------+
-| Acknowledgment Number (4 bytes)                         |
-+---------------------------------------------------------+
-| Data Offset (4 bits) | Reserved (3 bits) |Flags (9 bits)|
-+---------------------------------------------------------+
-| Window Size (2 bytes)                                   |
-+---------------------------------------------------------+
-| Checksum (2 bytes)                                      |
-+---------------------------------------------------------+
-| Urgent Pointer (2 bytes)                                |
-+---------------------------------------------------------+
-| Options (variable length)                               |
-+---------------------------------------------------------+
-| Data (variable length)                                  |
-+---------------------------------------------------------+
++---------------------------------------------------------------+
+|                      TCP Segment                              |
++---------------------------------------------------------------+
+| Destination Port (2 bytes)                                    |
++---------------------------------------------------------------+
+| Source Port (2 bytes)                                         |
++---------------------------------------------------------------+
+| Sequence Number (4 bytes)                                     |
++---------------------------------------------------------------+
+| Acknowledgment Number (4 bytes)                               |
++---------------------------------------------------------------+
+| TCP Header Length (4 bits) | Reserved (6 bits) |Flags (6 bits)|
++---------------------------------------------------------------+
+| Window Size (2 bytes)                                         |
++---------------------------------------------------------------+
+| Checksum (2 bytes)                                            |
++---------------------------------------------------------------+
+| Urgent Pointer (2 bytes)                                      |
++---------------------------------------------------------------+
+| Options (0-4 bytes)                                           |
++---------------------------------------------------------------+
+| Paddin (variable length)                                      |
++---------------------------------------------------------------+
+| Data (variable length)                                        |
++---------------------------------------------------------------+
 ```
+
+<br>
+
+Steps in a Three Way Handshake
+1. Synchronize Request (SYN): 
+* the requesting computer selects a random number to synchronize communication. 
+* the SYN bit is set to 1 meaning the SYN flag is activated indicating the request to communicate and synchronize sequence numbers. 
+* the ACK bit is usually set to 0 since the responding computer has not yet sent a response.
+
+2. Synchronize/Acknowledge (SYN/ACK) computer 2 recieves the SYN request and responds with a segment.
+* The ACK and SYN bits are both set to 1.
+* The Acknowledgement number field contains a number that equals the sequence number computer 1 orginally sent, plus 1. 
+* The sequence number field computer 2 sends its own random number.
+
+3. Acknowledge (ACK) computer 1 recieves the SYN/ACK and responds with a segment.
+* Containing the expected sequence number from computer 2
+* The Acknowledgement number field equals the sequence number that computer 2 sent plus 1.
+* The ACK bit is set to 1.
+
+4. The connection has now been established. 
 
 <br>
 

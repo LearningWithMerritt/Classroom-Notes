@@ -780,17 +780,18 @@ Routers rate the reliability and prioty of a routing protocol's data by:
 `Interior Gateway Protocols` are routing protocols used by core routers and edge routers within and autonomous system.
 * Distance Vector routing protocols are the simplest type of routing protocols and determine best rout for data based on the distance to the destination.
 * Link-state routing protocols is a type of routing protocol that enables routers to share information beyond neighboring routers, after which each router can independently map the network and determine the best path between itself and a message's destination node.
+* Hybrid Routing protocol is a routing protocol that exhibits characteristics of both distance-vector and link-state routing protocols.
 
 
 `Exterior Gateway Protocols` are routing protocols used by edge routers and exterior routers to distribute data outside of autonomous systems. 
 * `Border Gateway protocol` is the only routing protocol that communicates across the internet. Dubbed the "protocol of the Internet" and consi
 
 
-Neighbor Discovery is the process in which routers learn about all the devices on their networks. 
+`Neighbor Discovery` is the process in which routers learn about all the devices on their networks. 
 * ARP and ICMP on IPv4 networks
 * Neighbor Discovery Protocol (NDP) on IPv6 Networks
 
-
+`Spoofing` is the act of impersonating fields of data in a transmission, such as when a source IP address is impersonated ina DRDoS attack.
 
 <br>
 

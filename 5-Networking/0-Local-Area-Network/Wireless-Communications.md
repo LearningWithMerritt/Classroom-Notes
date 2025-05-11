@@ -34,7 +34,7 @@ Covered in this file:
 `Wireless Local Area Network WLAN ` is a LAN that uses wireless connections for some or all of its transmissions. 
 
 `Wireless spectrum` commonly called airwaves is a spectrum of electromagnetic waves used for data and voice communication. 
-* Defined by the Federal Communication Commision FCC
+* Defined by the Federal Communication Commission FCC
 * bands aka frequency ranges between 9kHz and 300GHz are used for wireless technologies
 
 | Technology          | Frequency Range           | Channels / Notes                                                             | Description                                                                 |
@@ -60,7 +60,7 @@ Covered in this file:
 
 <br>
 
-#### `Bands are devided into channels and channels are dvided into narrowband channels`
+#### `Bands are divided into channels and channels are divided into narrowband channels`
 
 `Frequency Hopping Spread Spectrum FHSS` is a wireless signaling technique in which a signal jumps between several different frequencies within a band in a synchronization pattern known to the channel's receiver and transmitter. 
 
@@ -125,9 +125,9 @@ ANT+ uses a fixed frequency and therefore does not use DSSS or FHss
 # `Antennas`
 
 Antennas are hardware that are used for both the reception and transmission of wireless signals. 
-* Radiation Pattern is the relative strength over a 3D area of all the electromagnetic energy an antenna sends or recieves. 
+* Radiation Pattern is the relative strength over a 3D area of all the electromagnetic energy an antenna sends or receives. 
 * Unidirectional Antenna aka Directional Antenna is a type of antenna that issues wireless  signals along a single direction, or path. 
-* Omnidirectional antenna is a type of antenna that recieves wireless signals with equal strength and clarity in all directions.
+* Omnidirectional antenna is a type of antenna that receives wireless signals with equal strength and clarity in all directions.
 * An antenna's range is the geographical area in which signals issued from an antenna or wireless system can be consistently and accurately received. 
 
 
@@ -135,7 +135,7 @@ Antennas are hardware that are used for both the reception and transmission of w
 Propagation is the way in which a wave travels from one point to another. 
 
 
-Line of Sight LOS is a type of propagation where a wireless signal or path that travels directly in a straight line from its transmitter to its intended reciever. 
+Line of Sight LOS is a type of propagation where a wireless signal or path that travels directly in a straight line from its transmitter to its intended receiver. 
 
 Wireless Propagation Phenomena:
 | Phenomenon   | Description                                                                                   | Effects on Wireless Signals                                                  |
@@ -159,8 +159,77 @@ Wireless Propagation Phenomena:
 The `Internet of Things IoT` is made up of any device connected to the internet. 
 
 
-Wireless personal area network WPAN is defined in the IEEE 802.15 specification and is a purely wireless personall area network.
+Wireless personal area network WPAN is defined in the IEEE 802.15 specification and is a purely wireless personal area network.
 * 802.15.1 Bluetooth
 * 802.15.3 High-Rate WPANs
 * 802.15.4 Zigbee, Thread and low-rate WPAN protocols
 * 802.15.6 Body Area Networks BANs used in medical and wearable devices. 
+
+
+
+`Radio Frequency Identification RFID` is a wireless technology that uses electromagnetic fields to store data on a small chip in a tag, which includes an antenna that can both transmit and receive, and possible a battery.
+
+
+| Term  | Description | Typical Use Case |
+|--|--|--|
+| `Active Reader Passive Tag` <br> `ARPT` | The reader actively sends out signals, while the passive tag responds using energy from the reader’s signal | Common in supply chain tracking and access control |
+| `Passive Reader Active Tag` <br> `PRAT` | The reader listens passively for signals broadcasted by battery-powered active tags | Used in real-time location systems (RTLS) and long-range tracking |
+| `Active Reader Active Tag` <br> `ARAT` | Both reader and tag are powered; the tag sends signals actively to the reader | Employed in high-value asset tracking and secure access systems |
+
+<br>
+
+`Near-Field Communication NFC` is a form of radio communication that transfer data wirelessly over very short distances.
+* typically 10 cm or less
+
+| Tag Type | Storage                      | Speed (kbps)     | Configuration                          |
+|----------|------------------------------|------------------|----------------------------------------|
+| Type 1   | 96 bytes – 2 KB              | 106              | Passive, simple protocol, low cost     |
+| Type 2   | 48 bytes – 2 KB              | 106              | Passive, widely used, simple read/write|
+| Type 3   | Up to 1 MB                   | 212 or 424       | Passive, complex protocol, fast data exchange |
+| Type 4   | Up to 32 KB                  | 106, 212, 424    | Passive, supports encryption, configurable access |
+| Type 5   | Up to 64 KB                  | 26.48            | Passive, ISO 15693-based, long-range   |
+
+
+<br>
+
+Based on  Ultra Wide Band radio platform UWB, W-USB products mimic wired USB 2.0 connections with similar speeds, security, ease of use, and compatibility.
+* Transmit in the range between 2.1 and 10.6 GHz
+* 2.4 and 5 GHz included or the WIGig protocols faster throughput in the 60 GHz band.
+* Operates within 10 m
+
+<br>
+
+`Infrared or Infrared Radiation IR` is a wireless technology that uses a bandwidth just below the spectrum that is visible to the human eye, with longer wavelengths than red light. * * standards are defined by the `Infrared Data Association IrDA`
+
+<br>
+
+`Wi-Fi` is the set of IEEE standards and their amendments, extensions, and corrections for wireless networking.
+* 802.11 Standards vary at the Physical Layer.
+
+`MAC Sublayer` is the lower portion of the Data Link layer that is specifically involved with managing MAC addresses in message frames.
+
+`Logical Link Control LLC Sublayer` is a sublayer of Layer 2 that is primarily concerned with multiplexing, flow and error control, and reliability.
+
+| Standard | Frequency Band | Max Bandwidth     | Geographic Range         |
+|----------|----------------|-------------------|--------------------------|
+| 802.11b  | 2.4 GHz         | 11 Mbps           | ~35 meters (indoor) / ~140 meters (outdoor) |
+| 802.11a  | 5 GHz           | 54 Mbps           | ~35 meters (indoor) / ~120 meters (outdoor) |
+| 802.11g  | 2.4 GHz         | 54 Mbps           | ~38 meters (indoor) / ~140 meters (outdoor) |
+| 802.11n  | 2.4 GHz / 5 GHz | 600 Mbps (theoretical) | ~70 meters (indoor) / ~250 meters (outdoor)   |
+| 802.11ac | 5 GHz           | 1.3 Gbps (wave 1) – 6.9 Gbps (wave 2) | ~35 meters (indoor) / ~100 meters (outdoor) |
+
+
+Access Methods
+Wireless devices are not designed to transmit and receive simultaneously, and so cannot prevent collisions. 
+
+`Carrier Sense Multiple Access with Collision Avoidance CSMA/CA` is a network access method used on 802.11 wireless networks. It minimizes the potential for collisions. 
+1. Using CSMA/CA a node on an 802.11 network checks for existing wireless transmissions before it begins to send data.
+    1. If the source node detects no transmission activity it waits a brief random amount of time and then sends its transmission
+    1. If the source node does detect activity, it waits a brief period of time before checking again.
+
+2. The destination nodes receives the transmission and, after verifying its accuracy, issues and ACK packet to the source.
+    1. If the source receives this ACK, it assumes the transmission was properly completed. 
+    1. Interference or other transmissions can impede this exchange. If the ACK is not received then the process starts over. 
+
+
+`Request to Send/Clear to Send RTS/CTS` an exchange is which a source node requests the exclusive right to communicate with an access point and the access point confirms that it has granted that request.

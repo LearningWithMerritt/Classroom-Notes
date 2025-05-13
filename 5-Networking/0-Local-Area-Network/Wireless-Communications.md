@@ -77,7 +77,7 @@ Each channel is 20 MHz wide.
 `Access Point AP` is a device used on WLANs that accepts wireless signals from multiple nodes and retransmits them to the rest of the network. 
 
 
-Bluetooth as defined in the IEEE  802.15.1 standard is a low-power wireless technology that provides close-range communication between devices such as PCs, smartphones, tablets, and accessories. 
+`Bluetooth` as defined in the IEEE  802.15.1 standard is a low-power wireless technology that provides close-range communication between devices such as PCs, smartphones, tablets, and accessories. 
 * Bluetooth uses FHSS
 * 79 channels for the Bluetooth band
 * A piconet is a network of Bluetooth devices. 
@@ -90,7 +90,7 @@ Bluetooth as defined in the IEEE  802.15.1 standard is a low-power wireless tech
 | Class 2   | 2.5 mW (4 dBm)      | Up to 10 meters       | Most Bluetooth headsets, phones, laptops             |
 | Class 3   | 1 mW (0 dBm)        | ~1 meter              | Short-range communication, very low power devices    |
 
-Pairing is the process of two Bluetooth devices communicating with each other. 
+`Pairing` is the process of two Bluetooth devices communicating with each other. 
 | Step | Description                                                                                   |
 |------|-----------------------------------------------------------------------------------------------|
 | 1. Discovery         | Devices scan for nearby Bluetooth-enabled devices in pairing mode.              |
@@ -105,19 +105,19 @@ Pairing is the process of two Bluetooth devices communicating with each other.
 
 
 
-Zigbee is based on the IEEE 802.15.4 standard and is a low-powered, battery conserving wireless technology that handles small amounts of data.
+`Zigbee` is based on the IEEE 802.15.4 standard and is a low-powered, battery conserving wireless technology that handles small amounts of data.
 * Used in industrial, scientific, and medical sensors
 * Used in IoT devices: building automation, HVAC control, Automatic Meter Reading AMR, and fleet management. 
 * ZigBee uses DSSS
 * 16 channels
 * AES-128 bit encryption
 
-Z-Wave is a smart home protocol that provides two basic types of functions: signaling, to manage wireless connections, and control, to transmit data and commands between devices.
+`Z-Wave` is a smart home protocol that provides two basic types of functions: signaling, to manage wireless connections, and control, to transmit data and commands between devices.
 * AES-128 bit encryption
 * Up to 100m per hop, up to 4 hops through repeaters 
 
 
-ANT+ is an open source wireless technology that gathers and tracks information from sensors typically embedded in heart rate monitors, GPS devices, and other activity monitoring devices. 
+`ANT+` is an open source wireless technology that gathers and tracks information from sensors typically embedded in heart rate monitors, GPS devices, and other activity monitoring devices. 
 ANT+ uses a fixed frequency and therefore does not use DSSS or FHss
 
 
@@ -159,7 +159,7 @@ Wireless Propagation Phenomena:
 The `Internet of Things IoT` is made up of any device connected to the internet. 
 
 
-Wireless personal area network WPAN is defined in the IEEE 802.15 specification and is a purely wireless personal area network.
+`Wireless personal area network WPAN` is defined in the IEEE 802.15 specification and is a purely wireless personal area network.
 * 802.15.1 Bluetooth
 * 802.15.3 High-Rate WPANs
 * 802.15.4 Zigbee, Thread and low-rate WPAN protocols
@@ -233,3 +233,64 @@ Wireless devices are not designed to transmit and receive simultaneously, and so
 
 
 `Request to Send/Clear to Send RTS/CTS` an exchange is which a source node requests the exclusive right to communicate with an access point and the access point confirms that it has granted that request.
+
+`Association` is the communication that occurs between a wireless client and an access point enabling the client to connect to a the network via that access point. 
+
+Scanning is the process by which a wireless station finds and access point. 
+* Active Scanning the wireless client takes the initiative and transmit a special frame called a probe. 
+* Passive Scanning the access point takes the initiative and transmits a beacon frame periodically from an AP. 
+
+
+`Service Set Identifier SSID` is a unique characeter string used to identify an access point on an 802.11 network.
+* Basic Service Set BSS in IEEE terminology, is a group of stations that share an access point
+* Basic Service Set Identifier BSSID in IEEE terminology, is the id for a BSS
+* Extended Service Set is a group of access points and associated stations (or BSSs) connected to the same LAN
+* Extended Service Set Identifier ESSID is a special identifier shared by BSSes that belong to the same ESS. 
+
+
+
+`Reassociation` is the process by which a station establishes a connection with (or associates with) a different access point. 
+
+
+
+IEEE 802.11 Frames
+| Frame Type   | Subtype Examples               | Purpose                                                        |
+|--------------|--------------------------------|----------------------------------------------------------------|
+| Management   | Beacon, Probe Request/Response, Association Request/Response | Establish and maintain communication (e.g., network discovery, joining a BSS). |
+| Control      | RTS, CTS, ACK, PS-Poll          | Assist in the delivery and coordination of data frames (e.g., medium access control). |
+| Data         | Data, Null Function, QoS Data   | Carry actual payload between stations, including QoS support.  |
+
+802.11 Frame Structure
+```
++----------------+----------------+----------------+----------------+
+| Frame Control  | Duration/ID    | Address 1 (DA) | Address 2 (SA) |
++----------------+----------------+----------------+----------------+
+| Address 3 (BSSID or RA)         | Sequence Ctrl  | (Address 4)*   |
++----------------+----------------+----------------+----------------+
+|                Frame Body (payload/data)                         |
++---------------------------------------------------------------+
+|                          FCS (CRC)                               |
++---------------------------------------------------------------+
+```
+
+`Multiple Input-Multiple Output MIMO` in 802.11n/ac wireless networking, the ability for access points to use multiple antennas in order to issue multiple signals to stations, thereby multiplying the signal's strength and increasing their range and data-carrying capacity. 
+* `Multiuser MIMO` in 802.11ac the ability for access points to use multiple antennas in order to issue multiple signals to different stations at the same time, reducing congestion and contributing to faster data transmission. 
+
+`Channel Bonding` in 802.11n/ac the combination of two or more adjacent 20-MHz frequency bands to create one 40-, 60-, 80-, or 120- MHz channel. 
+
+Frame Aggregation is the combination of multiple data frames into one larger frame: Aggregated Mac Service Data Unit A-MSDA or Aggregated MAC Protocol Data Unit A-MPDU
+
+<br>
+
+Wireless Toplogies
+| Topology Type     | Description                                                                 | Example Use Case                      |
+|-------------------|-----------------------------------------------------------------------------|----------------------------------------|
+| Infrastructure     | Uses a central Access Point (AP) to connect wireless clients and provide access to a wired network. | Home Wi-Fi, Office networks           |
+| Ad Hoc (IBSS)      | Peer-to-peer mode where devices communicate directly without an AP.         | Temporary network between laptops     |
+| Mesh               | Each node relays data for the network; provides self-healing and redundancy. | Community or campus-wide Wi-Fi        |
+| Wireless Distribution System (WDS) | Extends wireless coverage by connecting APs wirelessly.                        | Bridging two network segments wirelessly |
+
+
+A wireless controller is a central managment console for all the APs on a network. 
+
+Wireless bridge is an access point used to create remote wired access to a network. 

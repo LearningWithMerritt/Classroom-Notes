@@ -428,8 +428,9 @@ ___
 <br>
 
 # `Subnetting`
-`Subnetting` is the process of dividing a larger network into smaller, more manageable sub-networks or subnets. 
-> * It helps optimize network performance and improve security by isolating different segments of a network.
+`Subnetting` is the process of altering the rules of classful IPv4 addressing to divide a larger network into smaller, more manageable sub-networks or subnets. 
+* Also called `classeless addressing`. 
+* It helps optimize network performance and improve security by isolating different segments of a network.
 
 <br>
 
@@ -439,12 +440,16 @@ ___
 
 <br>
 
-`Classless Inter-Domain Routing(CIDR) Notation`: is a compact representation of a subnet mask and specifies the number of bits used for the network portion of the IP address.
+`Classless Inter-Domain Routing (CIDR) Notation`: is a compact representation of a subnet mask and specifies the number of bits used for the network portion of the IP address.
 > * For example /24 indicates that the first 24 bits are 1s 
 >    * /24 --> 255.255.255.0 --> 11111111.11111111.11111111.00000000
 
+A `CIDR Block` is the combination of the `/` and the number of bits used for the network ID. Example --> `/8`
+
+
+
 Common Subnets:
-|CIDR Notation|Decimal Subnet Mask|Binary Subnet Mask|
+|CIDR Block|Decimal Subnet Mask|Binary Subnet Mask|
 |:-:|:-:|:-:|
 |/8|255.0.0.0|11111111.00000000.00000000.00000000|
 |/16|255.255.0.0|11111111.11111111.00000000.00000000|
@@ -491,11 +496,24 @@ AND
 
 <br>
 
+`Calculating Number of Bits to Borrow from the Host bits`
+
+### 2 <sup> n </sup> = Number of Subnets
+* Where `n` is the number of bits that must be switched from host address to network ID
+
+<br>
+
+
+### Magic Number = 256 - subnet octet value
+OR
+### 2 <sup>Num of host bits</sup> = Magic Number
+* The `magic number` is the interval between subnet addresses and is used to determine the starting IP address of each subnet. 
+
 
 `Calculating Number of Subnets`:  
 *Subnet masks are also called prefixes especially in the use of CIDR notation*  
 
-### 2<sup>(new mask bits - old mask bits)</sup>
+### 2<sup>(new mask bits - old mask bits)</sup> = Number of Subnets
 
 Example:
 > Original network is 192.168.0.1/8 and the new will be 192.168.0.1/15
@@ -506,14 +524,19 @@ Example:
 
 `Calculating Number of Hosts`:  
 
-### 2<sup>(32 - mask bits)</sup>
+### 2<sup>(32 - mask bits)</sup> = Number of Total IPs in the subnet
 
 Example:
 > The network is 192.168.0.1/17
 
-2<sup>32-17</sup> =  2<sup>15</sup> hosts per subnet
+2<sup>32-17</sup> =  2<sup>15</sup> IPs per subnet
 
 <br>
+
+### 2<sup>(32 - mask bits)</sup> - 2 = Number of Hosts in the subnet.
+* Why - 2 ?
+    * 1 address is for the network address
+    * 1 address is for the broadcast address
 
 Subnetting Examples:
 
@@ -584,7 +607,25 @@ Subnets:
 |16| 192.168.240.0  | /20           | 192.168.255.255  | 192.168.240.1 to 192.168.255.254|
 
 
+<br>
 
+TODO:
+`Variable Length Subnet Mask VLSM` is a subnetting method that allows subnets to be further subdivided into smaller and smaller groupings until each subnet is about the same size as the needed IP address space.
+
+
+IPv6 Subnets
+* IPv6 uses no classes, all IPv6 is classless
+* IPv6 does not use subnet masks
+* One IPv6 subnet can supply 2<sup>64</sup> possible IPv6 addresses
+
+* The last 64 bits, identify the interface (interface ID).
+* The 1st 4 blocks (64 bits) are called the `site prefix` or `global routing prefix` and identify the network.
+
+```
+FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF
+|-----------------| |-----------------|
+  Site Prefix /64     Interface ID /64
+```
 <br>
 
 [Back To Top](#internet-protocol-addresses)
@@ -625,6 +666,15 @@ ___
 5. `Lease`: The IP address provided by the DHCP server is assigned to the client for a specific period called the lease time. Before the lease expires, the client must renew it if it still needs the IP address.  
 
 6. `Renewal`: The client periodically sends DHCP Request messages to renew its lease. The server responds with an Acknowledgment if it is able to extend the lease.  
+
+
+
+TODO:
+
+`DHCP Relay Agent` is a small application that works with a centrally managed DHCP server to provide DHCP assignments to multiple subnets and VLANs
+
+
+
 
 <br>
 

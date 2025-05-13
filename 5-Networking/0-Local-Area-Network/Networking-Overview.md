@@ -62,6 +62,7 @@ ICANN (Internet Corporation for Assigned Name and Numbers) non-profit currently 
 
 IEEE(Institute of Electrical and Electronics Engineers)
 
+Internet Engineering Task Force IETF
 
 
 gateway is a computer router or other device that a host uses to access another network. The Default gateway is the gateway device that nodes on a network turn to first for access. 
@@ -78,7 +79,50 @@ A broadcast domain is logically grouped network nodes that can communicate direc
 The area between two firewalls is called a demilitarized zone or DMZ
 
 
+...
+...
+...
 
+`Virtual Local Area Networks VLAN` are networks with a network that is logically defined by grouping ports on a switcch so that some of the local traffic on the switch is forced to go through a router, thereby limiting the traffic to a smaller broadcast domain. 
+
+`Unmanaged Switch` is a switch that provides plug-and-play simplicity with minimal configuration options and has no IP address assigned to it.
+* Does not support VLANs
+
+`Managed Switch `is a switch that can be configured via a command-line iterface or a web based management GUI, and sometimes can be configured in groups.
+* Supports VLANs 
+
+A `tag` is a VLAN identifier added to a frame's header according to specification in the IEEE 802.1Q standard.
+
+
+`IEEE 802.1Q` aka `dot1q` specifies how VLAN and trunking information appears in frames and how switches and bridges interpret that information. 
+
+
+`Access port` is a switch interface that is used for an end node. 
+* Devices connected to access ports are unaware of VLAN information.
+
+`Trunk port` is a switch interface that is capable of managing traffic from multiple VLANs.
+* Connects the switch to a router, another switch, or server. 
+
+`Trunking` is the aggregation of multiple logical connections in on physical connection between connectivity devices.
+* In a VLAN a trunk allows two switches to manage and exhange data between multiple VLANs.
+
+
+`VLAN Trunk Protocol VTP`is Cisco's protocol for exhanging VLAN information over trunks
+
+
+Types of VLAN:
+`Default VLAN` is a preconfigured VLAN on a switch that includes all of the switch's port and cannot be renamed or deleted. 
+
+`Native VLAN` is an untagged VLAN on a switch that will automatically receive all untagged frames. 
+* `Native VLAN mismatch` aka. `VLAN mismatch` is a configuration error where switch ports on each end of a trunk are configured with different native VLAN assignments. 
+
+| VLAN Type   | Description                                                                 | Example Use Case                             |
+|-------------|-----------------------------------------------------------------------------|----------------------------------------------|
+| Default     | The VLAN that all switch ports belong to by default (usually VLAN 1).       | Initial configuration, untagged traffic.     |
+| Native      | The VLAN that carries untagged traffic on a trunk port.                     | Interconnecting switches via trunks.         |
+| Data        | Used to carry user-generated traffic (regular devices like PCs, printers).  | Workstation and client network traffic.      |
+| Management  | Used for network management traffic, like SSH, Telnet, SNMP.                | Remote management of switches/routers.       |
+| Voice       | Dedicated VLAN for VoIP traffic; often given QoS priority.                  | IP phones and VoIP communication systems.    |
 
 
 

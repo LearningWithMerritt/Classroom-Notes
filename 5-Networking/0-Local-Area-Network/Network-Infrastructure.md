@@ -9,7 +9,7 @@ Entrance Facility is the location where an incoming network connects with a scho
 
 Demarcation point (demarc) the point of division between a telecommunications service carriers network and a buildings internal network.
 
-Main distribution frame or main distribution facility (MDF) aka Main cross-connect (MC) is the centralized point of interconnection for an organization's LAN or WAN. Refers to racks holding networking equipment in practice.
+`Main distribution frame` or `main distribution facility` (`MDF`) aka `Main cross-connect` (`MC`) is the centralized point of interconnection for an organization's LAN or WAN. Refers to racks holding networking equipment in practice.
 
 Data room aka Data closet, data center, equipment room, or telecommunications room and holds networking equipment. 
 

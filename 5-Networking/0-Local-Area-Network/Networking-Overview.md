@@ -1,135 +1,5 @@
 # `Networking Overview`
 
-
-TODO:
-scalability
-client
-server (program/device)
-Network Operating Systems NOS
-    Active Directory
-    Active Directory Domain Services
-    Windows Domain (a group of users, servers, other resources that share account and security policies)
-Network services are resources that the network makes available to users. Includes applications and teh data provided by these applications. 
-
-Client-Server Applications are data or services requested by one computer from another
-
-Backbone is a central conduit of a network that connects network segments and significant shared devices (routers, switches, servers,etc.)
-
-
-
-Network Interface is a network connection made by a node or host on a network
-
-
-Fully Qualified Domain Name (FQDN) (Layer 7 Application) a host name plus a domain name that uniquely identifies a computer or location on a network.
-* `hostname.domain.top-level-domain`
-
-`Domain Name` the last 2 parts of a FQDN. 
-
-`Host Name` is the first part of a FQDN which identifies the individual computer on the network. 
-
-The `Top Level Domain TLD` or `domain suffix` is the last part of the FQDN and is the highest level category used to distinquish domain names
-
-Well Known TLDs
-| TLD       | Description                          |
-|-----------|--------------------------------------|
-| `.arpa`   | Originally for ARPANET; now used for technical infrastructure purposes (e.g., reverse DNS lookups) |
-| `.com`    | Commercial businesses and general use |
-| `.org`    | Nonprofit organizations               |
-| `.net`    | Originally for network infrastructure |
-| `.edu`    | Educational institutions (mainly U.S.)|
-| `.gov`    | U.S. government entities              |
-| `.mil`    | U.S. military                         |
-| `.int`    | International organizations           |
-| `.info`   | Informational websites (Unrestricted Use)|
-| `.biz`    | Business or commercial use            |
-| `.io`     | Originally for British Indian Ocean Territory, now popular with tech startups |
-| `.co`     | Originally for Colombia, widely used as "company" or "corporate" |
-| `.us`     | United States                         |
-| `.uk`     | United Kingdom                        |
-| `.ca`     | Canada                                |
-| `.de`     | Germany                               |
-| `.jp`     | Japan                                 |
-| `.cn`     | China                                 |
-| `.au`     | Australia                             |
-| `.fr`     | France                                |
-| `.in`     | India                                 |
-
-
-IANA (Internet Assigned Numbers Authority) manages the IP address allocation and Domain Name System.
-
-ICANN (Internet Corporation for Assigned Name and Numbers) non-profit currently designated by US Gov to maintain and Assign IP addresses. 
-* Domain Names must be registerd with ICANN
-
-IEEE(Institute of Electrical and Electronics Engineers)
-
-Internet Engineering Task Force IETF
-
-
-gateway is a computer router or other device that a host uses to access another network. The Default gateway is the gateway device that nodes on a network turn to first for access. 
-
-
-
-multicast transmissions in which one host sends messages to multiple hosts
-broadcast messages are read by every node on the network.
-
-A broadcast domain is logically grouped network nodes that can communicate directly via broadcast transmissions. By default, switches and repeating devices, such as hubs, extend broadcast domains. Routers and other Layer 3 devices separate broadcast domains.
-* Routersd do not forward broadcast messages. 
-
-
-The area between two firewalls is called a demilitarized zone or DMZ
-
-
-...
-...
-...
-
-`Virtual Local Area Networks VLAN` are networks with a network that is logically defined by grouping ports on a switcch so that some of the local traffic on the switch is forced to go through a router, thereby limiting the traffic to a smaller broadcast domain. 
-
-`Unmanaged Switch` is a switch that provides plug-and-play simplicity with minimal configuration options and has no IP address assigned to it.
-* Does not support VLANs
-
-`Managed Switch `is a switch that can be configured via a command-line iterface or a web based management GUI, and sometimes can be configured in groups.
-* Supports VLANs 
-
-A `tag` is a VLAN identifier added to a frame's header according to specification in the IEEE 802.1Q standard.
-
-
-`IEEE 802.1Q` aka `dot1q` specifies how VLAN and trunking information appears in frames and how switches and bridges interpret that information. 
-
-
-`Access port` is a switch interface that is used for an end node. 
-* Devices connected to access ports are unaware of VLAN information.
-
-`Trunk port` is a switch interface that is capable of managing traffic from multiple VLANs.
-* Connects the switch to a router, another switch, or server. 
-
-`Trunking` is the aggregation of multiple logical connections in on physical connection between connectivity devices.
-* In a VLAN a trunk allows two switches to manage and exhange data between multiple VLANs.
-
-
-`VLAN Trunk Protocol VTP`is Cisco's protocol for exhanging VLAN information over trunks
-
-
-Types of VLAN:
-`Default VLAN` is a preconfigured VLAN on a switch that includes all of the switch's port and cannot be renamed or deleted. 
-
-`Native VLAN` is an untagged VLAN on a switch that will automatically receive all untagged frames. 
-* `Native VLAN mismatch` aka. `VLAN mismatch` is a configuration error where switch ports on each end of a trunk are configured with different native VLAN assignments. 
-
-| VLAN Type   | Description                                                                 | Example Use Case                             |
-|-------------|-----------------------------------------------------------------------------|----------------------------------------------|
-| Default     | The VLAN that all switch ports belong to by default (usually VLAN 1).       | Initial configuration, untagged traffic.     |
-| Native      | The VLAN that carries untagged traffic on a trunk port.                     | Interconnecting switches via trunks.         |
-| Data        | Used to carry user-generated traffic (regular devices like PCs, printers).  | Workstation and client network traffic.      |
-| Management  | Used for network management traffic, like SSH, Telnet, SNMP.                | Remote management of switches/routers.       |
-| Voice       | Dedicated VLAN for VoIP traffic; often given QoS priority.                  | IP phones and VoIP communication systems.    |
-
-
-
-
-
-
-
 <br>
 
 ___
@@ -175,6 +45,19 @@ A `computer network` is a system of interconnected devices that communicate and 
 
 * A Network `Node` is computer or device on a network that has a unique local address, allowing other devices on the same network to find and communicate with it.
 * A Network `Host` is an computer on a network that hosts a resource on the network (applications, services, data, etc.)
+* A Network `Interface` is a network connection made by a node or host on a network
+
+<br>
+
+A `server` is a program or device that provides services, resources, or functionality to other programs or devices, called clients, over a network.
+
+<br>
+
+A `client` is a program or device that requests and uses services or resources provided by a server over a network.
+
+<br>
+
+Network `services` are resources that the network makes available to users. Includes applications and the data provided by these applications. 
 
 <br>
 
@@ -205,6 +88,28 @@ Both models serve as a framework to understand and design network protocols and 
 For More on these Networking Reference Models see [Networking-Reference-Models.md](Networking-Reference-Models.md)
 
 
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+# `Network Operating Systems: NOS`
+
+A `Network Operating System` is software that manages network resources, users, and security in a multi-user environment.
+
+Active Directory is Microsoft’s directory service used in Windows Server environments.
+* It stores information about users, computers, groups, and resources, and provides centralized authentication and authorization.
+* It uses a hierarchical structure of domains, trees, and forests to organize resources.
+
+
+A `Windows Domain` is a logical group of users, computers, servers, and other resources within a network that share:
+* A common directory database (stored in AD DS).
+* Account policies (like password rules).
+* Security policies (like access control).
+* Domains are managed by Domain Controllers (DCs), which enforce security and user authentication.
 <br>
 
 [Back To Top](#networking-overview)
@@ -559,6 +464,9 @@ firmware
 trailer
 Frame includes header payload and trailer
 
+multicast transmissions in which one host sends messages to multiple hosts
+broadcast messages are read by every node on the network.
+* Routersd do not forward broadcast messages. 
 
 `Address Resolution Protocol ARP` is a Layer 2 : Data Link protocol that works with IPv4 to discover MAC addresses on nodes in a local network and to maintain a database that maps local IP addresses to MAC addresses. 
 * ARP works at Layer 2 but uses IP at Layer 3, therefore it is sometimes said to work a Layer 2.5
@@ -610,7 +518,62 @@ ___
 
 <br>
 
+# `VLANs : Layer 2 Data Link`
+
+`Virtual Local Area Networks VLAN` are networks with a network that is logically defined by grouping ports on a switcch so that some of the local traffic on the switch is forced to go through a router, thereby limiting the traffic to a smaller broadcast domain. 
+
+`Unmanaged Switch` is a switch that provides plug-and-play simplicity with minimal configuration options and has no IP address assigned to it.
+* Does not support VLANs
+
+`Managed Switch `is a switch that can be configured via a command-line iterface or a web based management GUI, and sometimes can be configured in groups.
+* Supports VLANs 
+
+A `tag` is a VLAN identifier added to a frame's header according to specification in the IEEE 802.1Q standard.
+
+
+`IEEE 802.1Q` aka `dot1q` specifies how VLAN and trunking information appears in frames and how switches and bridges interpret that information. 
+
+
+`Access port` is a switch interface that is used for an end node. 
+* Devices connected to access ports are unaware of VLAN information.
+
+`Trunk port` is a switch interface that is capable of managing traffic from multiple VLANs.
+* Connects the switch to a router, another switch, or server. 
+
+`Trunking` is the aggregation of multiple logical connections in on physical connection between connectivity devices.
+* In a VLAN a trunk allows two switches to manage and exhange data between multiple VLANs.
+
+
+`VLAN Trunk Protocol VTP`is Cisco's protocol for exhanging VLAN information over trunks
+
+
+Types of VLAN:
+`Default VLAN` is a preconfigured VLAN on a switch that includes all of the switch's port and cannot be renamed or deleted. 
+
+`Native VLAN` is an untagged VLAN on a switch that will automatically receive all untagged frames. 
+* `Native VLAN mismatch` aka. `VLAN mismatch` is a configuration error where switch ports on each end of a trunk are configured with different native VLAN assignments. 
+
+| VLAN Type   | Description                                                                 | Example Use Case                             |
+|-------------|-----------------------------------------------------------------------------|----------------------------------------------|
+| Default     | The VLAN that all switch ports belong to by default (usually VLAN 1).       | Initial configuration, untagged traffic.     |
+| Native      | The VLAN that carries untagged traffic on a trunk port.                     | Interconnecting switches via trunks.         |
+| Data        | Used to carry user-generated traffic (regular devices like PCs, printers).  | Workstation and client network traffic.      |
+| Management  | Used for network management traffic, like SSH, Telnet, SNMP.                | Remote management of switches/routers.       |
+| Voice       | Dedicated VLAN for VoIP traffic; often given QoS priority.                  | IP phones and VoIP communication systems.    |
+
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
 # `Router : Layer 3 Network`
+
+A `broadcast domain` is logically grouped network nodes that can communicate directly via broadcast transmissions. By default, switches and repeating devices, such as hubs, extend broadcast domains. `Routers and other Layer 3 devices separate broadcast domains.`
+
+<br>
 
 A `Router` is a hardware device that connects two or more networks together. It is a layer 3 device in the open systems interconnect (OSI) model and forwards data packets between networks based on their destination internet protocol (IP) addresses.
 
@@ -622,6 +585,10 @@ A `Router` is a hardware device that connects two or more networks together. It 
 * Package data in `Packets`
 * Route packets using `IP addresses`
 * Have both a `Public` and `Private` IP address
+
+<br>
+
+A `gateway` is a computer router or other device that a host uses to access another network. The `Default gateway` is the gateway device that nodes on a network turn to first for access. 
 
 <br>
 
@@ -882,8 +849,9 @@ A `Firewall` is a network security system that monitors and controls incoming an
 | `Protection Scope`        | Protects only the device it is installed on.           | Protects the entire network and all connected devices.   |
 | `Examples`                | Windows Firewall, macOS Firewall, antivirus software with built-in firewall features. | Cisco ASA, Fortinet FortiGate, Palo Alto Networks, and pfSense. |
 
+<br>
 
-
+The area between two firewalls is called the `demilitarized zone or DMZ`.
 
 <br>
 
@@ -996,6 +964,9 @@ star-bus toplogy
 bus topology
 hybrid topology
 ring topology
+
+
+Backbone is a central conduit of a network that connects network segments and significant shared devices (routers, switches, servers,etc.)
 
 
 
@@ -1143,17 +1114,31 @@ ___
 
 <br>
 
+# `Layer 5 Session`
 
-`TODO:`
+<br>
 
-Session
-Presentation
-Application
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+# `Layer 6 Presentation`
+
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+# `Layer 7 Application`
 
 `Payload Data` is data passed between applications or utility programs and the operating system, and includes control information.
 
 `Header` data added to the beginning of a payload where protocols add control information.
-
 
 `Encapsulation` the processs of adding a header to data inherited from the layer above. 
 
@@ -1166,7 +1151,8 @@ ___
 <br>
 
 
-# `The World Wide Web`
+
+## `The World Wide Web : Layer 7 Application`
 
 The `World Wide Web (www)` is one part of the Internet commonly known simply as `the web`. It is a system of interlinked documents, multimedia content, and applications accessed via the Internet. 
 

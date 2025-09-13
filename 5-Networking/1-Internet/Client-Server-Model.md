@@ -150,6 +150,10 @@ The `Internet` is a global network of interconnected computers and devices (smar
 
 <br>
 
+`The Internet Engineering Task Force (IETF)` is an open international standards organization that develops and promotes voluntary internet standards, particularly those related to the TCP/IP protocol suite (the foundation of the internet).
+
+<br>
+
 Internet access is provided by an `Internet Service Provider (ISP)`.   
 
 <br>
@@ -190,7 +194,11 @@ ___
  
 # `Client-Server Model`
 
-In the `Client-Server` communication model a client device (e.g., a web browser) sends requests to a server, which processes the request and sends back a response.
+`Client-Server Applications` are data or services requested by one computer from another.
+
+<br>
+
+In the `Client-Server` communication model a client program (e.g., a web browser) sends requests to a server, which processes the request and sends back a response.
 
 ![Client Server Diagram](img/client-server-model.svg "Client Server Diagram")
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
@@ -229,7 +237,56 @@ ___
 
 <br>
 
-# `Locating a Server on the Internet`
+# `Domain Names`
+A `Domain` is a defined area of a larger network. 
+* Domains are given human readable names to identify them. 
+
+<br>
+
+`Fully Qualified Domain Name (FQDN) (Layer 7 Application)` a host name plus a domain name that uniquely identifies a computer or location on a network.
+
+```
+hostname.domain.top-level-domain
+```
+
+* `Domain Name` the last 2 parts of a FQDN. 
+
+* `Host Name` is the first part of a FQDN which identifies the individual computer on the network. 
+
+* The `Top Level Domain TLD` or `domain suffix` is the last part of the FQDN and is the highest level category used to distinquish domain names
+
+Well Known TLDs
+| TLD       | Description                          |
+|-----------|--------------------------------------|
+| `.arpa`   | Originally for ARPANET; now used for technical infrastructure purposes (e.g., reverse DNS lookups) |
+| `.com`    | Commercial businesses and general use |
+| `.org`    | Nonprofit organizations               |
+| `.net`    | Originally for network infrastructure |
+| `.edu`    | Educational institutions (mainly U.S.)|
+| `.gov`    | U.S. government entities              |
+| `.mil`    | U.S. military                         |
+| `.int`    | International organizations           |
+| `.info`   | Informational websites (Unrestricted Use)|
+| `.biz`    | Business or commercial use            |
+| `.io`     | Originally for British Indian Ocean Territory, now popular with tech startups |
+| `.co`     | Originally for Colombia, widely used as "company" or "corporate" |
+| `.us`     | United States                         |
+| `.uk`     | United Kingdom                        |
+| `.ca`     | Canada                                |
+| `.de`     | Germany                               |
+| `.jp`     | Japan                                 |
+| `.cn`     | China                                 |
+| `.au`     | Australia                             |
+| `.fr`     | France                                |
+| `.in`     | India                                 |
+
+
+
+
+
+
+
+# `Locating a Server on the Internet : Domain Name System`
 *Every device in a network, even a massive network like the internet, has an IP address. However IP addresses are not easy to remember so a system for managing these addresses is necessary.*
 
 <br>
@@ -240,6 +297,10 @@ To solve this problem, IP addresses can be mapped to a `Domain Name`.
 <br>
 
 A `Domain Name` is the human-readable name for a website, like `google.com` or `wikipedia.org`, that acts as a memorable and easy-to-remember address for accessing a website on the internet.
+* `IANA (Internet Assigned Numbers Authority)` manages the IP address allocation and Domain Name System.
+* `ICANN (Internet Corporation for Assigned Name and Numbers)` non-profit currently designated by US Gov to maintain and Assign IP addresses. 
+* Domain Names must be registerd with ICANN
+
 
 <br>
 

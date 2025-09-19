@@ -155,8 +155,8 @@ ___
 
 # `Converting Hexadecimal to Decimal`
 Steps:
-1. Starting from the right multiply the digit by 160.
-1. Move to the left and multiply the digit by 161.
+1. Starting from the right multiply the digit by 16<sup>0</sup>.
+1. Move to the left and multiply the digit by 16<sup>1</sup>.
 1. Repeat while increasing the power of 16 by 1 until you have reached the end of the hexadecimal number. 
 1. Add all of the answers together. 
 

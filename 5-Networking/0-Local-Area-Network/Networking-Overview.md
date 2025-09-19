@@ -43,18 +43,39 @@ A `computer network` is a system of interconnected devices that communicate and 
 
 <br>
 
-Networks are categorized by thier size, and scope. 
-
-| Network Type| Description|
-|:-|:-|
-| `Local Area Network (LAN)`| Covers a limited area, such as a home, school, or office building.|
-| `Wide Area Network (WAN)` | Spans larger geographic areas, often connecting multiple LANs over cities, countries, or continents.|
-| `Metropolitan Area Network (MAN)` | Connects networks within a city or metropolitan area.|
-| `Internet` | Global system of interconnected networks that allows devices worldwide to communicate and exchange information. |
+* A Network `Node` is computer or device on a network that has a unique local address, allowing other devices on the same network to find and communicate with it.
+* A Network `Host` is an computer on a network that hosts a resource on the network (applications, services, data, etc.)
+* A Network `Interface` is a network connection made by a node or host on a network
 
 <br>
 
-There are two basic network models: 
+A `server` is a program or device that provides services, resources, or functionality to other programs or devices, called clients, over a network.
+
+<br>
+
+A `client` is a program or device that requests and uses services or resources provided by a server over a network.
+
+<br>
+
+Network `services` are resources that the network makes available to users. Includes applications and the data provided by these applications. 
+
+<br>
+
+Networks are categorized by thier size, and scope. 
+
+| Network Type                   | Description |
+|:------------------------------|:------------|
+| `Personal Area Network (PAN)` | Covers a very short range, typically a few meters, and connects personal devices such as smartphones, tablets, and `Bluetooth` peripherals. |
+| `Local Area Network (LAN)`    | Covers a limited area, such as a home, school, or office building. <br> Each node can communicate directly with other nodes. |
+| `Campus Area Network (CAN)`   | Connects multiple LANs within a campus, such as a university or business complex. |
+| `Metropolitan Area Network (MAN)` | Connects networks within a city or metropolitan area. |
+| `Wide Area Network (WAN)`     | Spans larger geographic areas, often connecting multiple LANs over cities, countries, or continents. |
+| `Internet`                    | Global system of interconnected networks that allows devices worldwide to communicate and exchange information. |
+
+
+<br>
+
+There are two basic network reference models: 
 * `OSI (Open Systems Interconnection)` model 
 * `TCP/IP (Transmission Control Protocol/Internet Protocol)` model. 
 
@@ -64,9 +85,31 @@ Both models serve as a framework to understand and design network protocols and 
 
 <br>
 
-For More on these Networking Models see [Networking-Models.md](Networking-Models.md)
+For More on these Networking Reference Models see [Networking-Reference-Models.md](Networking-Reference-Models.md)
 
 
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+# `Network Operating Systems: NOS`
+
+A `Network Operating System` is software that manages network resources, users, and security in a multi-user environment.
+
+Active Directory is Microsoft’s directory service used in Windows Server environments.
+* It stores information about users, computers, groups, and resources, and provides centralized authentication and authorization.
+* It uses a hierarchical structure of domains, trees, and forests to organize resources.
+
+
+A `Windows Domain` is a logical group of users, computers, servers, and other resources within a network that share:
+* A common directory database (stored in AD DS).
+* Account policies (like password rules).
+* Security policies (like access control).
+* Domains are managed by Domain Controllers (DCs), which enforce security and user authentication.
 <br>
 
 [Back To Top](#networking-overview)
@@ -106,7 +149,7 @@ Data traveling throughout networks is `encapsulated` into different `Protocol Da
 
 | Layer | PDU (Protocol Data Unit) | Data Representation  | Function  |
 |:-:|-|-|-|
-| Application Layer | `Data` | Data| User interface and application services|
+| Application Layer | `Data` or `Payload` | Data| User interface and application services|
 | Transport Layer | `Segment (TCP)`/ `Datagram (UDP)` | Segments / Datagrams | Manages end-to-end communication and error-checking |
 | Network Layer | `Packet` | Packets | Routes data across different networks|
 | Data Link Layer | `Frame`| Frames| Manages node-to-node data transfer on a network segment |
@@ -360,6 +403,15 @@ ___
 # `Network Switch : Layer 2 Data Link`
 
 A `Network Switch` is a hardware device that connects devices within a LAN. It is a multiport bridge that uses `media access control (MAC)` addresses to route data at the `data link layer (layer 2)` of the `open systems interconnect (OSI) model`.
+<br>
+
+Media Access Control (MAC) Addresses
+* aka physical address, hardware address, or Data Link Layer Address
+
+TODO:
+MAC addresses are short range and only used to find nodes on the local network.
+
+More on MAC addresses : [`MAC-Addresses.md`](./MAC-Addresses.md)
 
 <br>
 
@@ -385,12 +437,129 @@ A `Network Switch` is a hardware device that connects devices within a LAN. It i
 
 Frame Diagram
 ```
-+----------------+-------------------+-------------------+--------------------+
-| Destination MAC| Source MAC        | Type/Length       | Payload/Data       |
-+----------------+-------------------+-------------------+--------------------+
-| FCS (Frame Check Sequence)                                                  |
-+-----------------------------------------------------------------------------+
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                    Preamble (7 bytes)                         |  
+|           10101010 pattern for synchronization                |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+| Start Frame Delimiter (1 byte): 10101011                      |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|               Destination MAC Address (6 bytes)               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                 Source MAC Address (6 bytes)                  |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|     Ethertype (2 bytes)      |                                |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|               Payload / Data (46 to 1500 bytes)               |  
+|     (e.g., IP packet with headers and application data)       |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|           Frame Check Sequence (CRC32, 4 bytes)               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
+
+TODO:
+Layer 2
+firmware
+trailer
+Frame includes header payload and trailer
+
+multicast transmissions in which one host sends messages to multiple hosts
+broadcast messages are read by every node on the network.
+* Routersd do not forward broadcast messages. 
+
+`Address Resolution Protocol ARP` is a Layer 2 : Data Link protocol that works with IPv4 to discover MAC addresses on nodes in a local network and to maintain a database that maps local IP addresses to MAC addresses. 
+* ARP works at Layer 2 but uses IP at Layer 3, therefore it is sometimes said to work a Layer 2.5
+* ARP only works within its local network bounded by routers. 
+* ARP relies on broadcasting to all nodes on the network segment.
+
+<br>
+
+`ARP Table` or `ARP Cache` is a database of records that maps MAC addresses to IP addresses. An ARP table is stored on storage device on a computing device and is used by the ARP utility to supply MAC addresses of network nodes, given their IP addresses. 
+
+<br>
+
+Dynamic ARP table entries are records that are created when a client makes and ARP request that cannot be satisfied by data already in the ARP table. 
+
+Static ARP table entries are records that have been manually entered using an ARP utility. 
+
+On Windows and Linux a command line ARP utility exists called `arp` and can be used to retrieve and manipulate ARP table information.
+
+    arp -a
+
+This command returns the ARP table on the device.
+
+On Linux
+
+    ip neigh
+
+Is a newer command that performs the same task.
+
+<br>
+
+Ethernet II is the current Ethernet standard and is distinguished from other Ethernet frame types in that it contains a 2 byte field to identify the upper-layer protocol contained in the frame. 
+* Ethernet adds both a header and a trailer to the payload data.
+* Mininmum Frame Size 64 bytes
+* Maximum Frame Size 1518 bytes
+* VLANs have an extra 4-byte field between source and Type used to manage VLAN traffic
+
+<br>
+
+Maximum Transmission Unit MTU is the largest size in bytes that routers in a message's path will allow at the Network Layer and therefore defines the maximum payload size that a Layer 2 frame can encapsulate. 
+* For Ethernet the default MTU is 1500 bytes
+* Some special purpose networks use a special version of Ethernet that allows for a `jumbo frame` which can have an MTU as high as 9198 bytes.
+
+
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+# `VLANs : Layer 2 Data Link`
+
+`Virtual Local Area Networks VLAN` are networks with a network that is logically defined by grouping ports on a switcch so that some of the local traffic on the switch is forced to go through a router, thereby limiting the traffic to a smaller broadcast domain. 
+
+`Unmanaged Switch` is a switch that provides plug-and-play simplicity with minimal configuration options and has no IP address assigned to it.
+* Does not support VLANs
+
+`Managed Switch `is a switch that can be configured via a command-line iterface or a web based management GUI, and sometimes can be configured in groups.
+* Supports VLANs 
+
+A `tag` is a VLAN identifier added to a frame's header according to specification in the IEEE 802.1Q standard.
+
+
+`IEEE 802.1Q` aka `dot1q` specifies how VLAN and trunking information appears in frames and how switches and bridges interpret that information. 
+
+
+`Access port` is a switch interface that is used for an end node. 
+* Devices connected to access ports are unaware of VLAN information.
+
+`Trunk port` is a switch interface that is capable of managing traffic from multiple VLANs.
+* Connects the switch to a router, another switch, or server. 
+
+`Trunking` is the aggregation of multiple logical connections in on physical connection between connectivity devices.
+* In a VLAN a trunk allows two switches to manage and exhange data between multiple VLANs.
+
+
+`VLAN Trunk Protocol VTP`is Cisco's protocol for exhanging VLAN information over trunks
+
+
+Types of VLAN:
+`Default VLAN` is a preconfigured VLAN on a switch that includes all of the switch's port and cannot be renamed or deleted. 
+
+`Native VLAN` is an untagged VLAN on a switch that will automatically receive all untagged frames. 
+* `Native VLAN mismatch` aka. `VLAN mismatch` is a configuration error where switch ports on each end of a trunk are configured with different native VLAN assignments. 
+
+| VLAN Type   | Description                                                                 | Example Use Case                             |
+|-------------|-----------------------------------------------------------------------------|----------------------------------------------|
+| Default     | The VLAN that all switch ports belong to by default (usually VLAN 1).       | Initial configuration, untagged traffic.     |
+| Native      | The VLAN that carries untagged traffic on a trunk port.                     | Interconnecting switches via trunks.         |
+| Data        | Used to carry user-generated traffic (regular devices like PCs, printers).  | Workstation and client network traffic.      |
+| Management  | Used for network management traffic, like SSH, Telnet, SNMP.                | Remote management of switches/routers.       |
+| Voice       | Dedicated VLAN for VoIP traffic; often given QoS priority.                  | IP phones and VoIP communication systems.    |
 
 <br>
 
@@ -402,6 +571,10 @@ ___
 
 # `Router : Layer 3 Network`
 
+A `broadcast domain` is logically grouped network nodes that can communicate directly via broadcast transmissions. By default, switches and repeating devices, such as hubs, extend broadcast domains. `Routers and other Layer 3 devices separate broadcast domains.`
+
+<br>
+
 A `Router` is a hardware device that connects two or more networks together. It is a layer 3 device in the open systems interconnect (OSI) model and forwards data packets between networks based on their destination internet protocol (IP) addresses.
 
 <br>
@@ -412,6 +585,10 @@ A `Router` is a hardware device that connects two or more networks together. It 
 * Package data in `Packets`
 * Route packets using `IP addresses`
 * Have both a `Public` and `Private` IP address
+
+<br>
+
+A `gateway` is a computer router or other device that a host uses to access another network. The `Default gateway` is the gateway device that nodes on a network turn to first for access. 
 
 <br>
 
@@ -436,12 +613,197 @@ See [IP-Addresses](IP-Addresses.md) for more on IP Addresses.
 
 <br>
 
-Packet Diagram
+Packet Diagrams
+
+### IPv4 Packet
+* The numbers represent bit positions 0-31 (32 bits/ 4 bytes)
 ```
-+--------------------+--------------------+---------------------+-----------------------+-----------------+
-| Destination IP     | Source IP          | Protocol            | Packet Data (Payload) | Header Checksum |
-+--------------------+--------------------+---------------------+-----------------------+-----------------+
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|Version|  IHL  |Type of Service|        Total Length           |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|       Identification          |Flags|     Fragment Offset     |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|  Time to Live |    Protocol   |        Header Checksum        |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                     Source Address                            |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                  Destination Address                          |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                    Options (if any)           |    Padding    |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                     Payload Data                              |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
+
+
+### IPv6 Packet
+* The numbers represent bit positions 0-31 (32 bits/ 4 bytes)
+```
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|Version| Traffic Class |           Flow Label                  |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|         Payload Length        |  Next Header  |  Hop Limit    |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                                                               |  
+|                     Source Address (128 bits)                 |  
+|                                                               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                                                               |  
+|                 Destination Address (128 bits)                |  
+|                                                               |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                     Payload Data                              |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+<br>
+
+TODO:
+`Internet Protocol (IP)` a core protocol of TCP/IP and the priciple protocol of the Network Layer (Layer 3) that provides information about how and where data should be delivered. 
+* `IP addresses` are unique addresses assigned to each node in a TCP/IP network. 
+    * Two versions `IPv4` and `IPv6`
+
+
+
+<br>
+
+A `Packet` is the entire Network Layer message.<br>
+Including:
+1. Network Layer Header 
+2. Segement (TCP) or Datagram (UDP) from Layer 4
+
+<br>
+
+
+
+Maximum Transmission Unit
+Fragmentation is a Network Layer service that subdivides packets into smaller packets when those packets exceed the maximum size for the network.
+
+
+Layer 3 Protocols
+`Internet Control Message Protocol ICMP` is a Layer 3 Network protocol that reports on the success or failure of data delivery. 
+
+```
+ 0                   1                   2                   3  
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|     Type      |     Code      |          Checksum             |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|           Identifier          |        Sequence Number        |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  
+|                          Payload Data                         |  
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+IPv6 uses ICMPv6 to perform the functions of ICMPv4 and ARP in IPv4 netowrks. 
+
+`Time to Live TTL` is the maximum duration that an IPv4 packet can remain on thet network before it is discarded. It represents the number of router hops remaining before the packet is dropped. 
+
+
+
+Routers
+* Connect networks including networks that use different routing protocols
+* Interpret Layer 3 and Layer 4 addressing and other information
+* Determine the best path for data to follow from point A to point B.
+* Reroute traffic if the path of first choice is not available, but another path is available.
+* Have two or more network ports, each that connects to a different network.
+    * Each connection is assigned an interface ID, and logically belongs to every network it connects to.
+
+The `best path` is the most efficient route to a message's destination calculated by the router.
+
+An `autonomous system (AS)` is a group of networks, often in the same domain, that are operated by the same organization.
+* Sometimes refered to as a `trusted network`.
+
+Routers are categorized by their location in a network or the Internet and the routing protocols they use.
+* `Core routers` or `interior routers` are located inside of networks with the same `autonomous system (AS)` and only communicate with routers in the same AS. 
+* `Edge routers` or `border routers` connect an AS with an outside network (aka untrusted network).
+* `Exterior routers` refer to any routers outside of an organization's AS.
+
+Multilayer Switches are switches that are capable of operating at layers above Layer 2.
+* Layer 3 switches can interpret Layer 3 data and work like a router
+* Layer 4 switches can interpret Layer 4 data and operate between Layers 4-7. Also called content switchs or application switches.
+
+
+Routing:
+A routing table is a database of where hosts are located on a network and the most efficient paths to reach them.
+* Routers rely on routing tables to identify which network a host belongs, and the path to that network. 
+* If more than route is possible routing metrics are used to determine the most efficient route
+
+Routing metrics are properties of route used by routing protocols to determine the best path to a destination.
+* Metrics may be calculated using: hop count, bandwidth, delay, MTU, cost, and reliability.
+
+A `default route` is the backup route used when a router cannot determine a path to a messages destination.
+* This is usually another router.
+* If a default route is not defined then the packet is dropped.
+
+The `gateway of last resort` is the router on a network that accepts all unroutable messages from other routers.
+
+Routing Path Types
+`Static routing` is a method of routing where a  network admin programs the router to use specific paths between networks.
+`Dynaimic routing` is a method of routing where the router automatically calculates the best path between two networks and stores the information in a routing table. 
+
+TO view the routing table on a host
+Linux or UNIX
+
+    route
+
+Windows
+
+    route print
+
+Cisco's IOS
+
+    show ip route
+
+
+Routing Metrics:
+Hop Count is the number of network segments crossed
+Bandwidth, theoretical bandwidth and actual throughput
+`Latency` is the delay between the transmission of a signal and its reciept.
+Load is the amount of traffic or processing burden sustained by a router in the path.
+MTU, largest IP packet size without fragmentation
+Routing cost value assigned to a route as judged by a network admin. Better path equals lower cost.
+Reliability based on history
+Network topology.
+
+
+`Routing protocols` are the ways in which routers communicate with one another about network status. They are used to determine the best path between networks. 
+
+Routers rate the reliability and prioty of a routing protocol's data by:
+* Administrative distance (AD), a number indicating a protocol's reliability, with lower values given higher priority.
+* Convergence Time, the time it takes for a router to recognize a best path in the event of a change or network outage
+* Overhead, the burden placed on the network to support the protocol.
+
+
+| Protocol | Full Name| Type | Interior/Exterior | Algorithm    | Description |
+|--|---|------|---|--|--|
+| RIP | Routing Information Protocol    | IGP  | Interior| Distance Vector (Bellman-Ford)  | Uses hop count; simple, suitable for small networks. |
+| OSPF| Open Shortest Path First   | IGP  | Interior| Link State (Dijkstra's SPF)| Fast convergence; supports large, hierarchical networks.  |
+| EIGRP    | Enhanced Interior Gateway Routing Protocol| IGP  | Interior| Advanced Distance Vector (DUAL) | Cisco protocol combining DV and LS features.  |
+| IS-IS    | Intermediate System to Intermediate System| IGP  | Interior| Link State (Dijkstra's SPF)| Scalable, used in large enterprise and ISP networks. |
+| BGP | Border Gateway Protocol    | EGP  | Exterior| Hybrid | Core Internet protocol for routing between autonomous systems.|
+
+
+`Interior Gateway Protocols` are routing protocols used by core routers and edge routers within and autonomous system.
+* Distance Vector routing protocols are the simplest type of routing protocols and determine best rout for data based on the distance to the destination.
+* Link-state routing protocols is a type of routing protocol that enables routers to share information beyond neighboring routers, after which each router can independently map the network and determine the best path between itself and a message's destination node.
+* Hybrid Routing protocol is a routing protocol that exhibits characteristics of both distance-vector and link-state routing protocols.
+
+
+`Exterior Gateway Protocols` are routing protocols used by edge routers and exterior routers to distribute data outside of autonomous systems. 
+* `Border Gateway protocol` is the only routing protocol that communicates across the internet. Dubbed the "protocol of the Internet" and consi
+
+
+`Neighbor Discovery` is the process in which routers learn about all the devices on their networks. 
+* ARP and ICMP on IPv4 networks
+* Neighbor Discovery Protocol (NDP) on IPv6 Networks
+
+`Spoofing` is the act of impersonating fields of data in a transmission, such as when a source IP address is impersonated ina DRDoS attack.
+
 <br>
 
 [Back To Top](#networking-overview)
@@ -487,8 +849,9 @@ A `Firewall` is a network security system that monitors and controls incoming an
 | `Protection Scope`        | Protects only the device it is installed on.           | Protects the entire network and all connected devices.   |
 | `Examples`                | Windows Firewall, macOS Firewall, antivirus software with built-in firewall features. | Cisco ASA, Fortinet FortiGate, Palo Alto Networks, and pfSense. |
 
+<br>
 
-
+The area between two firewalls is called the `demilitarized zone or DMZ`.
 
 <br>
 
@@ -590,6 +953,22 @@ Many modern networking setups use a single device that combines the functions of
 ``` 
 
 
+`TODO:`
+Topology
+Physical Topology vs. Logical Topology
+Physical Topology is the physical layout of the media, nodes, and devices on a network.
+Logical topology is the way in which data is transmitted between nodes, including network and resource access controls. 
+star topology
+mesh topology
+star-bus toplogy
+bus topology
+hybrid topology
+ring topology
+
+
+Backbone is a central conduit of a network that connects network segments and significant shared devices (routers, switches, servers,etc.)
+
+
 
 <br>
 
@@ -609,6 +988,7 @@ The term `Internet` comes from "inter-network," meaning "between networks." It i
 An `Internet Service Provider (ISP)` provides access to the infrastructure needed to connect to the Internet.
 * This is the company you purchase your Internet service from. 
 
+<br>
 
 
 
@@ -639,12 +1019,16 @@ A `Port` serves as a logical communication endpoint for applications and service
 
 ### `At Layer 4 Transport`  
 There are 2 protocols:  
-* Transmission Control Protocol (TCP)(Connection-Oriented)  
-      * User Datagram Protocol (UDP)(Connectionless)  
+* `Transmission Control Protocol (TCP)(Connection-Oriented)  `
+* `User Datagram Protocol (UDP)(Connectionless)`  
 
-UDP  
+<br>
+
+User Datagram Protocol UDP is a connectionless protocol.
+* Does not guarantee delivery of data.
 * Data is packaged as `Datagrams`  
-* Datagrams are routed to `UDP Ports`  
+* Datagrams are routed to `UDP Ports`
+* Faster and more efficient than TCP  
 
 ```
 +---------------------------------------------------------+
@@ -664,35 +1048,59 @@ UDP
 
 <br>
 
-TCP  
+Transmission Control Protocol TCP is a connection oriented protocol.
+* Uses a `three-way handshake` to establish a TCP connection. 
 * Data is packaged as `Segments`  
 * Segments are routed to `TCP Ports`  
+* A `checksum` is used to verify data integrity and reciept.
 
 ```
-+---------------------------------------------------------+
-|                      TCP Segment                        |
-+---------------------------------------------------------+
-| Destination Port (2 bytes)                              |
-+---------------------------------------------------------+
-| Source Port (2 bytes)                                   |
-+---------------------------------------------------------+
-| Sequence Number (4 bytes)                               |
-+---------------------------------------------------------+
-| Acknowledgment Number (4 bytes)                         |
-+---------------------------------------------------------+
-| Data Offset (4 bits) | Reserved (3 bits) |Flags (9 bits)|
-+---------------------------------------------------------+
-| Window Size (2 bytes)                                   |
-+---------------------------------------------------------+
-| Checksum (2 bytes)                                      |
-+---------------------------------------------------------+
-| Urgent Pointer (2 bytes)                                |
-+---------------------------------------------------------+
-| Options (variable length)                               |
-+---------------------------------------------------------+
-| Data (variable length)                                  |
-+---------------------------------------------------------+
++---------------------------------------------------------------+
+|                      TCP Segment                              |
++---------------------------------------------------------------+
+| Destination Port (2 bytes)                                    |
++---------------------------------------------------------------+
+| Source Port (2 bytes)                                         |
++---------------------------------------------------------------+
+| Sequence Number (4 bytes)                                     |
++---------------------------------------------------------------+
+| Acknowledgment Number (4 bytes)                               |
++---------------------------------------------------------------+
+| TCP Header Length (4 bits) | Reserved (6 bits) |Flags (6 bits)|
++---------------------------------------------------------------+
+| Window Size (2 bytes)                                         |
++---------------------------------------------------------------+
+| Checksum (2 bytes)                                            |
++---------------------------------------------------------------+
+| Urgent Pointer (2 bytes)                                      |
++---------------------------------------------------------------+
+| Options (0-4 bytes)                                           |
++---------------------------------------------------------------+
+| Paddin (variable length)                                      |
++---------------------------------------------------------------+
+| Data (variable length)                                        |
++---------------------------------------------------------------+
 ```
+
+<br>
+
+Steps in a Three Way Handshake
+1. Synchronize Request (SYN): 
+* the requesting computer selects a random number to synchronize communication. 
+* the SYN bit is set to 1 meaning the SYN flag is activated indicating the request to communicate and synchronize sequence numbers. 
+* the ACK bit is usually set to 0 since the responding computer has not yet sent a response.
+
+2. Synchronize/Acknowledge (SYN/ACK) computer 2 recieves the SYN request and responds with a segment.
+* The ACK and SYN bits are both set to 1.
+* The Acknowledgement number field contains a number that equals the sequence number computer 1 orginally sent, plus 1. 
+* The sequence number field computer 2 sends its own random number.
+
+3. Acknowledge (ACK) computer 1 recieves the SYN/ACK and responds with a segment.
+* Containing the expected sequence number from computer 2
+* The Acknowledgement number field equals the sequence number that computer 2 sent plus 1.
+* The ACK bit is set to 1.
+
+4. The connection has now been established. 
 
 <br>
 
@@ -706,8 +1114,45 @@ ___
 
 <br>
 
+# `Layer 5 Session`
 
-# `The World Wide Web`
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+# `Layer 6 Presentation`
+
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+# `Layer 7 Application`
+
+`Payload Data` is data passed between applications or utility programs and the operating system, and includes control information.
+
+`Header` data added to the beginning of a payload where protocols add control information.
+
+`Encapsulation` the processs of adding a header to data inherited from the layer above. 
+
+<br>
+
+[Back To Top](#networking-overview)
+
+___
+
+<br>
+
+
+
+## `The World Wide Web : Layer 7 Application`
 
 The `World Wide Web (www)` is one part of the Internet commonly known simply as `the web`. It is a system of interlinked documents, multimedia content, and applications accessed via the Internet. 
 

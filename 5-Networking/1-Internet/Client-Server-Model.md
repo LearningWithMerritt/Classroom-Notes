@@ -1,3 +1,124 @@
+TODO:
+
+Namespace Databases:
+DNS follows a distributed database model, storing the DNS namespace data over thousands of servers. 
+
+Namespace databases are stored in DNS zone files which store information in resource records. 
+* Each resource begins with a TTL field that identifies how long the record should be saved in a cache or server.
+
+[ICANN Registration Data Lookup Tool](https://lookup.icann.org/en)
+Name Servers:
+A `root server` is a DNS server maintained by ICANN and IANA that is an authority on how to conduct the top-level domains. ICANN oversees the operation of 13 clusters of root servers around the world.
+
+Root servers connect to TLD servers which connect to Authoratative Servers
+
+An `authoritative server` is the authority on computer names and their IP addresses for computers in their domains.
+`DNS zone` is the part of a the DNS namespace for which one organization is assigned authority to manage.
+
+1. Primary DNS server: an authoratitive name server for the organization, which holds the authoritative DNS database for the organizations's zones.
+* This server is contacted by clients to resovle DNS queries.
+
+2. Secondary DNS server: The backup authoratative name server for the organization.
+* Updating the secondary DNS server's database is called a zone transfer.
+
+3. Caching DNS Server: Teh server that accesses public DNS data and caches teh DNS information it collects 
+
+| DNS Server Type         | Description |
+|-------------------------|-------------|
+| `Primary DNS Server`  | The authoritative name server for an organization, holding the official DNS records for its zones. Clients contact it directly to resolve DNS queries. |
+| `Secondary DNS Server`| A backup authoritative name server that receives updates from the primary server via a `zone transfer`. |
+| `Caching DNS Server`  | Queries external DNS servers and stores (caches) the results locally to speed up future DNS lookups. |
+| `Forwarding DNS Server` | Forwards DNS queries it can't resolve to another DNS server, typically upstream, rather than performing full recursive resolution. |
+
+
+Steps in a DNS Lookup:
+1. The resolver on a client computer first searches the DNS cache. If a match is not found the resolver sends a DNS Query to the local DNS server.
+
+2. If the caching server doesn't know the IP address, then the local name server queries a root server with the request.
+
+3. The root server responds to the local name server with a list of IP addresses of TLD name servers responsible for whichever TLD was included in the request.
+
+4. The local name server makes the same request to one of the TLD name servers. The TLD name server responds with the IP address of the authoratative server for the domain name.
+
+5. The local name server makes the request to the authoratative name server. The Authoratative name server responds with an IP address of the domain name's host.
+
+6. The local name server responds to the client resolver with the requested IP address. The local name server and the client computer store the information in their DNS caches.
+
+```
+                             Request
++--------------+       ------------>    +--------------------+
+| DNS RESOLVER |                        |  LOCAL NAME SERVER |
++--------------+                        +--------------------+
+
+
+                                                                      Request
+                                        +-------------------+   ------------>    +--------------+
+                                        | LOCAL NAME SERVER |                    |  ROOT SERVER |
+                                        +-------------------+   <------------    +--------------+
+                                                                Response
+
+
+                                                                      Request
+                                        +-------------------+   ------------>    +--------------+
+                                        | LOCAL NAME SERVER |                    |  TLD SERVER  |
+                                        +-------------------+   <------------    +--------------+
+                                                                Response
+
+
+                                                                      Request
+                                        +-------------------+   ------------>    +-----------------------+
+                                        | LOCAL NAME SERVER |                    |  AUTHORITATIVE SERVER |
+                                        +-------------------+   <------------    +-----------------------+
+                                                                Response
+
+
+
+
++--------------+                        +--------------------+
+| DNS RESOLVER |                        |  LOCAL NAME SERVER |
++--------------+       <------------    +--------------------+
+                       Response
+
+
+
+    Caching                                    Caching
++--------------+                        +--------------------+
+| DNS RESOLVER |                        |  LOCAL NAME SERVER |
++--------------+                        +--------------------+
+                       
+```
+
+
+There are 2 types of DNS request:
+1. A `Recursive query` is a DNS query that demands a resolution or the response that information cannot be found. 
+2. An `Iterative query` is a DNS query that does not demand resolution which means the server provides the information only if it already has that information available.
+
+
+A `resource record` is the element of DNS database stored on a name server that contains information about TCP/IP host names and their addresses
+
+Resource Records in a DNS Database:
+| Record Type | Name                        | Purpose                                                                 |
+|-------------|-----------------------------|-------------------------------------------------------------------------|
+| `A`           | Address Record              | Maps a domain name to an IPv4 address.                                 |
+| `AAAA`        | IPv6 Address Record         | Maps a domain name to an IPv6 address.                                 |
+| `CNAME`       | Canonical Name              | Points one domain name to another (aliasing).                          |
+| `PTR`         | Pointer Record              | Maps an IP address to a domain name (used in reverse DNS lookups).     |
+| `NS`          | Name Server                 | Specifies authoritative DNS servers for the domain.                    |
+| `MX`          | Mail Exchange               | Directs email to mail servers for the domain.                          |
+| `SRV`         | Service Locator             | Specifies host and port for specific services (e.g., VoIP, IM).        |
+| `TXT`         | Text Record                 | Stores human-readable or machine-readable text data.                   |
+| `SPF`         | Sender Policy Framework     | A type of `TXT` record used to define which servers can send email.      |
+| `DKIM`        | DomainKeys Identified Mail  | A `TXT` record used to store public keys for email signing/authentication. |
+
+<br>
+
+| Zone Type     | Description                                                                                         | Example                              |
+|---------------|-----------------------------------------------------------------------------------------------------|--------------------------------------|
+| Forward Zone  | Maps domain names to IP addresses using records like `A` (IPv4) and `AAAA` (IPv6).                 | `example.com → 192.0.2.1`            |
+| Reverse Zone  | Maps IP addresses to domain names using `PTR` records. Used for reverse DNS lookups.               | `192.0.2.1 → example.com`            |
+
+
+
 # `The Client-Server Model`
 
 <br>
@@ -26,6 +147,10 @@ ___
 The `Internet` is a global network of interconnected computers and devices (smartphones, tablets, etc.) that communicate using standardized protocols, primarily the Internet Protocol (IP). 
 * `Internet` is shortened from `inter network` meaning between networks.
     *   *Inter* from latin *inter-* meaning between.   
+
+<br>
+
+`The Internet Engineering Task Force (IETF)` is an open international standards organization that develops and promotes voluntary internet standards, particularly those related to the TCP/IP protocol suite (the foundation of the internet).
 
 <br>
 
@@ -69,7 +194,11 @@ ___
  
 # `Client-Server Model`
 
-In the `Client-Server` communication model a client device (e.g., a web browser) sends requests to a server, which processes the request and sends back a response.
+`Client-Server Applications` are data or services requested by one computer from another.
+
+<br>
+
+In the `Client-Server` communication model a client program (e.g., a web browser) sends requests to a server, which processes the request and sends back a response.
 
 ![Client Server Diagram](img/client-server-model.svg "Client Server Diagram")
 *Having trouble viewing on Github? Try Right-Clicking on the image and selecting "Open image in a new tab"*
@@ -108,20 +237,79 @@ ___
 
 <br>
 
-# `Locating a Server on the Internet`
+# `Domain Names`
+A `Domain` is a defined area of a larger network. 
+* Domains are given human readable names to identify them. 
+
+<br>
+
+`Fully Qualified Domain Name (FQDN) (Layer 7 Application)` a host name plus a domain name that uniquely identifies a computer or location on a network.
+
+```
+hostname.domain.top-level-domain
+```
+
+* `Domain Name` the last 2 parts of a FQDN. 
+
+* `Host Name` is the first part of a FQDN which identifies the individual computer on the network. 
+
+* The `Top Level Domain TLD` or `domain suffix` is the last part of the FQDN and is the highest level category used to distinquish domain names
+
+Well Known TLDs
+| TLD       | Description                          |
+|-----------|--------------------------------------|
+| `.arpa`   | Originally for ARPANET; now used for technical infrastructure purposes (e.g., reverse DNS lookups) |
+| `.com`    | Commercial businesses and general use |
+| `.org`    | Nonprofit organizations               |
+| `.net`    | Originally for network infrastructure |
+| `.edu`    | Educational institutions (mainly U.S.)|
+| `.gov`    | U.S. government entities              |
+| `.mil`    | U.S. military                         |
+| `.int`    | International organizations           |
+| `.info`   | Informational websites (Unrestricted Use)|
+| `.biz`    | Business or commercial use            |
+| `.io`     | Originally for British Indian Ocean Territory, now popular with tech startups |
+| `.co`     | Originally for Colombia, widely used as "company" or "corporate" |
+| `.us`     | United States                         |
+| `.uk`     | United Kingdom                        |
+| `.ca`     | Canada                                |
+| `.de`     | Germany                               |
+| `.jp`     | Japan                                 |
+| `.cn`     | China                                 |
+| `.au`     | Australia                             |
+| `.fr`     | France                                |
+| `.in`     | India                                 |
+
+
+
+
+
+
+
+# `Locating a Server on the Internet : Domain Name System`
 *Every device in a network, even a massive network like the internet, has an IP address. However IP addresses are not easy to remember so a system for managing these addresses is necessary.*
 
 <br>
 
 To solve this problem, IP addresses can be mapped to a `Domain Name`. 
+* `Name resolution` is process of discovering the IP address of a host when the FQDN is known.
 
 <br>
 
 A `Domain Name` is the human-readable name for a website, like `google.com` or `wikipedia.org`, that acts as a memorable and easy-to-remember address for accessing a website on the internet.
+* `IANA (Internet Assigned Numbers Authority)` manages the IP address allocation and Domain Name System.
+* `ICANN (Internet Corporation for Assigned Name and Numbers)` non-profit currently designated by US Gov to maintain and Assign IP addresses. 
+* Domain Names must be registerd with ICANN
+
 
 <br>
 
 Domain names on the internet are registered through `domain registrars` and mapped to an actual IP address through the `Domain Name System (DNS)`.
+
+<br>
+
+A `registry` aka `domain name registry operator` is an organization or country that is responsible for one or more TLDs and maintains a database or registry of TLD information.
+* A `domain registrar` is an organization accredited by registries and ICANN to lease domain names to companies or individuals, following the guidelines of TLD registry operators. 
 
 <br>
 
@@ -143,15 +331,19 @@ Domain names on the internet are registered through `domain registrars` and mapp
 
 <br>
 
-`Domain Name System (DNS)` translates human-readable domain names like `google.com` into IP addresses that computers can understand. 
+`Domain Name System (DNS)` or `Domain Name Service` translates human-readable domain names like `google.com` into IP addresses that computers can understand. 
 * DNS is essentially the internet's `phone book` or `contacts app`. 
 
 <br>
 
-A `Domain Name System (DNS) server` is a crucial component of the Internet infrastructure that translates human-readable domain names (like `www.example.com`) into IP addresses (like `192.0.2.1`) that computers use to identify each other on the network. 
+The `namespace` is the entire collection of computer names and their associated IP addresses stored in databases on DNS name servers around the globe.
+
+A `Domain Name System (DNS) server` or `name server` is a crucial component of the Internet infrastructure that translates human-readable domain names (like `www.example.com`) into IP addresses (like `192.0.2.1`) that computers use to identify each other on the network. 
 * This translation process is essential for enabling web browsing, email, and other Internet services.
 
 <br>
+
+A `resolver` is the DNS client that requests information from DNS Name Servers.
 
 A computer must know the IP address of a DNS server in order to resolve domain names into IP addresses. 
 * Without a DNS server a device cannot find servers on the Internet.

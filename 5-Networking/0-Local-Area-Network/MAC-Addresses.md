@@ -76,7 +76,7 @@ ___
 
 # `MAC Addresses`
 
-`Media Access Control (MAC) Addresses` is a unique 12 digit hexadecimal identifier assigned to a network interface card (NIC) for communications on the physical network segment. 
+`Media Access Control (MAC) Addresses` is a unique 48 bit, 12 digit hexadecimal identifier assigned to a network interface card (NIC) for communications on the physical network segment. 
 > * MAC addresses are used as a hardware address for devices in a local network.  
 > * Each MAC address is unique to the device's network interface card, ensuring no two devices on the same local network share the same MAC address.  
 > * MAC addresses operate at the Data Link Layer (Layer 2) of the OSI model. They are used to identify devices on a local network segment and are crucial for frame delivery in Ethernet and other similar networks.  
@@ -86,8 +86,8 @@ ___
 *MAC addresses are typically assigned by the manufacturer of the NIC and are burned into the hardware. However, they can sometimes be modified or spoofed via software.*
 
 MAC addresses consist of six groups of two hexadecimal digits, separated by hyphens(-), colons(:), or no separator.
-> * The first 6 (3 pairs) hexadecimal digits are the `Organizationally Unique Identifier (OUI) or Manufacturer ID` 
-> * The last 6 (3 pairs) hexadecimal digits are the `Device ID`.
+> * The first 6  hexadecimal digits (3 pairs)(24 bits) are the `Organizationally Unique Identifier (OUI) or Manufacturer ID` 
+> * The last 6 hexadecimal digits (3 pairs)(24 bits) are the `Extension Identifier` or `Device ID`.
 > * Range: 00-00-00-00-00-00 to FF-FF-FF-FF-FF-FF
 
 Example:
@@ -96,6 +96,9 @@ Example:
 |:-:|:-:|
 |FF-FF-FF|00-00-00|
 
+
+TODO:
+OUI a 24 bit character sequence assigned by the IEEE that appears at the beginning of a network interface's physcial address and identifies a NIC's manufacturer
 
 <br>
 

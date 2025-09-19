@@ -1,5 +1,52 @@
+TODO:
+`Address Translation` is the process of substituting a private IP address (host) with a public IP address (gateway) when the computer needs access to other networks. 
+Network Address Translation NAT process of assigning private IP addresses with a public IP addresses when accessing a public network.
+* `Static or Source NAT, SNAT` address translation in which the gateway assins the same public IP to a host each time it makes a request to access the internet. 
+* `Destination NAT,  DNAT` address translation in which the gateway has a pool of public IP addresses to assign to a local host when it makes a request to access the internet.
+Port Address Translation PAT address translation that assigns a separate TCP port to each ongoing conversation or session, between a local host and an internet host.
+
+
+A `link`, or `local link`, is a LAN with routers serving as the boundary between LANs, limiting direct communication to devices within the same network.
+
+An `interface` is a node's attachment to a link. 
+
+`Dual stacked network` is a network that supports both IPv4 and IPv6 traffic.
+
+`Tunneling` is the process of encapsulating one type of protocol in another. Tunneling is the way in which higher-layer data is transported over VPNs by layer 2 protocols.
+* Tunneling is always used on the Internet because the internet is not completely dual stacked. 
+
+`Interface ID` is the last 64 bits (4 blocks) of an IPv6 address that uniquely identify the interface on the local link.
+
+`Neighbors` are two or more nodes on the same link. 
+
+
+`subnet ID` 16 bits or one block in an IPv6 address that can be used to identify a subnet on a large corporate network. 
+
+IPv6 Autoconfiguration:
+A computer can automatically create it IPv6 address, and uses FE80::/64 as teh first 64 bits (called the prefix). The last interface ID is usually generated in one of two ways:
+1. The 64 bits are randomly generated. This is a temporary address that cannot be registed in DNS or used for global addresses on the Internet.(NOTE: this is the default method for Windows 10)
+2. The 64 bits are generated from the network adapter's MAC address. The 48 bit MAC address is converted to the 64 bit `Extended Unique Identifier-64 EUI-64` standard
+    1. 16 bits are inserted into the middle of the MAC address and the 7th bit is inverted.  
+
+THe computer then checks if the IPv6 address is unique on the network. 
+
+Prefix Discovery: 
+Then a `Router Solicitation (RS)` is performed to obtain configuration information. 
+* Router Solicitation (RS) is a message from a client to a router requesting network configuration information.
+
+The Router responds with a `Router Advertisement (RA)` message that provides DHCP information.
+* Router Advertisement (RA) is a response to a client's solicitation message and provides DHCP information. 
+
+
+`IP Address Management IPAM` system is a standalone product or application that is embeded in another product such as Window's Server that provides a way to plan, deploy, and monitor a network's IP address space. 
+
+
+
+
 # `Internet Protocol Addresses`
 ---
+
+<br>
 
 Covered in this file:
 1. [`Internet Protocol`](#internet-protocol)
@@ -11,7 +58,7 @@ Covered in this file:
 1. [`Static vs. Dynamic IP Addresses`](#static-vs-dynamic-ip-addresses)
 1. [`IP Addresses and Ports`](#ip-addresses-and-ports)
 1. [`Subnetting`](#subnetting)
-1. [`Assigning IP Addresses: DHCP`](#assigning-ip-addresses-dhcp)
+1. [`Assigning IP Addresses: Dynamic Host Configuration Protocol DHCP`](#assigning-ip-addresses-dynamic-host-configuration-protocol-dhcp)
 1. [`How Do I See my Public IP? Private IP?`](#how-do-i-see-my-public-ip-private-ip)
 1. [`Translating Web Addresses to IP Addresses: DNS`](#translating-web-addresses-to-ip-addresses-dns)
 
@@ -44,6 +91,20 @@ The `Internet Protocol (IP)` is a set of rules and standards that govern how dat
 `Server` refers to a computer, device, or program that provides services, resources, or data to clients over a network. 
 > * The `server` listens/waits for requests from clients and responds by delivering the requested resources or performing specific tasks. 
 > * `Servers` can handle multiple client requests simultaneously and can offer various services such as hosting websites, managing emails, storing files, or running applications.
+
+<br>
+
+The `Internet Protocol IP` operates at Layer 3 : Network of both the OSI and TCP/IP models and allows for internetworking. 
+* Internetwork means to traverse more than one LAN segment and more than one type of network through a router.
+* IP is a connectionless protocol (does NOT establish a session) 
+
+<br>
+
+At Layer 3 Data is organized into packets for traversal on the internet.
+* Each packet travels separately from all other packets in its series
+* Packets may take different routes to reach the same destination
+* TCP ensure packet messages are put back in the correct order
+* TCP/UDP ensure that each message reaches teh correct application on the recieving host. 
 
 <br>
 
@@ -86,35 +147,59 @@ ___
 
 # `IPv4 Address Ranges`
 
-| IP Class | Public IP Range| Private IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
-|:-:|:-:|:-:|:-:|:-:|:-:|
-| **A**| 1.0.0.0 to 126.0.0.0| 10.0.0.0 to 10.255.255.255 | 255.0.0.0 | 126 (2<sup>7</sup>-2)| 16,777,214 (2<sup>24</sup>-2) |
-| **B**| 128.0.0.0 to 191.255.0.0| 172.16.0.0 to 172.31.255.255 | 255.255.0.0 | 16,382 (2<sup>14</sup>-2)| 65,534 (2<sup>16</sup>-2)|
-| **C**| 192.0.0.0 to 223.255.255.0| 192.168.0.0 to 192.168.255.255 | 255.255.255.0 | 2,097,150 (2<sup>21</sup>-2) | 254 (2<sup>8</sup>-2)|
-| **D**| 224.0.0.0 to 239.255.255.255 | N/A | N/A| N/A| N/A |
-| **E**| 240.0.0.0 to 255.255.255.255 | N/A | N/A| N/A| N/A |
+TODO:
+Classful Addressing 
+
+| IP Class |Network Octets| Public IP Range| Private IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A**|1.x.y.z to 126.x.y.z| 1.0.0.0 to 126.0.0.0| 10.0.0.0 to 10.255.255.255 | 255.0.0.0 | 126 (2<sup>7</sup>-2)| 16,777,214 (2<sup>24</sup>-2) |
+| **B**|128.0.x.y to 191.255.x.y| 128.0.0.0 to 191.255.0.0| 172.16.0.0 to 172.31.255.255 | 255.255.0.0 | 16,382 (2<sup>14</sup>-2)| 65,534 (2<sup>16</sup>-2)|
+| **C**|192.0.0.x to 223.255.255.x| 192.0.0.0 to 223.255.255.0| 192.168.0.0 to 192.168.255.255 | 255.255.255.0 | 2,097,150 (2<sup>21</sup>-2) | 254 (2<sup>8</sup>-2)|
+| **D**||224.0.0.0 to 239.255.255.255 | N/A | N/A| N/A| N/A |
+| **E**|| 240.0.0.0 to 255.255.255.255 | N/A | N/A| N/A| N/A |
 
 *2 is subtracted from the Total Number of Networks and Total Number of Clients because one address is always reserved for the network itself, and one for the broadcast address*
 
 * Class D: used for multicast groups; not used in traditional networks.
 * Class E: used for experimental purposes; not used in traditional networking. 
 
-`Loopback Range`
+<br>
 
-| IP Class | IP Range| Subnet Mask| Total Number of Networks | Total Number of Clients   |
-|:-:|:-:|:-:|:-:|:-:|
-|**Loopback**| 127.0.0.0 to 127.255.255.255|255.0.0.0|N/A|N/A|
+## `Reserved IPv4 Addresses`
+
+### `Unassigned`
+`0.0.0.0` is currently unassigned.
 
 <br>
 
-`Broadcast Addresses`  
+### `Loopback Range`
+A `Loopback address` is an IP address reserved for communicating from a node to itself, usually used for troubleshooting purposes.
+
+| IP Class | IP Range| Subnet Mask| 
+|:-:|:-:|:-:|
+|`Loopback`| 127.0.0.0 to 127.255.255.254|255.0.0.0|
+
+<br>
+
+### `Broadcast Addresses`  
 A `Broadcast Address` is used to send packets to the entire network.
-* Broadcast Addresses are typically the last address in the network and end with .255.
+* Broadcast Addresses are typically the last address in the network and end with `.255`.
+
+| IP Class | IP Range|
+|:-:|:-:|
+|`Broadcast`|255.255.255.255|
 
 <br>
 
+### `Automatic Private IP Addressing`
+`Automatic Private IP Addressing (APIPA)` is a service available on Windows computers that automatically assigns the computers NIC a link-local IPv4 address in the range of 169.254.0.1 to 169.254.255.254
 
-`Commonly Used IPv4 Addresses`  
+| IP Class | IP Range              | Subnet Mask  |
+|:--------:|:---------------------:|:------------:|
+| `APIPA`  | 169.254.0.1 to 169.254.255.254 | 255.255.0.0 |
+
+
+### `Commonly Used IPv4 Addresses`  
 * Loopback: `127.0.0.1`  
 * Home Router Private IP:   
     * `192.168.0.1` OR `192.168.1.1` OR `192.168.0.254` OR `192.168.1.254` 
@@ -131,9 +216,9 @@ ___
 
 # `IPv6 128-bit addresses`
 
-*IPv6 was designed to accommodate the ever-growing number of internet-connected devices and ensure that we don't run out of IP addresses, which occured with IPv4.*
+*IPv6 was designed to accommodate the ever-growing number of internet-connected devices and ensure that we don't run out of IP addresses, which occured with IPv4. The way that computers communicate using IPv6 has changed the terminology used to describe TCP/IP communications.*
 
-`IPv6 addresses` use eight 16-bit hexadecimal numbers separated by a colon ( : ). 
+`IPv6 addresses` are 128 bit addresses that use eight blocks (or quartets) 16-bit hexadecimal numbers separated by a colon ( : ). 
 * Total Range of IPv6 addresses:
 ``` 
 0000:0000:0000:0000:0000:0000:0000:0000 <--> FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF
@@ -190,10 +275,26 @@ For Example:
 # `IPv6 Ranges`
 *IPv6 does not have classes like IPv4 addresses do, but there are still specific addresses used for networking*
 
-`Global Unicast Addresses (GUA)`
+<br>
+
+|IP address type| Address Prefix| Description|
+|:-:|:-:|:-:|
+|Global Unicast|2000::/3| First 3 bits are always 001|
+|Link Local Unicast| FE80::64| First 64 bits are always 1111 1110 1000 0000 ... 0000|
+|Unique Local Unicast | FC00::/7 | First 7 bits are always 1111 110|
+||FD00::/8|First 8 bits are always 1111 1101|
+|Multicast| FF00::/8| First 8 bits are always 1111 1111|
+
+<br>
+
+`Global Unicast Addresses (GUA)` aka `Global Address`
 Globally unique addresses that can be routed on the public internet. 
 > * Equivalent to public IPv4 addresses.
 > * Range: 2000::/3 (from 2000:: to 3FFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+
+|3 bits|45 bits|16 bits|64 bits|
+|:-:|:-:|:-:|:-:|
+|001|Global Routing Prefix|Subnet ID|Interface ID|
 
 <br>
 
@@ -201,11 +302,21 @@ Globally unique addresses that can be routed on the public internet.
 Link-Local Addresses are used for communication within a single network segment (link) and are not routable beyond that link. 
 > * Automatically configured on all IPv6-enabled interfaces.
 > * Range: FE80::/10 (from FE80:: to FEBF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+* Similiar to autoconfigured APIPA addresses. 
+* Not allowed past the local link or on the internet.
+
+|64 bits|64 bits|
+|:-:|:-:|
+|1111 1110 1000 0000 0000 0000 0000 ... 0000| Interface ID|
+|FE80::/64||
+
+The first 10 bits are fixed (FE80::/10) and the remaining 54 bits are all zeros.
+* the link local prefix is sometimes written as FE80::/64
 
 <br>
 
-`Unique Local Addresses (ULA)`
-These addresses are similar to private IPv4 addresses (e.g., 192.168.0.0/16, 10.0.0.0/8). 
+`Unique Local Addresses (ULA)` aka `Unicast Address`
+These addresses are similar to private IPv4 addresses (e.g., 192.168.0.0/16, 10.0.0.0/8) and represent a single node on a network.
 > * Unique Local Addresses are used for local communication within an organization and are not routable on the public internet.
 > * Range: FC00::/7 (from FC00:: to FDFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
 
@@ -317,23 +428,28 @@ ___
 <br>
 
 # `Subnetting`
-`Subnetting` is the process of dividing a larger network into smaller, more manageable sub-networks or subnets. 
-> * It helps optimize network performance and improve security by isolating different segments of a network.
+`Subnetting` is the process of altering the rules of classful IPv4 addressing to divide a larger network into smaller, more manageable sub-networks or subnets. 
+* Also called `classeless addressing`. 
+* It helps optimize network performance and improve security by isolating different segments of a network.
 
 <br>
 
-`Subnet Masks` are used in conjunction with IP addresses to define the network and host portions of an address. 
+`Subnet Masks` or `netmask` are used in conjunction with IP addresses to define the network and host portions of an address. 
 > * They help determine which part of an IP address represents the network and which part represents the host within that network.
 > * A `subnet mask` consists of four 8-bit numbers, just like an IP address, and it consists of a series of contiguous 1s followed by a series of contiguous 0s.
 
 <br>
 
-`Classless Inter-Domain Routing(CIDR) Notation`: is a compact representation of a subnet mask and specifies the number of bits used for the network portion of the IP address.
+`Classless Inter-Domain Routing (CIDR) Notation`: is a compact representation of a subnet mask and specifies the number of bits used for the network portion of the IP address.
 > * For example /24 indicates that the first 24 bits are 1s 
 >    * /24 --> 255.255.255.0 --> 11111111.11111111.11111111.00000000
 
+A `CIDR Block` is the combination of the `/` and the number of bits used for the network ID. Example --> `/8`
+
+
+
 Common Subnets:
-|CIDR Notation|Decimal Subnet Mask|Binary Subnet Mask|
+|CIDR Block|Decimal Subnet Mask|Binary Subnet Mask|
 |:-:|:-:|:-:|
 |/8|255.0.0.0|11111111.00000000.00000000.00000000|
 |/16|255.255.0.0|11111111.11111111.00000000.00000000|
@@ -342,9 +458,9 @@ Common Subnets:
 
 <br>
 
-`Network Portion`: the  1s define the bits used to identify the network portion of the IP address
+`Network Portion` (Network ID): the  1s define the bits used to identify the network portion of the IP address
 
-`Host Portion`: the 0s define the bits used to identify the host portion of the IP address
+`Host Portion` (Host ID or Node ID): the 0s define the bits used to identify the host portion of the IP address
 
 `Applying a Subnet Mask`  
 *A subnet mask is applied to an IP address using a Bitwise AND operation*
@@ -380,11 +496,24 @@ AND
 
 <br>
 
+`Calculating Number of Bits to Borrow from the Host bits`
+
+### 2 <sup> n </sup> = Number of Subnets
+* Where `n` is the number of bits that must be switched from host address to network ID
+
+<br>
+
+
+### Magic Number = 256 - subnet octet value
+OR
+### 2 <sup>Num of host bits</sup> = Magic Number
+* The `magic number` is the interval between subnet addresses and is used to determine the starting IP address of each subnet. 
+
 
 `Calculating Number of Subnets`:  
 *Subnet masks are also called prefixes especially in the use of CIDR notation*  
 
-### 2<sup>(new mask bits - old mask bits)</sup>
+### 2<sup>(new mask bits - old mask bits)</sup> = Number of Subnets
 
 Example:
 > Original network is 192.168.0.1/8 and the new will be 192.168.0.1/15
@@ -395,14 +524,19 @@ Example:
 
 `Calculating Number of Hosts`:  
 
-### 2<sup>(32 - mask bits)</sup>
+### 2<sup>(32 - mask bits)</sup> = Number of Total IPs in the subnet
 
 Example:
 > The network is 192.168.0.1/17
 
-2<sup>32-17</sup> =  2<sup>15</sup> hosts per subnet
+2<sup>32-17</sup> =  2<sup>15</sup> IPs per subnet
 
 <br>
+
+### 2<sup>(32 - mask bits)</sup> - 2 = Number of Hosts in the subnet.
+* Why - 2 ?
+    * 1 address is for the network address
+    * 1 address is for the broadcast address
 
 Subnetting Examples:
 
@@ -473,7 +607,25 @@ Subnets:
 |16| 192.168.240.0  | /20           | 192.168.255.255  | 192.168.240.1 to 192.168.255.254|
 
 
+<br>
 
+TODO:
+`Variable Length Subnet Mask VLSM` is a subnetting method that allows subnets to be further subdivided into smaller and smaller groupings until each subnet is about the same size as the needed IP address space.
+
+
+IPv6 Subnets
+* IPv6 uses no classes, all IPv6 is classless
+* IPv6 does not use subnet masks
+* One IPv6 subnet can supply 2<sup>64</sup> possible IPv6 addresses
+
+* The last 64 bits, identify the interface (interface ID).
+* The 1st 4 blocks (64 bits) are called the `site prefix` or `global routing prefix` and identify the network.
+
+```
+FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF
+|-----------------| |-----------------|
+  Site Prefix /64     Interface ID /64
+```
 <br>
 
 [Back To Top](#internet-protocol-addresses)
@@ -481,7 +633,7 @@ ___
 
 <br>
 
-# `Assigning IP Addresses: DHCP`
+# `Assigning IP Addresses: Dynamic Host Configuration Protocol DHCP`
 
 `Dynamic Host Configuration Protocol (DHCP)`, is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network. 
 > * DHCP uses `Media Access Control (MAC)` addresses to identify devices on a network. 
@@ -490,7 +642,18 @@ ___
 
 <br>
 
-How DHCP works at a High Level:
+* `DHCPv4 `(for IPv4 servers) listen on port 67 and recieve responses on port 68.
+* `DHCPv6` (for IPv6 servers) listen on port 546 and recieve responses on port 547.
+
+<br>
+
+* `DHCP Scope` aka `DHCP Pool` is a predefined range of addresses that can be leased to any network device on a particular segment.
+* `DHCP Lease Time` is the time limit on the validity of a DHCP-issued IP address.
+* `Address Reservation` aka MAC Reservation, IP Reservation, or DHCP reservation sets aside an IP address for a particular MAC address on the network.
+* `IP Exclusion` one or more IP addresses used for static IP assignment are excluded from the IP address pool so the DHCP server doesn't offer those addresses to clients.
+<br>
+
+### How DHCP works at a High Level:
 
 1. `Discovery`: When a device (client) connects to a network, it sends out a DHCP Discover message. This message is a broadcast request for a DHCP server to provide network configuration information.  
 
@@ -503,6 +666,15 @@ How DHCP works at a High Level:
 5. `Lease`: The IP address provided by the DHCP server is assigned to the client for a specific period called the lease time. Before the lease expires, the client must renew it if it still needs the IP address.  
 
 6. `Renewal`: The client periodically sends DHCP Request messages to renew its lease. The server responds with an Acknowledgment if it is able to extend the lease.  
+
+
+
+TODO:
+
+`DHCP Relay Agent` is a small application that works with a centrally managed DHCP server to provide DHCP assignments to multiple subnets and VLANs
+
+
+
 
 <br>
 

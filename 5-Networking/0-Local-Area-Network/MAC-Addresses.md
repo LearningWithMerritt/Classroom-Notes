@@ -96,9 +96,11 @@ Example:
 |:-:|:-:|
 |FF-FF-FF|00-00-00|
 
+<br>
 
-TODO:
-OUI a 24 bit character sequence assigned by the IEEE that appears at the beginning of a network interface's physcial address and identifies a NIC's manufacturer
+The `OUI` a 24 bit character sequence assigned by the IEEE that appears at the beginning of a network interface's physcial address and identifies a NIC's manufacturer.
+
+
 
 <br>
 

@@ -122,6 +122,11 @@ It provides a user interface and acts as an intermediary between users, applicat
   - `Device Drivers`: Software components that enable the OS to communicate with hardware devices.
 
 
+<br>
+
+A `system call` is a mechanism that allows a program or application to request a service from the operating system’s kernel. It is the formal interface between user-mode programs and the privileged kernel that controls hardware and core system resources.
+
+
 --- 
 
 <br>

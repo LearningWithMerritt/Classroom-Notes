@@ -1,48 +1,3 @@
-TODO:
-`Address Translation` is the process of substituting a private IP address (host) with a public IP address (gateway) when the computer needs access to other networks. 
-Network Address Translation NAT process of assigning private IP addresses with a public IP addresses when accessing a public network.
-* `Static or Source NAT, SNAT` address translation in which the gateway assins the same public IP to a host each time it makes a request to access the internet. 
-* `Destination NAT,  DNAT` address translation in which the gateway has a pool of public IP addresses to assign to a local host when it makes a request to access the internet.
-Port Address Translation PAT address translation that assigns a separate TCP port to each ongoing conversation or session, between a local host and an internet host.
-
-
-A `link`, or `local link`, is a LAN with routers serving as the boundary between LANs, limiting direct communication to devices within the same network.
-
-An `interface` is a node's attachment to a link. 
-
-`Dual stacked network` is a network that supports both IPv4 and IPv6 traffic.
-
-`Tunneling` is the process of encapsulating one type of protocol in another. Tunneling is the way in which higher-layer data is transported over VPNs by layer 2 protocols.
-* Tunneling is always used on the Internet because the internet is not completely dual stacked. 
-
-`Interface ID` is the last 64 bits (4 blocks) of an IPv6 address that uniquely identify the interface on the local link.
-
-`Neighbors` are two or more nodes on the same link. 
-
-
-`subnet ID` 16 bits or one block in an IPv6 address that can be used to identify a subnet on a large corporate network. 
-
-IPv6 Autoconfiguration:
-A computer can automatically create it IPv6 address, and uses FE80::/64 as teh first 64 bits (called the prefix). The last interface ID is usually generated in one of two ways:
-1. The 64 bits are randomly generated. This is a temporary address that cannot be registed in DNS or used for global addresses on the Internet.(NOTE: this is the default method for Windows 10)
-2. The 64 bits are generated from the network adapter's MAC address. The 48 bit MAC address is converted to the 64 bit `Extended Unique Identifier-64 EUI-64` standard
-    1. 16 bits are inserted into the middle of the MAC address and the 7th bit is inverted.  
-
-THe computer then checks if the IPv6 address is unique on the network. 
-
-Prefix Discovery: 
-Then a `Router Solicitation (RS)` is performed to obtain configuration information. 
-* Router Solicitation (RS) is a message from a client to a router requesting network configuration information.
-
-The Router responds with a `Router Advertisement (RA)` message that provides DHCP information.
-* Router Advertisement (RA) is a response to a client's solicitation message and provides DHCP information. 
-
-
-`IP Address Management IPAM` system is a standalone product or application that is embeded in another product such as Window's Server that provides a way to plan, deploy, and monitor a network's IP address space. 
-
-
-
-
 # `Internet Protocol Addresses`
 ---
 
@@ -242,6 +197,30 @@ Binary Format Example:
 0010000000000001 0000110110111000 1000010110100011 0000000000000000 0000000000000000 1000101000101110 0000001101110000 0111001100110100
 ```
 
+`Interface ID` is the last 64 bits (4 blocks) of an IPv6 address that uniquely identify the interface on the local link.
+
+`Subnet ID` 16 bits or one block in an IPv6 address that can be used to identify a subnet on a large corporate network. 
+
+`Neighbors` are two or more nodes on the same link. 
+
+
+<br>
+
+A `link`, or `local link`, is a LAN with routers serving as the boundary between LANs, limiting direct communication to devices within the same network.
+
+<br>
+
+An `interface` is a node's attachment to a link. 
+
+<br>
+
+`Dual stacked network` is a network that supports both IPv4 and IPv6 traffic.
+
+<br>
+
+`Tunneling` is the process of encapsulating one type of protocol in another. Tunneling is the way in which higher-layer data is transported over VPNs by layer 2 protocols.
+* Tunneling is always used on the Internet because the internet is not completely dual stacked. 
+
 ---
 ## `Shortening IPv6 Addresses`
 
@@ -342,6 +321,22 @@ These are special-purpose addresses. ::/128 is used when a device does not have 
 > * `Loopback Address: ::1/128`
 
 
+---
+
+<br>
+
+### `IPv6 Autoconfiguration`
+A computer can automatically create it IPv6 address, and uses FE80::/64 as the first 64 bits (called the prefix). The last interface ID is usually generated in one of two ways:
+1. The 64 bits are randomly generated. This is a temporary address that cannot be registed in DNS or used for global addresses on the Internet.(NOTE: this is the default method for Windows 10)
+
+2. The 64 bits are generated from the network adapter's MAC address. The 48 bit MAC address is converted to the 64 bit `Extended Unique Identifier-64 EUI-64` standard
+    1. 16 bits are inserted into the middle of the MAC address and the 7th bit is inverted.  
+3. The computer then checks if the IPv6 address is unique on the network. 
+4. Then a `Router Solicitation (RS)` is performed to obtain configuration information. 
+* `Router Solicitation (RS)` is a message from a client to a router requesting network configuration information.
+5. The Router responds with a `Router Advertisement (RA)` message that provides DHCP information.
+* `Router Advertisement (RA)` is a response to a client's solicitation message and provides DHCP information. 
+
 <br>
 
 [Back To Top](#internet-protocol-addresses)
@@ -363,7 +358,15 @@ ___
 
 <br>
 
-`Network Address Translation (NAT)` translates Private IPs to Public IPs when data is sent out and Public IPs to Private IPs when data is recieved. 
+### `Address Translation`
+`Address Translation` is the process of substituting a private IP address (host) with a public IP address (gateway) when the computer needs access to other networks. 
+
+<br>
+
+`Network Address Translation (NAT)` translates Private IPs to Public IPs when data is sent out to a public network and Public IPs to Private IPs when data is recieved. 
+* `Static or Source NAT, SNAT` address translation in which the gateway assins the same public IP to a host each time it makes a request to access the internet. 
+* `Destination NAT,  DNAT` address translation in which the gateway has a pool of public IP addresses to assign to a local host when it makes a request to access the internet.
+Port Address Translation PAT address translation that assigns a separate TCP port to each ongoing conversation or session, between a local host and an internet host.
 
 <br>
 
@@ -609,7 +612,8 @@ Subnets:
 
 <br>
 
-TODO:
+### More on Subnets
+
 `Variable Length Subnet Mask VLSM` is a subnetting method that allows subnets to be further subdivided into smaller and smaller groupings until each subnet is about the same size as the needed IP address space.
 
 
@@ -668,10 +672,11 @@ ___
 6. `Renewal`: The client periodically sends DHCP Request messages to renew its lease. The server responds with an Acknowledgment if it is able to extend the lease.  
 
 
-
-TODO:
+### `DHCP Servers`
 
 `DHCP Relay Agent` is a small application that works with a centrally managed DHCP server to provide DHCP assignments to multiple subnets and VLANs
+
+
 
 
 
@@ -759,6 +764,17 @@ Key DNS Record Types:
 | `TXT`         | Holds text information, often used for verification purposes. |
 
 
+<br>
+
+[Back To Top](#internet-protocol-addresses)
+___
+
+<br>
+
+# `MISC`
+
+
+`IP Address Management IPAM` system is a standalone product or application that is embeded in another product such as Window's Server that provides a way to plan, deploy, and monitor a network's IP address space. 
 
 
 

@@ -18,6 +18,7 @@ Covered in this file:
 1. [`Bandwidth and Latency`](#bandwidth-and-latency)
 1. [`Network Interface Card : Layer 2 Data Link`](#network-interface-card-nic--layer-2-data-link)
 1. [`Network Switch : Layer 2 Data Link`](#network-switch--layer-2-data-link)
+1. [`VLANs : Layer 2 Data Link`](#vlans--layer-2-data-link)
 1. [`Router : Layer 3 Network`](#router--layer-3-network)
 1. [`Wireless Access Point WAP : Layer 1 Physical`](#wireless-access-point-wap--layer-1-physical)
 1. [`Firewalls : Multi Layer`](#firewalls--multi-layer)
@@ -27,7 +28,10 @@ Covered in this file:
 1. [`Basic LAN Topology`](#basic-lan-topology)
 1. [`The Internet : Layer 3 Network`](#the-internet-layer-3-network)
 1. [`Ports, Protocols, and Services : Layer 4 Transport`](#ports-protocols-and-services--layer-4-transport)
-1. [`The World Wide Web`](#the-world-wide-web)
+1. [`Layer 5 Session`](#layer-5-session)
+1. [`Layer 6 Presentation`](#layer-6-presentation)
+1. [`Layer 7 Application`](#layer-7-application)
+1. [`The World Wide Web : Layer 7 Application`](#the-world-wide-web--layer-7-application)
 
 
 
@@ -407,9 +411,7 @@ A `Network Switch` is a hardware device that connects devices within a LAN. It i
 
 Media Access Control (MAC) Addresses
 * aka physical address, hardware address, or Data Link Layer Address
-
-TODO:
-MAC addresses are short range and only used to find nodes on the local network.
+* MAC addresses are short range and only used to find nodes on the local network.
 
 More on MAC addresses : [`MAC-Addresses.md`](./MAC-Addresses.md)
 
@@ -458,15 +460,19 @@ Frame Diagram
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-TODO:
-Layer 2
-firmware
-trailer
-Frame includes header payload and trailer
+`Frames include a header, payload, and a trailer.`
 
-multicast transmissions in which one host sends messages to multiple hosts
-broadcast messages are read by every node on the network.
-* Routersd do not forward broadcast messages. 
+<br>
+
+`Multicast transmissions` are transmission in which one host sends messages to multiple hosts
+* broadcast messages are read by every node on the network.
+* Routers do not forward broadcast messages.
+
+--- 
+
+<br>
+
+### `Layer 2 Protocol : ARP`
 
 `Address Resolution Protocol ARP` is a Layer 2 : Data Link protocol that works with IPv4 to discover MAC addresses on nodes in a local network and to maintain a database that maps local IP addresses to MAC addresses. 
 * ARP works at Layer 2 but uses IP at Layer 3, therefore it is sometimes said to work a Layer 2.5
@@ -476,18 +482,16 @@ broadcast messages are read by every node on the network.
 <br>
 
 `ARP Table` or `ARP Cache` is a database of records that maps MAC addresses to IP addresses. An ARP table is stored on storage device on a computing device and is used by the ARP utility to supply MAC addresses of network nodes, given their IP addresses. 
-
-<br>
-
-Dynamic ARP table entries are records that are created when a client makes and ARP request that cannot be satisfied by data already in the ARP table. 
-
-Static ARP table entries are records that have been manually entered using an ARP utility. 
+* `Dynamic ARP table entries` are records that are created when a client makes and ARP request that cannot be satisfied by data already in the ARP table. 
+* `Static ARP table entries` are records that have been manually entered using an ARP utility. 
 
 On Windows and Linux a command line ARP utility exists called `arp` and can be used to retrieve and manipulate ARP table information.
 
     arp -a
 
 This command returns the ARP table on the device.
+
+<br>
 
 On Linux
 
@@ -497,7 +501,7 @@ Is a newer command that performs the same task.
 
 <br>
 
-Ethernet II is the current Ethernet standard and is distinguished from other Ethernet frame types in that it contains a 2 byte field to identify the upper-layer protocol contained in the frame. 
+`Ethernet II` is the current Ethernet standard and is distinguished from other Ethernet frame types in that it contains a 2 byte field to identify the upper-layer protocol contained in the frame. 
 * Ethernet adds both a header and a trailer to the payload data.
 * Mininmum Frame Size 64 bytes
 * Maximum Frame Size 1518 bytes
@@ -505,7 +509,7 @@ Ethernet II is the current Ethernet standard and is distinguished from other Eth
 
 <br>
 
-Maximum Transmission Unit MTU is the largest size in bytes that routers in a message's path will allow at the Network Layer and therefore defines the maximum payload size that a Layer 2 frame can encapsulate. 
+`Maximum Transmission Unit MTU` is the largest size in bytes that routers in a message's path will allow at the Network Layer and therefore defines the maximum payload size that a Layer 2 frame can encapsulate. 
 * For Ethernet the default MTU is 1500 bytes
 * Some special purpose networks use a special version of Ethernet that allows for a `jumbo frame` which can have an MTU as high as 9198 bytes.
 
@@ -662,12 +666,10 @@ Packet Diagrams
 
 <br>
 
-TODO:
+
 `Internet Protocol (IP)` a core protocol of TCP/IP and the priciple protocol of the Network Layer (Layer 3) that provides information about how and where data should be delivered. 
 * `IP addresses` are unique addresses assigned to each node in a TCP/IP network. 
     * Two versions `IPv4` and `IPv6`
-
-
 
 <br>
 
@@ -678,10 +680,15 @@ Including:
 
 <br>
 
+`Maximum Transmission Unit MTU` is the largest size in bytes that routers in a message's path will allow at the Network Layer and therefore defines the maximum payload size that a Layer 2 frame can encapsulate. 
+* For Ethernet the default MTU is 1500 bytes
+* Some special purpose networks use a special version of Ethernet that allows for a `jumbo frame` which can have an MTU as high as 9198 bytes.
 
+<br>
 
-Maximum Transmission Unit
-Fragmentation is a Network Layer service that subdivides packets into smaller packets when those packets exceed the maximum size for the network.
+`Fragmentation` is a Network Layer service that subdivides packets into smaller packets when those packets exceed the maximum size for the network.
+
+<br>
 
 
 Layer 3 Protocols
@@ -964,8 +971,6 @@ star-bus toplogy
 bus topology
 hybrid topology
 ring topology
-
-
 Backbone is a central conduit of a network that connects network segments and significant shared devices (routers, switches, servers,etc.)
 
 

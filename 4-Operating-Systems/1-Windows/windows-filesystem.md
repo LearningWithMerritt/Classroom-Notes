@@ -45,8 +45,8 @@ ___
 # `Files`
 
 
-A `file` is a collection of data that is stored on a computer storage device.
-* Files can contain any type  of data, such as text, images, videos, music, and programs. 
+A `file` is a collection of binary data that is stored on a computer storage device.
+* Files can represent any type of data, such as text, images, videos, music, and programs. 
 
 * Files are identified by their `filename`, which is a unique name that is assigned to the file when it is created. 
 

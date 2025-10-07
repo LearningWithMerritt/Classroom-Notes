@@ -122,13 +122,18 @@ It provides a user interface and acts as an intermediary between users, applicat
   - `Device Drivers`: Software components that enable the OS to communicate with hardware devices.
 
 
+<br>
+
+A `system call` is a mechanism that allows a program or application to request a service from the operating system’s kernel. It is the formal interface between user-mode programs and the privileged kernel that controls hardware and core system resources.
+
+
 --- 
 
 <br>
 
 ### `2. Shell`
 
-`Shell`: A command-line interface that allows users to interact with the kernel.
+`Shell`: A user interface that allows users to interact with the kernel by translating user commands into actions taken by the operating system.
 - `Functions`:
   - Executes commands and scripts.
   - Provides a text-based interface for file management and system operations.
@@ -136,10 +141,15 @@ It provides a user interface and acts as an intermediary between users, applicat
 
 <br>
 
-`Command Line Interface (CLI)`, is a text-based interface used to interact with the operating system. 
-* Users enter commands in a terminal or command prompt to perform various tasks, such as file management, system configuration, and program execution. 
+#### Shell Types:
 
+`Command Line Interface (CLI)`: a text-based interface used to interact with the operating system. 
+* Users enter commands in a terminal or command prompt to perform various tasks, such as file management, system configuration, and program execution. 
 * The CLI allows for powerful and precise control over the system.
+
+<br>
+
+`Graphical User Interface GUI`: a type of user interface that allows people to interact with a computer or electronic device through visual elements such as windows, icons, buttons, menus, and images, rather than typing text commands.
 
 <br>
 
@@ -170,9 +180,7 @@ It provides a user interface and acts as an intermediary between users, applicat
   - `System Utilites`: Tools and programs that perform system maintenance and configuration tasks.
   - `Security Mechanisms`: Components that enforce security policies and protect the system.
 
-<br>
 
-A `Graphical User Interface GUI`: is a type of user interface that allows people to interact with a computer or electronic device through visual elements such as windows, icons, buttons, menus, and images, rather than typing text commands.
 
 
 <br>

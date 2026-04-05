@@ -139,10 +139,12 @@ ___
 
 # `Crafting Basic Queries`
 
-1. Use keywords, not questions
-1. Review the search engine results page (SERP)
-1. Refine your search with new keywords, synonyms, etc.
-1. Iterate (repeat)
+There are 5 Key Priciples to writing queries that get the best results.
+1. Be specific and precise
+2. Use keywords, don't write questions.
+3. Use quotation marks for exact phrases.
+4. Use Operators and Filters.
+5. Refine and Iterate on your query.
 
 <br>
 

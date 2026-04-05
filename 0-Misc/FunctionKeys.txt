@@ -1,0 +1,12 @@
+F1: Displays help for the active program.
+F2: Renames the selected file or folder.
+F3: Searches for a file or folder.
+F4: Closes the active window.
+F5: Refreshes or reloads the current page or document.
+F6: Moves the cursor to the address bar in a web browser.
+F7: Undo the previous action.
+F8: Redo the previous undone action.
+F9: In some programs, opens the Save As dialog box. In others, it may toggle the full screen mode.
+F10: Maximizes the active window.
+F11: Toggles between full screen and windowed mode in a program.
+F12: Prints the current document.

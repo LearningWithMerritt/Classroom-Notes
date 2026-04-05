@@ -25,6 +25,10 @@ ___
 
 <br>
 
+# `File System Defined`
+A `filesystem` is a a component of the OS kernel that defines how the OS organizes, stores, and manages files on a storage device.
+* filesystems define how data is named, stored, retrieved, and managed, including the hierarchy of directories (folders) and the metadata associated with files (like size, permissions, and timestamps).
+
 # `File System Types`
 |Filesystem| Abbreviation| OS|
 |:-|:-:|:-|
@@ -45,12 +49,21 @@ ___
 # `Files`
 
 
-A `file` is a collection of binary data that is stored on a computer storage device.
+A `file` is a collection of `binary data` that is stored on a computer storage device.
 * Files can represent any type of data, such as text, images, videos, music, and programs. 
 
 * Files are identified by their `filename`, which is a unique name that is assigned to the file when it is created. 
 
 * Files are organized into `folders (directories)`, which are containers that can contain other files and folders.
+
+<br>
+
+---
+
+
+## `Binary Data`
+`Binary data` is any information that is represented in binary form, meaning stored or transmitted using only two possible values (states). 
+* Computers use binary because their hardware (transistors) can easily represent two states: on (1) and off (0).
 
 <br>
 

@@ -25,7 +25,12 @@ ___
 
 # `Program Defined`
 
-A Program is a collection of program statements that preforms a specific task when executed. 
+A `Program` is a collection of instruction statements that preform a specific task when executed.
+* programs are typically contained within text files that have a special extension (ie. .`py`, `.java`, `.sh`, `.exe`, `.js`, etc.)
+* programs do not do anything until they are executed.
+
+
+<br>
 
 A code segment is a collection of statements that are part of a program.
 
@@ -52,6 +57,18 @@ Program outputs are an data sent to a device.
 Program output is usually based on a program's input or prior state. 
 
 A program specification defines the requirements for a program. 
+
+## `Process Defined`
+A `process` is an instance of a program that is currently being executed.
+* a single program can have multiple processes running simultaneously.
+* process data is stored in memory during execution.
+
+---
+
+### `Services`
+A `service` is a special type of process that usually runs in the background and provides functionality to other programs, the operating system, or users.
+* services typically start when the system boots and run without user interaction.
+* they can respond to requests, perform taks, or manage system resources.
 
 <br>
 

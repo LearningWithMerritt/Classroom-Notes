@@ -3,7 +3,7 @@
 ___
 
 
-`Shell`: program that interprets commands entered by the user at the command line. 
+`Shell`: program that interprets commands entered by the user.
 > * It is responsible for executing the commands and displaying the results to the user.
 
 <br>
@@ -100,7 +100,7 @@ Help Flag:
 Keyboard Shortcut:  
 * `Ctrl + C` - keyboard interrupt (use this to stop the currently running command and return the prompt)
 
-| **Command**                   | **Description**                                          | **Example**                                                |
+| `Command`                   | `Description`                                          | `Example`                                                |
 |-------------------------------|----------------------------------------------------------|------------------------------------------------------------|
 | `help`                        | Displays a list of possible commands                     | `help`                                                     |
 | `help [command]`              | Lists help for a specific command                        | `help dir`                                                 |
@@ -160,12 +160,21 @@ ___
 # `Powershell Prompt Syntax` 
 *Note: '`>`' indicates the prompt and should not be typed as part of the command*
 ```
-> [command] [flags] [arguments]
+> Verb-Noun [-ParameterName <Value>] [<CommonParameters>]
 ```
 Example:
 ```
 > New-Item -Name file.txt
 ```
+
+| Part   | Description  | Example |  
+|-|-|-|    
+| `Verb-Noun`         | Every cmdlet (command) uses a consistent `Verb-Noun` format that describes what it does.     | `Get-Process`, `Set-Service`, `New-Item`, `Remove-Item` |              |                                |
+| `Parameters`        | Control what the cmdlet does or specify input/output behavior. Start with a dash `-`.          | `-Name`, `-Path`, `-Force`, `-Recurse`                  |              |                                |
+| `Values`            | The data you pass to parameters.                                                               | `-Name "notepad"`                                       |              |                                |
+| `Common Parameters` | Universal parameters available to most cmdlets (e.g., `-Verbose`, `-ErrorAction`, `-OutFile`). | `-Verbose`                                              |              |                                |
+| `Pipelines`         | You can pass `objects` between cmdlets using \|| `Get-Process \| Where-Object {$_.CPU -gt 100}` |
+
 
 <br>
 
@@ -176,7 +185,7 @@ ___
 Keyboard Shortcut:  
     `Ctrl + C` - keyboard interrupt 
 
-| **Command**                            | **Description**                                      | **Alias**                               |
+| `Command`                            | `Description`                                      | `Alias`                               |
 |----------------------------------------|------------------------------------------------------|-----------------------------------------|
 | `pwd`                                  | Displays the current directory                       | `Get-Location`                          |
 | `cd [path]`                            | Changes the current directory                        | `Set-Location`                          |
@@ -217,7 +226,7 @@ Keyboard Shortcut:
 
 
 ## `Examples`
-| **Command**                            | **Example**                               |
+| `Command`                            | `Example`                               |
 |----------------------------------------|-------------------------------------------|
 | `pwd`                                  | `pwd` or `Get-Location`                   |
 | `cd [path]`                            | `cd C:\Users\$env:USERNAME\Documents`     |
@@ -255,4 +264,36 @@ Keyboard Shortcut:
 | `ri`                                   | `ri file.txt`                             |
 | `sl`                                   | `sl C:\`                                  |
 | `cls` or `clear`                       | `cls` or `clear`                          |
+
+
+
+<br>
+
+---
+
+<br>
+
+# `CMD Prompt vs. Powershell`
+| `Feature`                   | `CMD (Command Prompt)`                                                                  | `PowerShell`                                                                                       |
+| ----------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Introduced`                | 1980s (as part of MS-DOS, later in Windows NT)                                            | 2006 (Windows PowerShell 1.0, built on .NET Framework)                                               |
+| `Purpose`                   | Basic command-line interpreter for file system navigation and legacy DOS/Windows commands | Advanced task automation, system administration, and configuration management framework              |
+| `Language`                  | Batch scripting (`.bat`, `.cmd`)                                                          | PowerShell scripting (`.ps1`), based on .NET Framework / .NET Core                                   |
+| `Data Handling`             | Text-based input/output — commands return strings only                                    | Object-based — commands (cmdlets) return structured .NET objects that can be piped and manipulated   |
+| `Command Syntax`            | Simple DOS-style commands (e.g., `dir`, `copy`, `del`)                                    | Verb-Noun cmdlets (e.g., `Get-ChildItem`, `Copy-Item`, `Remove-Item`)                                |
+| `Pipeline`                  | Text pipeline — output is plain text passed between commands                              | Object pipeline — passes objects between cmdlets, enabling richer data manipulation                  |
+| `Scripting Capabilities`    | Basic control flow with limited error handling                                            | Full scripting language with variables, loops, functions, error handling, modules, and classes       |
+| `Extensibility`             | Cannot be extended beyond built-in and external programs                                  | Highly extensible with custom cmdlets, modules, and snap-ins written in PowerShell or .NET languages |
+| `Remote Management`         | No native support                                                                         | Supports PowerShell Remoting (WinRM, SSH), allowing remote script execution and management           |
+| `Integration`               | Limited — can only run executables and basic system commands                              | Deep integration with Windows OS, .NET, Azure, Active Directory, registry, WMI, and more             |
+| `Error Handling`            | Basic — error levels and codes                                                            | Advanced — structured exceptions (`try`, `catch`, `finally`)                                         |
+| `Automation`                | Minimal automation (batch files only)                                                     | Designed for automation — supports scheduling, remoting, workflows, and complex scripts              |
+| `Output Formatting`         | Plain text only                                                                           | Multiple output options — tables, lists, JSON, XML, CSV, HTML                                        |
+| `Cross-Platform Support`    | Windows only                                                                              | Cross-platform (`PowerShell Core` works on Windows, macOS, and Linux)                                |
+| `Aliases and Compatibility` | Supports DOS command aliases                                                              | Includes aliases for common CMD and UNIX commands (e.g., `dir` = `Get-ChildItem`, `ls`, `cp`)        |
+| `Administrative Control`    | Limited — mostly user-level operations                                                    | Full administrative control — can manage registry, processes, services, event logs, etc.             |
+| `Development Integration`   | Minimal scripting environment                                                             | Integrated with modern tools (VS Code, Azure CLI, Git, etc.)                                         |
+| `Community and Modules`     | Small, mostly legacy                                                                      | Large, active community with thousands of reusable modules (PowerShell Gallery)                      |
+| `Performance`               | Lightweight for basic commands                                                            | Slightly heavier due to .NET runtime but much more powerful                                          |
+| `Default Shell in Windows`  | Yes, historically (Command Prompt)                                                        | Becoming the default in modern Windows (PowerShell / Windows Terminal)                               |
 

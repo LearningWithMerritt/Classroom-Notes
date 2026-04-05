@@ -133,10 +133,11 @@ A `system call` is a mechanism that allows a program or application to request a
 
 ### `2. Shell`
 
-`Shell`: A user interface that allows users to interact with the kernel by translating user commands into actions taken by the operating system.
+`Shell`: A shell is a program that provides an interface between the user and the operating system kernel. It allows users to interact with the system by entering commands, which the shell interprets and passes to the OS to execute.
+
 - `Functions`:
   - Executes commands and scripts.
-  - Provides a text-based interface for file management and system operations.
+  - Provides an interface for file management and system operations.
   - Supports automation and scripting.
 
 <br>

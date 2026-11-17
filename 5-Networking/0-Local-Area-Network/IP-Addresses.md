@@ -452,7 +452,7 @@ A `CIDR Block` is the combination of the `/` and the number of bits used for the
 
 
 Common Subnets:
-|CIDR Block|Decimal Subnet Mask|Binary Subnet Mask|
+|CIDR Block|Dotted Decimal Subnet Mask|Binary Subnet Mask|
 |:-:|:-:|:-:|
 |/8|255.0.0.0|11111111.00000000.00000000.00000000|
 |/16|255.255.0.0|11111111.11111111.00000000.00000000|
@@ -499,21 +499,17 @@ AND
 
 <br>
 
-`Calculating Number of Bits to Borrow from the Host bits`
+## `Calculating Number of Bits to Borrow from the Host bits`
 
 ### 2 <sup> n </sup> = Number of Subnets
 * Where `n` is the number of bits that must be switched from host address to network ID
 
+
 <br>
 
+---
 
-### Magic Number = 256 - subnet octet value
-OR
-### 2 <sup>Num of host bits</sup> = Magic Number
-* The `magic number` is the interval between subnet addresses and is used to determine the starting IP address of each subnet. 
-
-
-`Calculating Number of Subnets`:  
+## `Calculating Number of Subnets`:  
 *Subnet masks are also called prefixes especially in the use of CIDR notation*  
 
 ### 2<sup>(new mask bits - old mask bits)</sup> = Number of Subnets
@@ -525,7 +521,40 @@ Example:
 
 <br>
 
-`Calculating Number of Hosts`:  
+---
+
+## `Calculating Block Size aka Magic Number`:
+
+`Block size aka Magic Number` is the interval between network addresses of consecutive subnets.
+
+The `interesting octet` is the octet in the subnet mask that is neither 255 nor 0.
+
+
+### 2 <sup>(Number of Host Bits in Interesting Octet)</sup> = Block Size
+
+OR
+
+### Magic Number = 256 - subnet octet value
+
+<br>
+
+The block size will tell you how much to increment the interesting octet.
+
+Example:
+> The network is 10.0.0.0/18 <br>
+> The interesting octet is the 3rd octet <br>
+> There are 6 network bits in the interesting octet (2 network bits and 6 host bits in the 3rd octet)<br>
+> The block size is 2<sup> 6</sup> = 64 <br>
+> The network addresses are : 10.0.0.0, 10.0.64.0, 10.0.128.0, 10.0.192.0 <br>
+> The broadcast addresses are : 10.0.63.255, 10.0.127.255, 10.0.191.255, 10.0.255.255 <br>
+
+<br>
+
+
+ 
+---
+
+## `Calculating Number of Hosts`:  
 
 ### 2<sup>(32 - mask bits)</sup> = Number of Total IPs in the subnet
 
@@ -540,6 +569,10 @@ Example:
 * Why - 2 ?
     * 1 address is for the network address
     * 1 address is for the broadcast address
+  
+<br>
+
+---
 
 Subnetting Examples:
 
